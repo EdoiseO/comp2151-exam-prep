@@ -146,5 +146,6 @@ body{padding:1rem .75rem}
 .q-card{padding:.85rem}
 .q-meta{gap:6px}
 .q-text{font-size:13px}
-.opt{font-size:12px;padding:8px 10px}
+.opt{font-size:12px;padding:10px 12px;min-height:46px}
+.nbtn{min-height:44px}
 }
