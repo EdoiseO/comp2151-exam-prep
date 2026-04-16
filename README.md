@@ -1,16 +1,17 @@
 # COMP2151 Exam Prep
 
-Browser-based quiz app for COMP2151 exam review.
+Next.js and React quiz app for COMP2151 exam review.
 
 ## Start
 
-Open `index.html` in a browser, or run a local server:
+Install dependencies and run the development server:
 
 ```bash
-python3 -m http.server 8000
+npm install
+npm run dev
 ```
 
-Then open `http://localhost:8000`.
+Then open `http://localhost:3000`.
 
 ## Current Content
 
@@ -29,7 +30,7 @@ Then open `http://localhost:8000`.
 Before adding or committing new question batches, run:
 
 ```bash
-node scripts/audit-questions.js
+npm run audit:questions
 ```
 
 Use the warnings as a review checklist:
@@ -46,6 +47,8 @@ Each lecture has its own data file in `data/`.
 - `data/lecture1.js` contains Lecture 1 questions.
 - `data/lecture2.js` contains Lecture 2 questions.
 - `data/lecture3.js` through `data/lecture8.js` are placeholders.
+
+The Next.js app loads these lecture files through `app/api/lectures/route.js`, so the existing lecture format still works.
 
 To add a lecture, replace the matching placeholder file with:
 

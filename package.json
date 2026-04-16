@@ -1,0 +1,16 @@
+{
+  "name": "comp2151-exam-prep",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "audit:questions": "node scripts/audit-questions.js"
+  },
+  "dependencies": {
+    "next": "16.2.4",
+    "react": "19.2.5",
+    "react-dom": "19.2.5"
+  }
+}
