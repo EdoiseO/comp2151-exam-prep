@@ -15,7 +15,8 @@ Then open `http://localhost:8000`.
 ## Current Content
 
 - Lecture 1 deep Q&A
-- 65 questions
+- Lecture 2 Scrum Framework Q&A
+- 130 questions across Lectures 1-2
 - Category filters
 - Lecture selector for Lectures 1-8
 - Failed-question retry loop
@@ -27,8 +28,9 @@ Then open `http://localhost:8000`.
 
 Each lecture has its own data file in `data/`.
 
-- `data/lecture1.js` contains the current Lecture 1 questions.
-- `data/lecture2.js` through `data/lecture8.js` are placeholders.
+- `data/lecture1.js` contains Lecture 1 questions.
+- `data/lecture2.js` contains Lecture 2 questions.
+- `data/lecture3.js` through `data/lecture8.js` are placeholders.
 
 To add a lecture, replace the matching placeholder file with:
 
