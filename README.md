@@ -1,16 +1,48 @@
 # COMP2151 Exam Prep
 
-Browser-based quiz app for COMP2151 exam review.
+Next.js and React quiz app for COMP2151 exam review.
 
 ## Start
 
-Open `index.html` in a browser, or run a local server:
+Install dependencies and run the development server:
 
 ```bash
-python3 -m http.server 8000
+npm install
+npm run dev
 ```
 
-Then open `http://localhost:8000`.
+Then open `http://localhost:3000`.
+
+## Deploy on Vercel
+
+This project is ready to deploy on Vercel as a standard Next.js app.
+
+### Recommended settings
+
+- Framework preset: `Next.js`
+- Install command: `npm install`
+- Build command: `npm run build`
+- Output setting: leave default
+- Node.js version: `20.x` or newer
+
+### Notes
+
+- No environment variables are required right now.
+- `vercel.json` already enables clean URLs and basic security headers.
+- Before deploying, run a local production check:
+
+```bash
+npm run build
+```
+
+### First deploy
+
+1. Import the GitHub repository into Vercel.
+2. Select the branch you want to deploy.
+3. Keep the default Next.js settings.
+4. Deploy.
+
+For production, set the production branch to `main` after the feature branch is merged.
 
 ## Current Content
 
@@ -29,7 +61,7 @@ Then open `http://localhost:8000`.
 Before adding or committing new question batches, run:
 
 ```bash
-node scripts/audit-questions.js
+npm run audit:questions
 ```
 
 Use the warnings as a review checklist:
@@ -46,6 +78,8 @@ Each lecture has its own data file in `data/`.
 - `data/lecture1.js` contains Lecture 1 questions.
 - `data/lecture2.js` contains Lecture 2 questions.
 - `data/lecture3.js` through `data/lecture8.js` are placeholders.
+
+The Next.js app loads these lecture files through `app/api/lectures/route.js`, so the existing lecture format still works.
 
 To add a lecture, replace the matching placeholder file with:
 
