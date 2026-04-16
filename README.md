@@ -13,6 +13,37 @@ npm run dev
 
 Then open `http://localhost:3000`.
 
+## Deploy on Vercel
+
+This project is ready to deploy on Vercel as a standard Next.js app.
+
+### Recommended settings
+
+- Framework preset: `Next.js`
+- Install command: `npm install`
+- Build command: `npm run build`
+- Output setting: leave default
+- Node.js version: `20.x` or newer
+
+### Notes
+
+- No environment variables are required right now.
+- `vercel.json` already enables clean URLs and basic security headers.
+- Before deploying, run a local production check:
+
+```bash
+npm run build
+```
+
+### First deploy
+
+1. Import the GitHub repository into Vercel.
+2. Select the branch you want to deploy.
+3. Keep the default Next.js settings.
+4. Deploy.
+
+For production, set the production branch to `main` after the feature branch is merged.
+
 ## Current Content
 
 - Lecture 1 deep Q&A
