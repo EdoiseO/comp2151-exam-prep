@@ -48,11 +48,13 @@ For production, set the production branch to `main` after the feature branch is 
 
 - Lecture 1 deep Q&A
 - Lecture 2 Scrum Framework Q&A
-- 130 questions across Lectures 1-2
+- Lecture 3 Agile Project Management Q&A
+- Lecture 4 Scrum Processes Q&A
+- 266 questions across Lectures 1-4
 - Category filters
 - Lecture selector for Lectures 1-8
 - Failed-question retry loop
-- Shuffled answer options on retries
+- Shuffled answer options on load and retries
 - Score tracking
 - Per-question explanations
 
@@ -69,40 +71,44 @@ Use the warnings as a review checklist:
 - Avoid trivia that only tests specific slide names, quotes, dates, or example characters.
 - Prefer concept questions that still work if the lecture examples change.
 - Keep all four answer options roughly the same length so the correct answer does not stand out.
-- Shuffle answer options before publishing a lecture file or use the shared shuffle helper pattern from Lectures 1-2.
+- Keep raw answer positions balanced across A, B, C, and D.
 
 ## Adding Lectures
 
-Each lecture has its own data file in `data/`.
+Each lecture has its own JSON data file in `data/`.
 
-- `data/lecture1.js` contains Lecture 1 questions.
-- `data/lecture2.js` contains Lecture 2 questions.
-- `data/lecture3.js` through `data/lecture8.js` are placeholders.
+- `data/lecture1.json` contains Lecture 1 questions.
+- `data/lecture2.json` contains Lecture 2 questions.
+- `data/lecture3.json` contains Lecture 3 questions.
+- `data/lecture4.json` contains Lecture 4 questions.
+- `data/lecture5.json` through `data/lecture8.json` are placeholders.
 
-The Next.js app loads these lecture files through `app/api/lectures/route.js`, so the existing lecture format still works.
+The Next.js app loads these lecture files through `app/api/lectures/route.js`. The API owns runtime answer-option shuffling, so lecture files should stay as plain JSON data.
 
 To add a lecture, replace the matching placeholder file with:
 
-```js
-window.COMP2151_LECTURES = window.COMP2151_LECTURES || [];
-window.COMP2151_LECTURES.push({
-  id: 'lecture2',
-  title: 'Lecture 2',
-  subtitle: 'Topic Name',
-  description: 'Short lecture summary.',
-  categories: [
-    {key: 'topic', label: 'Topic', cls: 'c1'}
+```json
+{
+  "id": "lecture5",
+  "title": "Lecture 5",
+  "subtitle": "Topic Name",
+  "description": "Short lecture summary.",
+  "categories": [
+    {"key": "all", "label": "All 65", "cls": "c0"},
+    {"key": "topic", "label": "Topic", "cls": "c1"}
   ],
-  questions: [
+  "questions": [
     {
-      cat: 'topic',
-      diff: 'easy',
-      q: 'Question text?',
-      opts: ['A', 'B', 'C', 'D'],
-      ans: 0,
-      explain: 'Short answer explanation.',
-      deep: 'Longer concept explanation.'
+      "cat": "topic",
+      "diff": "easy",
+      "q": "Question text?",
+      "opts": ["Option A", "Option B", "Option C", "Option D"],
+      "ans": 0,
+      "explain": "Short answer explanation.",
+      "deep": "Longer concept explanation."
     }
   ]
-});
+}
 ```
+
+If a lecture arrives as a JavaScript question array, convert it to this JSON shape before committing.

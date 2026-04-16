@@ -1,31 +1,39 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import vm from 'node:vm';
 
 export const dynamic = 'force-dynamic';
 
-function loadLectures() {
-  const dataDirectory = path.join(process.cwd(), 'data');
-  const context = {
-    window: {},
-    console,
-    Math
-  };
+function shuffleQuestionOptions(question) {
+  const shuffled = question.opts.map((text, index) => ({text, index}));
 
-  context.window.window = context.window;
-  vm.createContext(context);
-
-  const lectureFiles = fs
-    .readdirSync(dataDirectory)
-    .filter(name => /^lecture\d+\.js$/.test(name))
-    .sort();
-
-  for (const fileName of lectureFiles) {
-    const source = fs.readFileSync(path.join(dataDirectory, fileName), 'utf8');
-    vm.runInContext(source, context, {filename: fileName});
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
   }
 
-  return context.window.COMP2151_LECTURES || [];
+  return {
+    ...question,
+    opts: shuffled.map(option => option.text),
+    ans: shuffled.findIndex(option => option.index === question.ans)
+  };
+}
+
+function loadLectures() {
+  const dataDirectory = path.join(process.cwd(), 'data');
+  const lectureFiles = fs
+    .readdirSync(dataDirectory)
+    .filter(name => /^lecture\d+\.json$/.test(name))
+    .sort();
+
+  return lectureFiles.map(fileName => {
+    const source = fs.readFileSync(path.join(dataDirectory, fileName), 'utf8');
+    const lecture = JSON.parse(source);
+
+    return {
+      ...lecture,
+      questions: (lecture.questions || []).map(shuffleQuestionOptions)
+    };
+  });
 }
 
 export async function GET() {

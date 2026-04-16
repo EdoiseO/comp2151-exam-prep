@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const vm = require('vm');
 
 const root = path.resolve(__dirname, '..');
 const dataDir = path.join(root, 'data');
@@ -24,28 +23,21 @@ const triviaPatterns = [
 ];
 
 function loadLectures() {
-  const context = {
-    window: {},
-    console,
-    Math
-  };
-  context.window.window = context.window;
-  vm.createContext(context);
-
-  for (const file of fs.readdirSync(dataDir).filter(name => /^lecture\d+\.js$/.test(name)).sort()) {
-    const source = fs.readFileSync(path.join(dataDir, file), 'utf8');
-    vm.runInContext(source, context, {filename: file});
-  }
-
-  return context.window.COMP2151_LECTURES || [];
+  return fs
+    .readdirSync(dataDir)
+    .filter(name => /^lecture\d+\.json$/.test(name))
+    .sort()
+    .map(file => {
+      const source = fs.readFileSync(path.join(dataDir, file), 'utf8');
+      return JSON.parse(source);
+    });
 }
 
-function rawScoreDistribution(source) {
+function rawScoreDistribution(questions) {
   const counts = [0, 0, 0, 0];
-  for (const match of source.matchAll(/ans:\s*(\d)/g)) {
-    const index = Number(match[1]);
-    if (index >= 0 && index < counts.length) {
-      counts[index]++;
+  for (const question of questions) {
+    if (Number.isInteger(question.ans) && question.ans >= 0 && question.ans < counts.length) {
+      counts[question.ans]++;
     }
   }
   return counts;
@@ -62,6 +54,7 @@ function scoreDistribution(questions) {
 }
 
 function optionSpread(question) {
+  if (!question.opts || question.opts.length === 0) return 0;
   const lengths = question.opts.map(option => option.length);
   return Math.max(...lengths) - Math.min(...lengths);
 }
@@ -72,12 +65,10 @@ let totalWarnings = 0;
 for (const lecture of lectures) {
   const questions = lecture.questions || [];
   const distribution = scoreDistribution(questions);
-  const sourcePath = path.join(dataDir, `${lecture.id}.js`);
-  const source = fs.existsSync(sourcePath) ? fs.readFileSync(sourcePath, 'utf8') : '';
-  const rawDistribution = rawScoreDistribution(source);
+  const rawDistribution = rawScoreDistribution(questions);
   const rawSpread = Math.max(...rawDistribution) - Math.min(...rawDistribution);
 
-  console.log(`${lecture.id}: ${questions.length} questions, loaded answer slots A-D = ${distribution.join('/')}, raw A-D = ${rawDistribution.join('/')}`);
+  console.log(`${lecture.id}: ${questions.length} questions, answer slots A-D = ${distribution.join('/')}`);
 
   if (questions.length > 0 && rawSpread > answerSlotSpreadLimit) {
     totalWarnings++;
