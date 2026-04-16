@@ -10,76 +10,876 @@ const categories = [
 ];
 
 const lecture2Questions = [
-  {cat:'princ',diff:'easy',q:'What does "Empirical Process Control" mean in Scrum?',opts:['All work is defined and planned upfront','Progress is based on observation and experimentation rather than rigid upfront plans','Managers control all team decisions empirically','Processes are defined by external auditors'],ans:1,explain:'Empirical = based on observation and experimentation. Scrum teams inspect what actually happened and adapt, not follow a pre-written script.',deep:'Every Sprint Review and Retrospective is an act of Empirical Process Control. You observe reality, then adjust your plan based on what you found.'},
-  {cat:'princ',diff:'easy',q:'In Scrum, who decides how best to accomplish the sprint work?',opts:['The Scrum Master assigns tasks','The Product Owner directs development','The Development Team self-organises and decides','The project manager assigns work'],ans:2,explain:'Self-organization: the Development Team chooses how to accomplish its work. No one, not even the Scrum Master, assigns tasks.',deep:'Research consistently shows that self-organising teams outperform directed teams. People who choose their work take ownership and produce higher-quality output.'},
-  {cat:'princ',diff:'easy',q:'What does "Time-boxing" mean in Scrum?',opts:['Estimating work in hours only','All Scrum activities have a fixed maximum duration','Sprints can extend if the team needs more time','Daily Standups can be extended for important topics'],ans:1,explain:'Time-boxing means every Scrum event has a fixed maximum duration: the Daily Standup is 15 minutes, a Sprint is 1-4 weeks, etc.',deep:'Time-boxing creates discipline. When meetings have hard end times, teams stay focused and avoid the meeting creep that plagues traditional organisations.'},
-  {cat:'princ',diff:'easy',q:'How long is a Daily Scrum regardless of sprint length?',opts:['5 minutes','10 minutes','15 minutes','30 minutes'],ans:2,explain:'The Daily Scrum is always time-boxed to 15 minutes.',deep:'The 15-minute limit forces brevity. Detailed problem-solving happens after the Standup, never during it. This keeps the daily sync efficient.'},
-  {cat:'princ',diff:'med',q:'How long is Sprint Planning for a 2-week sprint?',opts:['1 hour','2 hours','4 hours','8 hours'],ans:2,explain:'Sprint Planning = 2 hours per week of sprint. A 2-week sprint = 4 hours of Sprint Planning.',deep:'A 4-week sprint = 8 hours. The formula ensures enough planning time without wasting the sprint itself.'},
-  {cat:'princ',diff:'med',q:'What is the key difference between Empirical and Defined Process Control?',opts:['Empirical is for small teams; defined is for large teams','Empirical expects the unexpected and adapts; defined expects everything understood upfront','Empirical uses more documentation','Empirical is the Waterfall approach'],ans:1,explain:'Defined process assumes full upfront understanding. Empirical expects the unexpected and builds in regular inspection and adaptation.',deep:'Software is complex and unpredictable, making it a perfect fit for Empirical Process Control. Waterfall fails precisely because it uses defined process where empirical is needed.'},
-  {cat:'princ',diff:'med',q:'Value-based Prioritization means stories are built in which order?',opts:['Most technically complex first','Alphabetically by story ID','Highest business value first','Shortest stories first to build velocity'],ans:2,explain:'Highest business value stories are built first. The Product Owner determines business value, not the dev team.',deep:'This ensures maximum ROI from the earliest sprints. Even if a project is cancelled after Sprint 1, the most valuable features are already delivered.'},
-  {cat:'princ',diff:'med',q:'Iterative development means stories are implemented in which way?',opts:['All in one large release at the end','One story per sprint only','Gradually across multiple sprints, each building on the last','Randomly selected each sprint'],ans:2,explain:'Stories are implemented gradually across multiple sprints. Each iteration improves on the previous one.',deep:'This is why Scrum produces working software every sprint. Continuous delivery means continuous value and continuous feedback.'},
-  {cat:'princ',diff:'hard',q:'A team extends Daily Standup to 45 minutes to resolve a technical issue. Which principle is violated?',opts:['Self-organization','Value-based Prioritization','Time-boxing','Collaboration'],ans:2,explain:'Time-boxing is violated. The Daily Standup must be 15 minutes maximum. Technical discussions happen in a separate meeting after.',deep:'Allowing overruns sets a precedent that destroys the event\'s value. The Scrum Master ends the meeting at 15 minutes and schedules a follow-up for the technical discussion.'},
-  {cat:'princ',diff:'hard',q:'Which Scrum principle most directly embodies the Manifesto\'s "customer collaboration over contract negotiation"?',opts:['Time-boxing','Iterative Development','Empirical Process Control','Collaboration'],ans:3,explain:'Collaboration is the principle that most directly embodies this value: continuous collaboration between team and client, replacing rigid contracts.',deep:'The Sprint Review is the primary collaboration checkpoint. Clients see real working software every sprint and collaborate on what to build next.'},
-  {cat:'princ',diff:'hard',q:'Why does Scrum prefer shorter sprints (1-2 weeks) over longer ones (4-6 weeks)?',opts:['Shorter sprints are cheaper','Shorter sprints create more frequent feedback loops, allowing faster adaptation','Longer sprints have too many ceremonies','Shorter sprints reduce story points needed'],ans:1,explain:'Shorter sprints = faster feedback. Problems surface in 1-2 weeks instead of 4-6, making them far cheaper to fix.',deep:'A 2-week sprint gives 26 inspection opportunities per year. A 6-week sprint gives only 8. More frequent feedback = faster learning and adaptation.'},
-  {cat:'princ',diff:'hard',q:'Why is co-location mentioned under the Collaboration principle?',opts:['It reduces office rent costs','Face-to-face communication is the richest form: co-located teams collaborate more naturally and effectively','It makes it easier for the Scrum Master to observe the team','It is required by the Scrum Guide'],ans:1,explain:'Face-to-face communication conveys tone, body language, and immediate feedback that digital tools cannot fully replicate.',deep:'The Agile Manifesto states that face-to-face conversation is the most efficient method of conveying information. Remote teams compensate with video, shared boards, and real-time tools.'},
 
-  {cat:'aspect',diff:'easy',q:'How many Scrum Aspects are there?',opts:['3','4','5','6'],ans:2,explain:'5 Scrum Aspects: Organization, Business Justification, Quality, Change, and Risk.',deep:'Aspects represent ongoing dimensions that must be continuously managed, not one-time steps like Processes.'},
-  {cat:'aspect',diff:'easy',q:'Which Scrum Aspect covers core and non-core roles?',opts:['Business Justification','Quality','Organization','Risk'],ans:2,explain:'The Organization aspect defines the team structure: core roles (SM, PO, Dev Team) and non-core roles (stakeholders, vendors, Scrum Guidance Body).',deep:'Knowing which roles are core vs non-core clarifies accountability. Core roles are committed to sprint delivery; non-core roles are involved but not accountable.'},
-  {cat:'aspect',diff:'easy',q:'What are the THREE core Scrum roles?',opts:['Manager, Developer, Tester','Product Owner, Scrum Master, Development Team','CEO, CTO, Developer','Analyst, Designer, Programmer'],ans:1,explain:'The 3 core roles are Product Owner, Scrum Master, and Development Team.',deep:'Any other titles (tech lead, architect, QA) are sub-roles within the Dev Team. Scrum does not distinguish: everyone on the Dev Team is simply developer.'},
-  {cat:'aspect',diff:'easy',q:'What does "Grooming" the Product Backlog mean?',opts:['Deleting completed stories from the backlog','Continuously updating, refining, and re-prioritising backlog items as requirements change','Estimating story points for all backlog items','Assigning stories to developers'],ans:1,explain:'Grooming = continuously reviewing, refining, and re-prioritising the backlog as the project evolves.',deep:'Grooming is triggered by change. Regular grooming sessions keep the backlog relevant and the team focused on what matters most right now.'},
-  {cat:'aspect',diff:'med',q:'What is the difference between Acceptance Criteria and Done Criteria?',opts:['They are the same thing','Acceptance Criteria are per-story; Done Criteria apply to all stories in a sprint','AC is written by the Dev Team; DoD by stakeholders','Done Criteria are optional; Acceptance Criteria are mandatory'],ans:1,explain:'Acceptance Criteria = specific to one story. Done Criteria = universal rules every story must pass, such as code review, testing, and documentation.',deep:'A story can meet its AC but still fail the DoD. Both must pass before a story is truly complete.'},
-  {cat:'aspect',diff:'med',q:'What are the two types of value in Business Justification?',opts:['Short-term and long-term value','Tangible (measurable with financial tools) and Intangible (customer satisfaction, brand)','Direct and indirect value','Revenue and cost-saving value'],ans:1,explain:'Tangible = measurable (ROI, NPV, IRR). Intangible = harder to quantify (satisfaction, brand reputation, public service).',deep:'Both matter. A charity app may have zero direct revenue but enormous social impact. Business Justification must consider both.'},
-  {cat:'aspect',diff:'med',q:'In Scrum, how is change viewed: as a threat or an opportunity?',opts:['A threat controlled through formal change requests','An opportunity for improvement, welcomed and managed through a formalised process','Change is not allowed during a sprint','Change is only allowed between sprints'],ans:1,explain:'Scrum views change as an opportunity, managed through a formalised process usually defined by the Scrum Guidance Body.',deep:'This is a fundamental mindset shift. In Scrum, a change request from the client is a chance to deliver more value, not a threat to resist.'},
-  {cat:'aspect',diff:'med',q:'What is the Scrum Guidance Body?',opts:['A government regulatory authority for Scrum certifications','An organisation-specific team of experts that creates guidelines to keep Scrum projects consistent','The group of 17 who wrote the Agile Manifesto','A committee that approves the Product Backlog'],ans:1,explain:'The Scrum Guidance Body is an organisation-specific team that creates guidelines and documents to keep multiple Scrum projects consistent within a company.',deep:'Large organisations running 50+ Scrum teams need coordination. The Guidance Body provides shared standards so teams are not reinventing the wheel independently.'},
-  {cat:'aspect',diff:'hard',q:'A project has high NPV but also high risk. How does Scrum handle this tension?',opts:['High NPV always overrides risk considerations','Risk is assessed and prioritised: high-risk stories are implemented in earlier sprints to validate assumptions early','Risk is ignored if business value is high enough','The Scrum Master decides whether to proceed'],ans:1,explain:'Scrum manages risk proactively. High-risk stories are often prioritised early. Discovering an impossibility in Sprint 1 is far cheaper than Sprint 10.',deep:'This is the Technology Risk-Based prioritisation technique. It counter-intuitively increases priority for risky stories. Fail fast, fail cheap.'},
-  {cat:'aspect',diff:'hard',q:'A story passes Acceptance Criteria but was never code-reviewed. Has the Definition of Done been met?',opts:['Yes: if the PO accepts it, it is done','No: the Definition of Done typically requires code review by other team members','Yes: Acceptance Criteria and Done Criteria are the same','It depends on the Scrum Master\'s judgment'],ans:1,explain:'No. The DoD typically requires code review. Meeting Acceptance Criteria alone is not sufficient. Both must pass.',deep:'This is a common anti-pattern. A story that skips the DoD creates hidden technical debt. The PO should not accept it until the full Definition of Done is met.'},
-  {cat:'aspect',diff:'hard',q:'Which risk management step ensures all stakeholders know about potential threats to the project?',opts:['Risk Identification','Risk Assessment','Risk Prioritization','Risk Communication'],ans:3,explain:'Risk Communication ensures all stakeholders are informed about identified risks and mitigation strategies.',deep:'Transparency is a core Scrum value. Hidden risks create surprises. When everyone knows what risks exist, they can contribute to mitigation.'},
-  {cat:'aspect',diff:'hard',q:'The Quality aspect says scope increases without more time reduces quality. What Scrum mechanism prevents this?',opts:['The Scrum Master enforces scope limits','Time-boxing: fixed sprint length means adding scope without removing other stories degrades quality','The Product Owner rejects all scope changes','Technical debt tracking'],ans:1,explain:'Time-boxing is the primary defence against scope creep. A sprint is fixed; adding stories without removing others means some will not be done properly.',deep:'This is why the Sprint Backlog is fixed once committed. Mid-sprint additions go into the Product Backlog for the next sprint, not into the current one.'},
+  // ─────────────────────────────────────────────────────────
+  // PRINCIPLES (12 questions)
+  // ─────────────────────────────────────────────────────────
+  {
+    cat: 'princ', diff: 'easy',
+    q: 'What does Empirical Process Control mean in Scrum?',
+    opts: [
+      'All work is fully defined and planned before the sprint starts',
+      'Progress is driven by observation and experimentation, not rigid upfront plans',
+      'Managers review and control all team decisions at each stage',
+      'Processes are audited and certified by an external body'
+    ],
+    ans: 1,
+    explain: 'Empirical = observation + experimentation. The team inspects what actually happened each sprint and adapts — rather than following a pre-written script.',
+    deep: 'Every Sprint Review and Retrospective is an act of Empirical Process Control. You observe reality, then adjust your plan based on what you found — not what you assumed.'
+  },
+  {
+    cat: 'princ', diff: 'easy',
+    q: 'The Self-Organization principle means tasks in a sprint are assigned by whom?',
+    opts: [
+      'The Scrum Master assigns tasks based on skills',
+      'The Development Team collectively decides who does what',
+      'The Product Owner assigns tasks by business priority',
+      'A project manager allocates work to each developer'
+    ],
+    ans: 1,
+    explain: 'Self-organization means the Development Team chooses how to accomplish its own work. No one — not even the Scrum Master — assigns tasks.',
+    deep: 'Self-organising teams consistently outperform directed ones. People who choose their own work take ownership, solve problems more creatively, and produce higher-quality output.'
+  },
+  {
+    cat: 'princ', diff: 'easy',
+    q: 'What does Time-boxing mean when applied to Scrum events?',
+    opts: [
+      'Estimating all work in hours before the sprint begins',
+      'Every Scrum event has a fixed maximum duration that cannot be extended',
+      'Sprints can be extended if the team needs a few more days',
+      'Daily Standups have a suggested but flexible time limit'
+    ],
+    ans: 1,
+    explain: 'Time-boxing means every Scrum event has a fixed maximum duration. The Daily Standup is 15 minutes, a Sprint is 1–4 weeks — hard limits, not suggestions.',
+    deep: 'Time-boxing creates discipline and focus. When meetings have hard end times, teams stay on topic and avoid the "meeting creep" that plagues traditional organisations.'
+  },
+  {
+    cat: 'princ', diff: 'easy',
+    q: 'How long is the Daily Scrum, and does its length change with sprint length?',
+    opts: [
+      'It is 30 minutes and scales up for longer sprints',
+      'It is 15 minutes regardless of sprint length',
+      'It is 1 hour for a 4-week sprint and 15 minutes for a 1-week sprint',
+      'It is however long the team needs to discuss all blockers'
+    ],
+    ans: 1,
+    explain: 'The Daily Scrum is always 15 minutes — it does not scale with sprint length. The fixed duration keeps the event efficient.',
+    deep: 'The 15-minute limit forces brevity. Complex technical issues should be discussed in a follow-up meeting — never during the Standup itself.'
+  },
+  {
+    cat: 'princ', diff: 'med',
+    q: 'For a 2-week sprint, how long is Sprint Planning time-boxed to?',
+    opts: [
+      '1 hour — enough to agree on the sprint goal',
+      '2 hours — one hour per week of the sprint',
+      '4 hours — two hours per week of the sprint',
+      '8 hours — a full day for thorough planning'
+    ],
+    ans: 2,
+    explain: 'Sprint Planning = 2 hours per week of sprint length. A 2-week sprint = 4 hours of Sprint Planning.',
+    deep: 'The formula scales: a 4-week sprint = 8 hours of planning. This ensures enough time to commit confidently without spending the sprint planning it.'
+  },
+  {
+    cat: 'princ', diff: 'med',
+    q: 'What is the key difference between Empirical and Defined Process Control?',
+    opts: [
+      'Empirical suits small teams; defined suits large enterprise teams',
+      'Empirical adapts based on observation; defined assumes all work is understood upfront',
+      'Empirical requires more documentation to track findings',
+      'Empirical is the approach used in the Waterfall model'
+    ],
+    ans: 1,
+    explain: 'Defined process assumes full upfront understanding. Empirical process expects the unexpected and builds in regular inspect-and-adapt cycles.',
+    deep: 'Software is inherently complex and unpredictable — which is why Empirical Process Control fits. Waterfall\'s defined approach fails because it assumes certainty that rarely exists.'
+  },
+  {
+    cat: 'princ', diff: 'med',
+    q: 'Value-based Prioritization means the team builds the backlog in which order?',
+    opts: [
+      'Most technically complex stories first to reduce risk early',
+      'Shortest stories first to build team momentum and velocity',
+      'Highest business value stories first to maximise ROI from the earliest sprints',
+      'Stories in the order the client originally listed them'
+    ],
+    ans: 2,
+    explain: 'Value-based Prioritization = highest business value stories are built first. The Product Owner determines business value — not the development team.',
+    deep: 'This ensures maximum ROI from the earliest sprints. Even if a project is cancelled after Sprint 1, the most important features have already been delivered.'
+  },
+  {
+    cat: 'princ', diff: 'med',
+    q: 'What does the Iterative Development principle mean for how user stories are delivered?',
+    opts: [
+      'All stories are bundled into a single release at the end of the project',
+      'Stories are implemented gradually across multiple sprints, each sprint building on the last',
+      'One story is selected and fully completed before any other work begins',
+      'Stories are randomly selected each sprint based on team preference'
+    ],
+    ans: 1,
+    explain: 'Iterative Development means stories are delivered gradually across multiple sprints — each iteration improves and builds on what came before.',
+    deep: 'This is why Scrum produces working software every sprint rather than one large release. Continuous delivery means continuous value and continuous user feedback.'
+  },
+  {
+    cat: 'princ', diff: 'hard',
+    q: 'A team routinely extends Daily Standups to 45 minutes to resolve technical issues. Which Scrum principle is most directly violated?',
+    opts: [
+      'Self-organization — the team should be directing themselves without outside input',
+      'Value-based Prioritization — the discussion is not focused on backlog value',
+      'Time-boxing — the Standup has a fixed 15-minute maximum that is being ignored',
+      'Collaboration — the extended meetings reduce time for actual collaboration'
+    ],
+    ans: 2,
+    explain: 'Time-boxing is violated. The Daily Standup must be 15 minutes maximum. Technical problem-solving belongs in a separate follow-up meeting, not the Standup.',
+    deep: 'Allowing Standup overruns sets a precedent that destroys the event\'s value. The Scrum Master should end the meeting at 15 minutes and schedule a follow-up for deep technical discussion.'
+  },
+  {
+    cat: 'princ', diff: 'hard',
+    q: 'The Agile Manifesto values "customer collaboration over contract negotiation." Which Scrum principle most directly puts this into practice?',
+    opts: [
+      'Time-boxing — fixed sprint durations replace open-ended contractual milestones',
+      'Iterative Development — delivering incrementally reduces the need for upfront contracts',
+      'Empirical Process Control — adapting based on feedback reduces reliance on contracts',
+      'Collaboration — continuous teamwork with the client replaces adversarial contract-based relationships'
+    ],
+    ans: 3,
+    explain: 'The Collaboration principle most directly embodies this — continuous collaboration between the Scrum team and the client, replacing the need to hide behind legal contracts.',
+    deep: 'The Sprint Review is the primary collaboration checkpoint. Clients see real working software every sprint and shape what comes next — making rigid upfront contracts less necessary.'
+  },
+  {
+    cat: 'princ', diff: 'hard',
+    q: 'Why does Scrum generally prefer shorter sprints (1–2 weeks) over longer ones (4–6 weeks)?',
+    opts: [
+      'Shorter sprints cost less because ceremonies take up proportionally less time',
+      'Shorter sprints create more frequent inspect-and-adapt cycles, surfacing problems faster',
+      'Longer sprints require more complex ceremonies that slow the team down',
+      'Shorter sprints reduce the number of story points the team needs to commit to'
+    ],
+    ans: 1,
+    explain: 'Shorter sprints = faster feedback loops. Problems are discovered in 1–2 weeks instead of 4–6 weeks, making them far cheaper to fix.',
+    deep: 'A 2-week sprint gives 26 opportunities to inspect and adapt per year. A 6-week sprint gives only 8. More frequent feedback = faster learning, faster course correction.'
+  },
+  {
+    cat: 'princ', diff: 'hard',
+    q: 'Co-location is highlighted under the Collaboration principle. Why is it specifically mentioned?',
+    opts: [
+      'It lowers office costs and reduces the project budget',
+      'It gives teams richer communication and faster feedback',
+      'It lets Scrum Masters watch team behaviour closely',
+      'It is required for every Scrum event to be valid'
+    ],
+    ans: 1,
+    explain: 'Face-to-face communication is richer than any digital alternative. Co-located teams collaborate more naturally and more frequently.',
+    deep: 'Face-to-face work reduces delay and misunderstanding. Remote teams compensate with video calls, shared boards, and real-time chat tools.'
+  },
 
-  {cat:'persona',diff:'easy',q:'What is a persona in Scrum?',opts:['A real user who tests the product','A fictional archetype built from real user research, representing a type of user','A description of the ideal developer','A template for writing user stories'],ans:1,explain:'A persona is a fictional character representing a real type of user, built from actual research, not invented from imagination.',deep:'Fictional does not mean made up. Personas are composite characters grounded in real data from real users.'},
-  {cat:'persona',diff:'easy',q:'In the lecture example, what is Charlotte Walker\'s role?',opts:['Software developer','Bank manager','Founder of a small consulting firm','Marketing director'],ans:2,explain:'Charlotte Walker is a 43-year-old founder of a small consulting firm: the example persona from the lecture slides.',deep:'Charlotte represents the mobile banking power user archetype: tech-savvy, time-poor, and needing fast digital services.'},
-  {cat:'persona',diff:'easy',q:'What research techniques are used to gather persona data?',opts:['Guessing based on market trends','Task analysis, contextual interviews, focus groups, and prototyping','Reading competitor documentation','Asking the development team for opinions'],ans:1,explain:'Persona data comes from task analysis, contextual interviews, focus groups, and prototyping.',deep:'Each technique captures different data. Interviews reveal motivations. Card sorting reveals mental models. Good personas use multiple techniques.'},
-  {cat:'persona',diff:'med',q:'Why must each persona represent a SINGLE role?',opts:['To keep persona documents short','One person may have multiple real-world roles, but mixing them creates conflicting requirements in user stories','Because Scrum only allows one persona per project','To make story writing easier'],ans:1,explain:'Mixing roles in one persona creates contradictory requirements. Each persona focuses on one role\'s specific needs.',deep:'A banking app has both individual customers and business owners. Even if the same person holds both roles, you need separate personas because their needs differ significantly.'},
-  {cat:'persona',diff:'med',q:'What is the primary benefit of using personas for a development team?',opts:['They reduce the need for user testing','They help the team empathise with users and make design decisions that serve real needs rather than imaginary users','They speed up story point estimation','They replace the need for a Product Owner'],ans:1,explain:'Personas help teams design for a concrete person rather than an abstract average user. Concrete personas drive concrete, user-centred decisions.',deep:'Would Charlotte be able to do this? is far more powerful than would a user be able to do this? The specificity makes the question actionable.'},
-  {cat:'persona',diff:'med',q:'Which information is typically included in a persona template?',opts:['Code architecture and technical stack','Name, demographics, role, goals, frustrations, motivations, behaviour, personality traits','Sprint velocity and story point estimates','Project budget and timeline'],ans:1,explain:'A persona template includes name, demographics, role, goals, frustrations, motivations, behaviour patterns, personality traits, and frequently used apps.',deep:'The more specific, the more useful. Female, 40s, professional is too generic. Charlotte, 43, LA founder, mobile banking user, hates paperwork is actionable.'},
-  {cat:'persona',diff:'hard',q:'A team skips persona creation and writes stories based on assumptions. What is the most likely risk?',opts:['Stories will be too long','Stories may reflect developer assumptions rather than real user needs, leading to features nobody wants','The backlog will be too short','Stories will be incorrectly estimated'],ans:1,explain:'Without research-backed personas, stories reflect developer assumptions, which frequently do not match reality. The result is software users find confusing or irrelevant.',deep:'This is building to assumptions, one of the most common causes of product failure. Features obvious to developers often turn out to be unused by actual users.'},
-  {cat:'persona',diff:'hard',q:'Charlotte\'s quote is: "I\'m looking for a fast way to request a company loan on the go." How should this influence a user story?',opts:['The story should focus on desktop banking features','Story: "As a mobile banking user, I want to apply for a loan in under 5 minutes from my phone so I can manage my business on the go"','The quote is decorative; it does not affect story writing','Stories should avoid referencing specific personas'],ans:1,explain:'Charlotte\'s frustrations and goal translate directly into a user story. Her quote is essentially a rough draft of the story.',deep:'This is the connection between personas and stories. Personas answer who and why. Stories translate those answers into what to build.'},
+  // ─────────────────────────────────────────────────────────
+  // ASPECTS (12 questions)
+  // ─────────────────────────────────────────────────────────
+  {
+    cat: 'aspect', diff: 'easy',
+    q: 'How many Scrum Aspects are there, and what do they represent?',
+    opts: [
+      'There are 3 — they are the core roles of the Scrum team',
+      'There are 6 — they mirror the 6 Scrum Principles exactly',
+      'There are 5 — they are ongoing dimensions that must be managed throughout every Scrum project',
+      'There are 4 — they map directly to the 4 Agile Manifesto values'
+    ],
+    ans: 2,
+    explain: '5 Scrum Aspects: Organization, Business Justification, Quality, Change, and Risk. They are ongoing concerns — not one-time steps.',
+    deep: 'Unlike Processes (sequential steps), Aspects must be actively managed throughout the entire project lifecycle. They never stop requiring attention.'
+  },
+  {
+    cat: 'aspect', diff: 'easy',
+    q: 'Which Scrum Aspect defines the difference between core and non-core roles?',
+    opts: [
+      'Business Justification — it defines who has financial responsibility',
+      'Quality — it defines who is responsible for meeting acceptance criteria',
+      'Organization — it defines how the Scrum team is structured and who is accountable',
+      'Risk — it defines which team members manage project risks'
+    ],
+    ans: 2,
+    explain: 'The Organization aspect defines team structure — including core roles (Scrum Master, Product Owner, Dev Team) and non-core roles (stakeholders, vendors, Scrum Guidance Body).',
+    deep: 'Knowing which roles are core vs non-core clarifies accountability. Core roles are committed to sprint delivery; non-core are involved but not accountable.'
+  },
+  {
+    cat: 'aspect', diff: 'easy',
+    q: 'What is the key distinction between Core and Non-Core Scrum roles?',
+    opts: [
+      'Core roles are paid; non-core roles are usually external',
+      'Core roles are accountable; non-core roles provide input',
+      'Core roles attend all events; non-core roles attend reviews',
+      'Core roles write code; non-core roles provide requirements'
+    ],
+    ans: 1,
+    explain: 'Core roles (SM, PO, Dev Team) are committed to and accountable for sprint delivery. Non-core roles (stakeholders, vendors) are involved but not accountable.',
+    deep: 'This distinction matters when things go wrong. If a sprint fails, core roles are responsible. Non-core roles provide input and feedback but do not bear accountability for the outcome.'
+  },
+  {
+    cat: 'aspect', diff: 'easy',
+    q: 'What is Backlog Grooming, and when does it happen?',
+    opts: [
+      'A one-time event at the start of a project to create the initial backlog',
+      'A continuous process of reviewing, refining, and re-prioritising backlog items as requirements evolve',
+      'A ceremony at the end of each sprint to remove completed stories',
+      'A monthly meeting where the PO assigns story points to upcoming items'
+    ],
+    ans: 1,
+    explain: 'Grooming = continuously reviewing, refining, re-prioritising, and updating backlog items throughout the project as requirements change.',
+    deep: 'Grooming is triggered by change. Regular grooming sessions keep the backlog relevant and accurate — ensuring the team always works on the most current, highest-value items.'
+  },
+  {
+    cat: 'aspect', diff: 'med',
+    q: 'What is the difference between Acceptance Criteria and the Definition of Done?',
+    opts: [
+      'They are interchangeable terms for the same concept in Scrum',
+      'Acceptance Criteria are specific to one story; the Definition of Done applies to all stories in a sprint',
+      'Acceptance Criteria are written by the dev team; the Definition of Done is written by stakeholders',
+      'The Definition of Done is optional; Acceptance Criteria are mandatory for every story'
+    ],
+    ans: 1,
+    explain: 'Acceptance Criteria are per-story conditions (did this story do what it promised?). The Definition of Done is a universal checklist all stories must pass — code review, testing, documentation, etc.',
+    deep: 'A story can fully meet its Acceptance Criteria but still fail the Definition of Done (e.g., the code was never reviewed). Both must pass before a story is considered complete.'
+  },
+  {
+    cat: 'aspect', diff: 'med',
+    q: 'Business Justification recognises two types of project value. What are they?',
+    opts: [
+      'Internal value (for the development team) and external value (for the client)',
+      'Tangible value (measurable with financial tools) and Intangible value (satisfaction, brand, social impact)',
+      'Short-term value (immediate revenue) and long-term value (future savings)',
+      'Quantitative value (numbers) and qualitative value (user feedback)'
+    ],
+    ans: 1,
+    explain: 'Tangible value = measurable (ROI, NPV, IRR). Intangible value = harder to quantify (customer satisfaction, brand reputation, public service).',
+    deep: 'Both matter equally. A charity app may have zero direct revenue but enormous social impact. Business Justification must consider both types to make sound project decisions.'
+  },
+  {
+    cat: 'aspect', diff: 'med',
+    q: 'How does the Change aspect of Scrum differ from traditional project management\'s view of change?',
+    opts: [
+      'Scrum and traditional projects both view change as a necessary cost to manage carefully',
+      'Scrum views change as an opportunity for improvement; traditional projects typically view it as a threat to control',
+      'Traditional projects welcome all change; Scrum restricts changes to between sprints only',
+      'Both approaches use formal change request processes but Scrum processes them faster'
+    ],
+    ans: 1,
+    explain: 'Scrum views change as an opportunity — welcomed and managed through a formalised process. Traditional projects typically treat change as a risk to resist.',
+    deep: 'This mindset shift is fundamental. A client change request in Scrum is a chance to deliver more value. In Waterfall, it\'s a threat that could derail months of work.'
+  },
+  {
+    cat: 'aspect', diff: 'med',
+    q: 'What role does the Scrum Guidance Body play within an organisation?',
+    opts: [
+      'It certifies developers and Scrum Masters within the organisation',
+      'It creates guidelines and standards to keep multiple Scrum projects consistent across the organisation',
+      'It replaces the Product Owner\'s role in prioritising the backlog',
+      'It resolves conflicts between the Scrum Master and the development team'
+    ],
+    ans: 1,
+    explain: 'The Scrum Guidance Body is an organisation-specific team that creates guidelines and documents to ensure Scrum projects remain consistent company-wide.',
+    deep: 'Large organisations running 50+ Scrum teams need shared coordination. The Guidance Body provides common quality standards, risk policies, and process guidelines so teams don\'t reinvent the wheel independently.'
+  },
+  {
+    cat: 'aspect', diff: 'hard',
+    q: 'A project has very high business value but also very high technical risk. How should Scrum prioritise this?',
+    opts: [
+      'High business value always overrides risk — build it first regardless of uncertainty',
+      'High-risk stories should be implemented in early sprints to validate assumptions cheaply before investing further',
+      'Risk considerations should be ignored if the Product Owner confirms business value',
+      'The Scrum Master has final say over whether to proceed with high-risk work'
+    ],
+    ans: 1,
+    explain: 'High-risk stories should be prioritised early. Discovering an impossibility or major technical obstacle in Sprint 1 is far cheaper than discovering it in Sprint 10.',
+    deep: 'This is the Technology Risk-Based prioritisation technique from Lecture 3. It counter-intuitively increases priority for risky stories. The goal is to fail fast and fail cheap.'
+  },
+  {
+    cat: 'aspect', diff: 'hard',
+    q: 'A story fully meets its Acceptance Criteria but the code was never reviewed by another team member. Is the story done?',
+    opts: [
+      'Yes — if the Product Owner accepts it, it is considered complete',
+      'No — the Definition of Done typically requires peer code review, and this story has not met that standard',
+      'Yes — Acceptance Criteria and the Definition of Done are the same thing',
+      'It depends on whether the Scrum Master has reviewed the code instead'
+    ],
+    ans: 1,
+    explain: 'No. The Definition of Done typically requires code review. Meeting Acceptance Criteria alone is not sufficient — both must be satisfied before a story is truly complete.',
+    deep: 'Skipping the Definition of Done creates hidden technical debt. The Product Owner should not accept a story until every item on the DoD checklist is confirmed complete.'
+  },
+  {
+    cat: 'aspect', diff: 'hard',
+    q: 'Of the 5 Risk Management steps, which one ensures that nobody on the project is surprised by a known threat?',
+    opts: [
+      'Risk Identification — finding risks before they materialise',
+      'Risk Assessment — measuring the probability and impact of each risk',
+      'Risk Prioritization — ranking risks so the team tackles the most dangerous ones first',
+      'Risk Communication — ensuring all stakeholders are informed of identified risks and mitigation plans'
+    ],
+    ans: 3,
+    explain: 'Risk Communication — the fifth step — ensures all stakeholders are informed about risks and what is being done about them. No one should be surprised.',
+    deep: 'Transparency is a core Scrum value. Hidden risks eventually become expensive surprises. When everyone knows what risks exist, they can contribute to mitigation and adjust expectations proactively.'
+  },
+  {
+    cat: 'aspect', diff: 'hard',
+    q: 'The Quality aspect warns that increasing scope without increasing time or resources reduces quality. What Scrum mechanism prevents this from happening mid-sprint?',
+    opts: [
+      'The Scrum Master rejects any added work above a limit',
+      'Time-boxing keeps the sprint end fixed unless scope changes',
+      'The Product Owner rejects all scope changes by default',
+      'Velocity automatically absorbs any added sprint work'
+    ],
+    ans: 1,
+    explain: 'Time-boxing is the primary defence. A sprint ends on its fixed date — adding stories without removing others means something will be rushed or incomplete.',
+    deep: 'This is why the Sprint Backlog is fixed once the sprint starts. Mid-sprint additions go into the Product Backlog for the next sprint — not into the current one.'
+  },
 
-  {cat:'story',diff:'easy',q:'What is the standard format for writing a user story?',opts:['Given [context], When [action], Then [outcome]','As a [role], I want [feature] because [reason]','Who: [user], What: [feature], Why: [reason]','Feature: [name], Priority: [level], Points: [estimate]'],ans:1,explain:'As a [role], I want [feature] because [reason]. This keeps focus on who benefits, what they want, and why it matters.',deep:'The format forces clarity. Stories without a clear because often deliver features nobody needs. The why connects the feature to real user value.'},
-  {cat:'story',diff:'easy',q:'What level in the hierarchy is BELOW a user story?',opts:['Theme','Epic','Task','Sprint'],ans:2,explain:'Theme -> Epic -> Story -> Task. Tasks are the technical implementation steps sitting below stories.',deep:'Tasks are estimated in hours and assigned during Sprint Planning. One story might have 5-10 tasks covering different system layers.'},
-  {cat:'story',diff:'easy',q:'What is an Epic?',opts:['A completed sprint','A large user story too big for one sprint that must be broken into smaller stories','A group of stories sharing a common theme','A list of tasks for one story'],ans:1,explain:'An Epic is a large user story too big for one sprint. It gets decomposed into multiple sprint-sized stories.',deep:'Build a complete e-commerce checkout is an Epic. It breaks into view cart, enter shipping, enter payment, confirm order, each a separate story.'},
-  {cat:'story',diff:'easy',q:'What is a Theme in the story hierarchy?',opts:['A large story that takes more than one sprint','A group of user stories sharing a common attribute or business goal','A technical task within a story','A sprint goal'],ans:1,explain:'A Theme is a group of stories sharing a common business goal. For example, all authentication-related stories form a Theme.',deep:'Themes provide high-level roadmap visibility. A product might have Themes for Authentication, Payments, and Reporting, each containing multiple Epics and Stories.'},
-  {cat:'story',diff:'med',q:'Why are user stories preferred over traditional requirements documents?',opts:['They are legally binding contracts','They are shorter so teams write them faster','They focus on user value rather than technical specification, and are easier to estimate and prioritise','They eliminate the need for testing'],ans:2,explain:'Stories focus on holistic user value rather than technical specification. They are brief, estimable, and directly connected to user needs.',deep:'A 200-page spec describes features technically. A user story describes the same feature from the user\'s perspective, driving development toward value, not spec compliance.'},
-  {cat:'story',diff:'med',q:'What does "holistic" mean in the context of user stories?',opts:['Very large and complex','Focused on the overall user value and experience rather than a single technical artifact','Involving all team members equally','Related to the entire product backlog'],ans:1,explain:'Holistic means focusing on complete user experience and value, not just the technical component.',deep:'Build a search API endpoint is a technical artifact. As a patron, I can search items to find books is holistic user value.'},
-  {cat:'story',diff:'med',q:'How are Tasks estimated differently from User Stories?',opts:['Tasks use story points; stories use hours','Tasks use hours; stories use story points','Both use story points','Both use hours'],ans:1,explain:'Stories are estimated in story points. Tasks are estimated in hours.',deep:'Points allow estimation without knowing exact implementation. Hours require knowing exactly what to build. Stories use points for planning; tasks use hours for sprint-level scheduling.'},
-  {cat:'story',diff:'med',q:'What is the lecture\'s user story for John the UX Manager?',opts:['"As a developer, I want a code editor so that I can write faster"','"As a UX Manager, John wants centralised asset management so that his designers are in sync"','"As a tester, I want automated tests so that bugs are found faster"','"As an admin, I want user management so that I can control access"'],ans:1,explain:'As a UX Manager, John wants centralised asset management so that his designers are in sync.',deep:'Centralised asset management = the feature. So his designers are in sync = the reason. Both components are essential for a valid story.'},
-  {cat:'story',diff:'hard',q:'A story says: "As a system, the database should be normalised to 3NF." What is wrong with this story?',opts:['It is too long','It has no user role: "as a system" is not a user. It describes a technical task, not user value.','It is missing story points','It should be an Epic instead'],ans:1,explain:'As a system is not a valid user role. This is a technical task disguised as a story.',deep:'This is the technical story anti-pattern. Technical work must be done, but framing it as a user story loses the connection to user value.'},
-  {cat:'story',diff:'hard',q:'A story covers: "see photos, view calendar, receive notifications, submit repairs, and track complaints." What is wrong?',opts:['It is correctly formatted','This is an Epic: it contains multiple distinct features that must each be separate stories','It is too short','The role is wrong'],ans:1,explain:'This is an Epic, not a story. It contains 5 separate features, each needing its own story small enough to complete in one sprint.',deep:'The INVEST criteria are Independent, Negotiable, Valuable, Estimable, Small, Testable. This story fails Small.'},
-  {cat:'story',diff:'hard',q:'Why do user stories help the team "estimate a roadmap"?',opts:['Stories have built-in deadlines','Small, focused stories can be estimated with story points. Points divided by velocity gives a sprint forecast and roadmap.','Stories automatically generate Gantt charts','The Scrum Master estimates based on story descriptions'],ans:1,explain:'Story points + velocity = release forecast. If backlog = 400 pts and velocity = 40 pts/sprint, release is about 10 sprints away.',deep:'Without stories and points this calculation is impossible. The roadmap emerges bottom-up from small, estimable stories, not top-down from a manager\'s guess.'},
+  // ─────────────────────────────────────────────────────────
+  // PERSONAS (8 questions)
+  // ─────────────────────────────────────────────────────────
+  {
+    cat: 'persona', diff: 'easy',
+    q: 'What is a user persona in the context of Scrum and UX design?',
+    opts: [
+      'A real user recruited to test the product during User Acceptance Testing',
+      'A fictional archetype built from real user research, representing a distinct type of user',
+      'A detailed description of the ideal technical skills for a developer on the team',
+      'A template that replaces user stories for non-technical stakeholders'
+    ],
+    ans: 1,
+    explain: 'A persona is a fictional archetype built from real user research — not invented from imagination. It represents a distinct type of user with specific goals and frustrations.',
+    deep: '"Fictional" does not mean made up. Personas are composite characters grounded in data from real user observations, interviews, and surveys.'
+  },
+  {
+    cat: 'persona', diff: 'easy',
+    q: 'What user research techniques are used to gather the data needed to create a persona?',
+    opts: [
+      'Reading competitor documentation and reviewing industry reports',
+      'Asking developers to imagine what users would want based on their experience',
+      'Task analysis (card sorting, first-click testing), contextual interviews, focus groups, and prototyping',
+      'Reviewing the product backlog and estimating user preferences from story titles'
+    ],
+    ans: 2,
+    explain: 'Persona data comes from: task analysis (card sorting, first-click testing), feedback methods (contextual interviews, focus groups), and prototyping with real users.',
+    deep: 'Each technique captures a different dimension. Interviews reveal motivations and frustrations. Card sorting reveals how users mentally categorise things. Good personas combine multiple techniques.'
+  },
+  {
+    cat: 'persona', diff: 'easy',
+    q: 'What information is typically captured in a persona template?',
+    opts: [
+      'Technical architecture preferences, preferred programming languages, and hardware specs',
+      'Name, demographics, role, goals, frustrations, motivations, behaviours, and personality traits',
+      'Sprint velocity, story point estimates, and Definition of Done criteria',
+      'Project budget, delivery timeline, and risk assessment scores'
+    ],
+    ans: 1,
+    explain: 'A persona template captures: name, demographics, role, goals, frustrations, motivations, behaviour patterns, personality traits, and frequently used tools or apps.',
+    deep: 'Specificity is what makes personas useful. Generic details like "female, 40s, professional" are too vague to drive design decisions. Concrete details make the persona feel like a real person.'
+  },
+  {
+    cat: 'persona', diff: 'med',
+    q: 'Why must each persona in Scrum represent only a single user role, even if one real person has multiple roles?',
+    opts: [
+      'To keep persona documents short enough to read in one sitting',
+      'Mixing multiple roles in one persona creates conflicting requirements that make user stories contradictory',
+      'The Scrum Guide prohibits assigning more than one role per persona document',
+      'Having fewer personas speeds up the user story writing process'
+    ],
+    ans: 1,
+    explain: 'One person may hold multiple real-world roles, but mixing those roles into a single persona creates contradictory requirements. Each persona focuses on one role\'s specific goals and frustrations.',
+    deep: 'A person who is both a mobile banking customer and a small business owner has very different needs in each role. Separate personas — one for each role — keep requirements clean and unambiguous.'
+  },
+  {
+    cat: 'persona', diff: 'med',
+    q: 'What is the primary benefit of using personas when a development team writes user stories?',
+    opts: [
+      'Personas reduce the total number of user stories needed in the backlog',
+      'Personas help the team empathise with real user needs rather than designing for an imaginary average user',
+      'Personas automatically generate acceptance criteria for each story',
+      'Personas eliminate the need for separate user research during development'
+    ],
+    ans: 1,
+    explain: 'Personas help teams empathise with users — instead of designing for a vague "average user," the team designs for a specific person with known goals and frustrations.',
+    deep: 'Asking "would this persona be able to do this?" is far more actionable than "would a user be able to do this?" Concrete personas produce concrete, user-centred design decisions.'
+  },
+  {
+    cat: 'persona', diff: 'med',
+    q: 'How does a persona\'s stated goal or frustration directly influence the user stories written for them?',
+    opts: [
+      'The goal becomes the sprint goal for the team\'s next iteration',
+      'The frustration becomes the acceptance criteria for a related story',
+      'The goal or frustration translates into the "feature" and "reason" parts of the user story format',
+      'Goals and frustrations are used only for marketing materials, not story writing'
+    ],
+    ans: 2,
+    explain: 'A persona\'s goal becomes the "I want [feature]" part of the story, and their frustration informs the "because [reason]" part — directly shaping what gets built and why.',
+    deep: 'A persona who is frustrated by slow, paper-based loan applications and needs to manage their business on the go will produce stories centred on speed and mobile access — not desktop features.'
+  },
+  {
+    cat: 'persona', diff: 'hard',
+    q: 'A team skips persona creation and jumps straight to writing user stories. What is the most significant risk?',
+    opts: [
+      'Stories may use the wrong format without a template',
+      'Stories may reflect team assumptions instead of user needs',
+      'The backlog may be too short to fill the first sprint',
+      'Story estimates may rise because context is missing'
+    ],
+    ans: 1,
+    explain: 'Without research-backed personas, user stories reflect developer assumptions — which frequently do not match reality. The result is often software users find confusing or irrelevant.',
+    deep: 'This is "building to assumptions" — one of the most common causes of product failure. Features that seemed obvious to developers often turn out to be unwanted or unused by actual users.'
+  },
+  {
+    cat: 'persona', diff: 'hard',
+    q: 'A persona is described as someone who is time-poor, mobile-first, and needs to complete financial tasks quickly without visiting a branch. How should this persona influence story writing?',
+    opts: [
+      'Stories should focus on improving branch booking and appointment scheduling features',
+      'Stories should prioritise complex desktop interfaces with detailed financial reporting tools',
+      'Stories should focus on fast, mobile-optimised workflows that minimise steps and avoid paperwork',
+      'Stories should capture all possible financial features regardless of complexity or time required'
+    ],
+    ans: 2,
+    explain: 'A time-poor, mobile-first persona translates directly into stories that prioritise speed, simplicity, and mobile access — not complex desktop features or paper-based processes.',
+    deep: 'This is how personas prevent feature bloat. When the team asks "would a time-poor mobile user need this desktop report?" the answer guides prioritisation and prevents building for the wrong audience.'
+  },
 
-  {cat:'backlog',diff:'easy',q:'Who owns the Product Backlog?',opts:['The Scrum Master','The Development Team','The Product Owner','The stakeholders'],ans:2,explain:'The Product Owner owns and prioritises the Product Backlog. They are the single voice of the customer.',deep:'Ownership means the PO decides the order of stories. They do not decide how stories are built; that is the Dev Team\'s domain.'},
-  {cat:'backlog',diff:'easy',q:'Who owns the Sprint Backlog?',opts:['The Scrum Master','The Development Team','The Product Owner','The client'],ans:1,explain:'The Sprint Backlog is owned by the Development Team. They committed to these stories and are responsible for delivering them.',deep:'The PO can re-order the Product Backlog anytime. Once the Sprint starts, only the Dev Team can modify the Sprint Backlog, protecting their commitment.'},
-  {cat:'backlog',diff:'easy',q:'What are the 4 types of items in a Product Backlog?',opts:['User stories, epics, themes, tasks','Features, Bugs, Technical work, Knowledge acquisition','Requirements, designs, tests, documentation','Must have, Should have, Could have, Won\'t have'],ans:1,explain:'The 4 types are Features, Bugs, Technical work, and Knowledge acquisition.',deep:'Treating all four as first-class backlog items ensures they are visible, prioritised, and estimated, not invisible extra work eroding velocity silently.'},
-  {cat:'backlog',diff:'easy',q:'The Product Backlog is "never finished." What does this mean?',opts:['Teams never complete their backlog items','The backlog continuously grows and evolves as more is learned about the product and its users','It is a sign of poor project management','The Scrum Master is not doing their job'],ans:1,explain:'The backlog is a living document. As the product evolves, new needs emerge, bugs surface, and the market changes.',deep:'A finished backlog would mean perfectly predicting all future needs upfront, which is impossible. An evolving backlog signals a healthy, learning product team.'},
-  {cat:'backlog',diff:'med',q:'What is a "knowledge acquisition" backlog item? Give an example.',opts:['A user story about learning features','A research spike to reduce uncertainty. e.g. "Evaluate 3 JavaScript frameworks and recommend one"','A training session for the development team','A bug that requires research to fix'],ans:1,explain:'A knowledge acquisition item is a research spike: work done to reduce uncertainty. The output is a decision or recommendation, not code.',deep:'Spikes prevent irreversible architectural decisions without enough information. A 2-day spike evaluating frameworks can save months of expensive rework.'},
-  {cat:'backlog',diff:'med',q:'What does a burn-down chart show?',opts:['Story points completed vs story points remaining','Work remaining vs time remaining in a sprint','Number of bugs found per day','Team velocity across sprints'],ans:1,explain:'A burn-down chart shows work remaining on the y-axis vs time remaining on the x-axis.',deep:'The burn-down chart is Empirical Process Control made visible: inspect daily and adapt the plan immediately.'},
-  {cat:'backlog',diff:'med',q:'Key difference: who can change the Product Backlog vs the Sprint Backlog?',opts:['Both can be changed by anyone at any time','PO can re-order Product Backlog anytime; Sprint Backlog is fixed once sprint begins, and only Dev Team can change it','Only the Scrum Master can change either','Sprint Backlog is changed daily in the Standup'],ans:1,explain:'PO updates Product Backlog continuously. Once a Sprint starts, the Sprint Backlog is fixed and only the Dev Team can modify it.',deep:'Without this protection, stakeholders would constantly inject urgent items mid-sprint, destroying the team\'s ability to commit.'},
-  {cat:'backlog',diff:'med',q:'Why would a Bug be treated as a backlog item rather than fixed immediately?',opts:['Because bugs are never urgent','So it can be prioritised against other work: some bugs have lower business impact than new features','Because developers are too busy','Bugs are always fixed in the next sprint automatically'],ans:1,explain:'Treating bugs as backlog items ensures they are visible, estimated, and prioritised against other work rationally.',deep:'Not all bugs are equal. A minor cosmetic bug may have lower priority than a high-value feature. Backlog treatment enables rational prioritisation.'},
-  {cat:'backlog',diff:'hard',q:'A Product Owner wants to add a new urgent story mid-sprint. What is the correct Scrum response?',opts:['Add it to the Sprint Backlog immediately','Reject it completely: no changes allowed ever','Add it to the Product Backlog for the next sprint; only truly critical emergencies might warrant cancelling the sprint','The Scrum Master decides whether to add it'],ans:2,explain:'New stories go to the Product Backlog for next sprint. Only genuine emergencies warrant cancelling the sprint entirely.',deep:'Sprint protection is one of Scrum\'s most important mechanisms. If stakeholders can inject stories mid-sprint, the team can never commit predictably.'},
-  {cat:'backlog',diff:'hard',q:'Day 7 of a 10-day sprint, only 4/10 stories done. The burn-down shows the team is significantly behind. What should they do?',opts:['Extend the sprint by 3 days','Work overtime to complete all 10 stories','Re-prioritise: focus on highest-value remaining stories. Accept that lower-priority ones may spill to next sprint.','Cancel the sprint and start over'],ans:2,explain:'Re-prioritise within the sprint. Focus remaining capacity on highest-value stories. Accept spillover for lower-priority ones. Sprint ends on time.',deep:'This is Empirical Process Control in action: inspect the situation and adapt by focusing on highest-value remaining work.'},
-  {cat:'backlog',diff:'hard',q:'Why is the Product Backlog described as "prioritised" rather than just "ordered"?',opts:['They mean the same thing','Prioritised implies business-value ordering: most valuable items at top, not arbitrarily sequenced','Ordered implies technical dependency sequencing only','The SBOK uses ordered not prioritised'],ans:1,explain:'Prioritised means the order reflects business value, deliberately ranked by the PO based on ongoing judgment.',deep:'The PO must continuously reassess whether the top items are still the most valuable as market conditions, user feedback, and business context evolve.'},
+  // ─────────────────────────────────────────────────────────
+  // USER STORIES (11 questions)
+  // ─────────────────────────────────────────────────────────
+  {
+    cat: 'story', diff: 'easy',
+    q: 'What is the standard format for writing a user story?',
+    opts: [
+      'Given [context], When [action], Then [expected outcome]',
+      'As a [role], I want [feature] because [reason]',
+      'Who: [user type], What: [feature needed], Why: [business reason]',
+      'Feature: [name], Priority: [level], Points: [estimate]'
+    ],
+    ans: 1,
+    explain: '"As a [role], I want [feature] because [reason]." This format keeps the focus on WHO benefits, WHAT they need, and WHY it matters.',
+    deep: 'The "because" part is often skipped but it\'s the most important. Stories without a clear reason often result in features that are technically delivered but practically useless.'
+  },
+  {
+    cat: 'story', diff: 'easy',
+    q: 'In the story hierarchy (Theme → Epic → Story → Task), what sits directly below a user story?',
+    opts: [
+      'Theme — a grouping of related stories by business objective',
+      'Epic — a larger story that has not yet been broken down',
+      'Task — the technical implementation step needed to deliver the story',
+      'Sprint — the time-boxed iteration that contains the story'
+    ],
+    ans: 2,
+    explain: 'Tasks sit directly below stories. They are the concrete technical steps needed to implement the story, estimated in hours rather than story points.',
+    deep: 'A single story might have 5–10 tasks covering different system layers — front-end, back-end, database, tests, documentation. Tasks are assigned during Sprint Planning.'
+  },
+  {
+    cat: 'story', diff: 'easy',
+    q: 'What is an Epic in the user story hierarchy?',
+    opts: [
+      'A sprint that contains more stories than the team can complete',
+      'A large user story that is too big for one sprint and must be broken into smaller stories',
+      'A group of stories that share a common business theme or objective',
+      'A technical task that requires specialist knowledge to complete'
+    ],
+    ans: 1,
+    explain: 'An Epic is a large user story — too big to complete in a single sprint — that must be decomposed into multiple smaller, sprint-sized stories.',
+    deep: '"Build a complete e-commerce checkout" is an Epic. It breaks into: view cart, enter shipping, enter payment, confirm order — each a separate estimable story.'
+  },
+  {
+    cat: 'story', diff: 'easy',
+    q: 'What is a Theme in the user story hierarchy?',
+    opts: [
+      'A large story that spans several sprints before it can be delivered',
+      'A group of user stories that share a common attribute or business goal',
+      'The technical implementation task assigned to a specific developer',
+      'The sprint goal agreed upon during Sprint Planning'
+    ],
+    ans: 1,
+    explain: 'A Theme is a group of user stories sharing a common business goal or attribute. e.g. "All authentication-related stories" form a Theme.',
+    deep: 'Themes provide high-level roadmap visibility. A product might have Themes for Authentication, Payments, and Reporting — each containing multiple Epics and Stories underneath.'
+  },
+  {
+    cat: 'story', diff: 'med',
+    q: 'Why are user stories generally preferred over traditional detailed requirements documents?',
+    opts: [
+      'They are legally binding and protect both the client and the development team',
+      'They are written faster, which means less time is spent in planning meetings',
+      'They focus on user value rather than technical specification, making them easier to estimate and prioritise',
+      'They eliminate the need for acceptance testing once the story is delivered'
+    ],
+    ans: 2,
+    explain: 'User stories focus on the holistic user value delivered — not on technical specifications. This makes them easier to estimate, prioritise, and test.',
+    deep: 'A 200-page spec describes features technically. A user story describes the same feature from the user\'s perspective. The story drives development toward value rather than toward specification compliance.'
+  },
+  {
+    cat: 'story', diff: 'med',
+    q: 'What does "holistic" mean when describing the focus of user stories?',
+    opts: [
+      'Stories that are very large and cover multiple features across the product',
+      'Stories that focus on the overall user experience and value delivered, not just one technical component',
+      'Stories that involve all team members in their design and estimation',
+      'Stories that relate to the entire product backlog rather than a single sprint'
+    ],
+    ans: 1,
+    explain: '"Holistic" means the story captures the complete user need and the value delivered — not just the technical feature to build.',
+    deep: '"Build a search API endpoint" = technical artifact focus. "As a patron, I can search items to find books online" = holistic user value. The second produces better product decisions.'
+  },
+  {
+    cat: 'story', diff: 'med',
+    q: 'How are tasks estimated differently from user stories, and why?',
+    opts: [
+      'Tasks use story points; stories use hours — tasks are more complex and need precise sizing',
+      'Tasks use hours; stories use story points — two different levels of planning precision for different purposes',
+      'Both use story points because they are both units of backlog work',
+      'Both use hours because Scrum requires all effort to be tracked in time units'
+    ],
+    ans: 1,
+    explain: 'Stories use story points (relative effort for high-level planning). Tasks use hours (actual time for sprint-level scheduling). Two levels of precision for two different purposes.',
+    deep: 'Points allow estimation without knowing exact implementation details. Hours require knowing exactly what you\'ll build and how. Using both avoids false precision at the wrong level.'
+  },
+  {
+    cat: 'story', diff: 'med',
+    q: 'A user story must have a "role" in its format. Why is the role component so important?',
+    opts: [
+      'It helps the Scrum Master assign the story to the right developer on the team',
+      'It determines the story point estimate — senior roles get higher estimates',
+      'It connects the feature to a real user need, ensuring the story delivers value to a specific person',
+      'It is required for legal compliance with software delivery contracts'
+    ],
+    ans: 2,
+    explain: 'The role component connects the feature to a specific user\'s need. Without it, the story risks delivering a technically correct feature that serves nobody in particular.',
+    deep: 'A story with no clear role — like "As a system, the database should..." — loses the connection to user value entirely. The role is what makes user stories user-centred.'
+  },
+  {
+    cat: 'story', diff: 'hard',
+    q: 'A story is written as: "As a system, the database should be normalised to 3rd Normal Form." What is wrong with this story?',
+    opts: [
+      'The story is too long and should be shortened',
+      'The role is not a user, so it is really a task',
+      'The story needs points before entering the backlog',
+      'The story is an Epic because database work is large'
+    ],
+    ans: 1,
+    explain: '"As a system" is not a valid user role. This is a technical task — it belongs in the task layer or as a technical backlog item, not as a user story.',
+    deep: 'This is the "technical story anti-pattern." Technical work must still be done, but framing it as a user story loses its connection to user value. Keep it as a task under a relevant story.'
+  },
+  {
+    cat: 'story', diff: 'hard',
+    q: 'A story reads: "As a citizen, I want to view a calendar, receive notifications, submit repairs, see contamination photos, and track complaints." What is wrong?',
+    opts: [
+      'The story is correctly formatted and captures a complete user journey',
+      'This is an Epic — it contains five distinct features that must each become their own separate story',
+      'The story is too short and needs more detail to be estimable',
+      'The user role "citizen" is too broad and needs to be a specific persona'
+    ],
+    ans: 1,
+    explain: 'This is an Epic, not a story. It contains five separate features — each needs its own story small enough to be completed within a single sprint.',
+    deep: 'The INVEST criteria: Independent, Negotiable, Valuable, Estimable, Small, Testable. This fails "Small." Breaking it up makes estimation, testing, and sprint planning far more manageable.'
+  },
+  {
+    cat: 'story', diff: 'hard',
+    q: 'How do user stories, story points, and velocity combine to give a team a release forecast?',
+    opts: [
+      'Stories are counted, multiplied by sprint length, and divided by team size to estimate release date',
+      'Total backlog story points divided by the team\'s average velocity gives the approximate number of sprints to complete the backlog',
+      'The Scrum Master manually calculates release date based on the complexity of each story',
+      'Story points and velocity are only used for internal planning and cannot produce a reliable release estimate'
+    ],
+    ans: 1,
+    explain: 'Total backlog points ÷ team velocity = approximate sprints to completion. If the backlog has 400 points and velocity is 40 pts/sprint, the release is roughly 10 sprints away.',
+    deep: 'Without small, estimable stories this calculation is impossible. The release forecast emerges bottom-up from real team data — not top-down from a manager\'s deadline.'
+  },
 
-  {cat:'vel',diff:'easy',q:'What is velocity in Scrum?',opts:['The speed at which developers write code','The number of story points completed by a team per sprint','The number of sprints completed per quarter','The time taken to deliver a single user story'],ans:1,explain:'Velocity = the number of story points a team completes per sprint. Only fully completed stories count.',deep:'Velocity measures team throughput: how much complete, working software is delivered per sprint. Partial completion contributes nothing.'},
-  {cat:'vel',diff:'easy',q:'Velocity is primarily used as:',opts:['A metric to compare team performance against other teams','A performance target to maximise each sprint','A planning tool to make realistic sprint commitments','A measure of code quality'],ans:2,explain:'Velocity is a planning tool. It helps the team commit to a realistic amount of work based on what they actually completed previously.',deep:'Using velocity as a performance target is a dangerous anti-pattern leading to over-commitment, incomplete stories, and eventual burnout.'},
-  {cat:'vel',diff:'easy',q:'A team has average velocity of 25 points and commits to 40 points. What is likely to happen?',opts:['The team will finish early and take on more work','The sprint will likely fail: the team cannot complete 40 points when they average 25','The Scrum Master will add more developers','The Product Owner will reduce scope'],ans:1,explain:'Committing to 40 when averaging 25 almost guarantees incomplete stories. Velocity exists specifically to prevent this over-commitment.',deep:'Over-commitment feels ambitious but produces incomplete work and erodes stakeholder trust.'},
-  {cat:'vel',diff:'med',q:'How does the velocity feedback loop work?',opts:['Velocity is set by the Scrum Master each sprint','Each sprint\'s actual completed points inform the next sprint\'s commitment: a self-correcting loop','Velocity is averaged across the entire project only','The Product Owner sets velocity targets'],ans:1,explain:'Each sprint\'s actual completed points become the baseline for the next sprint. 28 completed this sprint means planning for about 28 next sprint.',deep:'The self-correcting loop finds a sustainable rhythm over 2-3 sprints.'},
-  {cat:'vel',diff:'med',q:'When a team underestimates their sprint workload, what happens to their velocity?',opts:['Velocity increases because they work harder','Velocity drops because they can\'t finish all stories, so next sprint commitment decreases and they finish on time','Velocity stays the same','The sprint is cancelled'],ans:1,explain:'Under-estimating leads to incomplete stories, lower measured velocity, smaller next commitment, and eventually a more realistic sprint plan.',deep:'Teams do not need a manager to correct their planning. The velocity feedback mechanism does it automatically over 2-3 sprints.'},
-  {cat:'vel',diff:'med',q:'What is "technical debt" in the context of velocity?',opts:['Money owed for software licenses','Shortcuts taken under pressure (skipped tests, rushed code) that slow the team in future sprints, accruing like financial debt','The cost of hiring senior developers','Bugs found during testing'],ans:1,explain:'Technical debt = shortcuts under pressure. Like financial debt, it accrues and makes future sprints slower.',deep:'Paying down technical debt is a legitimate backlog item. Teams that never address it see velocity gradually decline as the codebase becomes harder to work with.'},
-  {cat:'vel',diff:'med',q:'Why should you "add programmers carefully" when velocity drops?',opts:['New programmers are expensive','Adding people to a late project initially makes it later because they need onboarding and slow existing team members (Brooks\' Law)','New programmers bring different methodologies','Adding people changes the team\'s velocity calculation'],ans:1,explain:'Brooks\' Law: adding manpower to a late software project makes it later. New developers need onboarding and interrupt existing team members.',deep:'Fred Brooks documented this in The Mythical Man-Month. Adding headcount is a last resort, not a first response to declining velocity.'},
-  {cat:'vel',diff:'hard',q:'Velocity trend: Sprint 1: 30, Sprint 2: 28, Sprint 3: 18, Sprint 4: 17, Sprint 5: 16. What does this suggest?',opts:['The team is improving','The team is accumulating technical debt or has unresolved impediments causing a sustained velocity decline','Normal velocity variation: nothing to worry about','The Product Owner is adding too many stories'],ans:1,explain:'A sustained downward trend signals an underlying problem: technical debt, unresolved impediments, or team morale issues.',deep:'This is exactly why the Retrospective exists. Three sprints of declining velocity demands a serious discussion.'},
-  {cat:'vel',diff:'hard',q:'A team completes all 10 sprint stories but 3 don\'t meet the Definition of Done. What is their velocity?',opts:['10 story points worth','7 story points worth: only fully done stories count','Depends on how close to done the 3 stories are','0: the sprint failed completely'],ans:1,explain:'Only fully complete stories meeting the DoD count toward velocity. Partially done = zero.',deep:'This rule prevents velocity inflation: claiming high velocity while shipping low-quality work.'},
-  {cat:'vel',diff:'hard',q:'Why is "energised work (no overtime)" listed as a way to IMPROVE velocity when it has dropped?',opts:['Overtime is illegal in most countries','Tired developers make more mistakes, creating bugs that cost more time than the overtime saved. Sustainable pace produces better long-term velocity.','Agile prohibits overtime by rule','Overtime increases cost too much'],ans:1,explain:'Overtime reduces long-term velocity. Tired developers produce more errors, technical debt, and eventually burn out.',deep:'The Agile principle of sustainable pace means maintaining a rhythm indefinitely. Consistent 40-hour weeks outperform irregular crunch cycles over any meaningful time horizon.'},
-  {cat:'vel',diff:'hard',q:'A manager asks to compare Team A\'s velocity to Team B\'s velocity. Why is this problematic?',opts:['Velocity is confidential information','Story point scales differ between teams: Team A\'s 5 and Team B\'s 5 likely represent different amounts of work. Cross-team comparison is meaningless.','Teams have different sprint lengths','Velocity can only be compared within the same company'],ans:1,explain:'Story points are relative to each team\'s own calibration. Direct comparison between teams is meaningless and creates perverse incentives.',deep:'Comparing team velocities causes inflation. Teams over-estimate to appear more productive. Velocity is only valid as a within-team planning tool.'}
+  // ─────────────────────────────────────────────────────────
+  // BACKLOG (11 questions)
+  // ─────────────────────────────────────────────────────────
+  {
+    cat: 'backlog', diff: 'easy',
+    q: 'Who owns the Product Backlog and what does "ownership" mean in this context?',
+    opts: [
+      'The Scrum Master owns it and decides which stories the team will work on each sprint',
+      'The Development Team owns it and collectively decides the order of stories',
+      'The Product Owner owns it — meaning they decide the order and priority of all items in it',
+      'Stakeholders own it and update it after each Sprint Review based on their feedback'
+    ],
+    ans: 2,
+    explain: 'The Product Owner owns and prioritises the Product Backlog. Ownership means deciding the ORDER of stories — what gets built first.',
+    deep: 'The PO decides WHAT gets built and in what order. The Dev Team decides HOW to build it. This separation of concerns is fundamental to Scrum.'
+  },
+  {
+    cat: 'backlog', diff: 'easy',
+    q: 'Who owns the Sprint Backlog and why does ownership matter?',
+    opts: [
+      'The Product Owner — they selected the stories during Sprint Planning',
+      'The Development Team — they committed to these stories and are responsible for delivering them',
+      'The Scrum Master — they facilitate the sprint and are accountable for its outcome',
+      'The whole Scrum team jointly — all three roles share equal ownership'
+    ],
+    ans: 1,
+    explain: 'The Development Team owns the Sprint Backlog — they committed to these stories and are accountable for delivering them by sprint end.',
+    deep: 'Once the Sprint Backlog is set, only the Dev Team can modify it. This protects their commitment from mid-sprint disruption by stakeholders or the PO.'
+  },
+  {
+    cat: 'backlog', diff: 'easy',
+    q: 'What are the 4 types of items that can appear in a Product Backlog?',
+    opts: [
+      'User stories, epics, themes, and tasks',
+      'Features, Bugs, Technical work, and Knowledge acquisition',
+      'Requirements, designs, test plans, and documentation',
+      'Must have, Should have, Could have, and Won\'t have items'
+    ],
+    ans: 1,
+    explain: 'The 4 Product Backlog item types are: Features (user stories), Bugs (defects), Technical work (infrastructure), and Knowledge acquisition (research spikes).',
+    deep: 'Treating all four as first-class backlog items ensures they are visible, estimated, and prioritised — not hidden as "extra work" that silently erodes team velocity.'
+  },
+  {
+    cat: 'backlog', diff: 'easy',
+    q: 'Why is the Product Backlog described as "never finished"?',
+    opts: [
+      'Because teams rarely complete all their backlog items, leaving them permanently incomplete',
+      'Because the backlog is a living document that continuously grows as the product and market evolve',
+      'Because it is a sign of poor planning that the team must address before the next sprint',
+      'Because the Scrum Master removes items from it faster than the PO can add new ones'
+    ],
+    ans: 1,
+    explain: 'The Product Backlog is a living document — as the product evolves, new needs emerge, bugs surface, and market conditions change. It never stops growing.',
+    deep: 'A "finished" backlog would imply the team perfectly predicted all future needs upfront — which is impossible. An always-evolving backlog signals a healthy, learning product team.'
+  },
+  {
+    cat: 'backlog', diff: 'med',
+    q: 'What is a knowledge acquisition backlog item, and when would a team add one?',
+    opts: [
+      'A story for onboarding new team members',
+      'A research spike that reduces uncertainty',
+      'A course for learning a new language',
+      'A bug task with an unknown root cause'
+    ],
+    ans: 1,
+    explain: 'A knowledge acquisition item is a time-boxed research spike. The output is a decision or recommendation — not code. Used to reduce uncertainty before committing to a solution.',
+    deep: 'A 2-day spike evaluating three frameworks can save months of expensive rework if the wrong framework would otherwise have been chosen. Spikes prevent costly irreversible decisions.'
+  },
+  {
+    cat: 'backlog', diff: 'med',
+    q: 'What does a sprint burn-down chart track, and how is it used?',
+    opts: [
+      'It tracks completed versus planned points across sprints',
+      'It tracks remaining work against remaining sprint time',
+      'It tracks bugs found and fixed during the sprint',
+      'It tracks individual planned versus completed tasks'
+    ],
+    ans: 1,
+    explain: 'A burn-down chart shows work remaining (y-axis) vs time remaining (x-axis). If the actual line sits above the ideal diagonal, the team is behind schedule.',
+    deep: 'The burn-down chart is Empirical Process Control made visual — the team inspects it daily during the Standup and adapts their plan based on what it reveals.'
+  },
+  {
+    cat: 'backlog', diff: 'med',
+    q: 'Who can make changes to the Sprint Backlog once the sprint has started?',
+    opts: [
+      'Anyone on the Scrum team, as long as the Scrum Master approves the change',
+      'Only the Development Team can change the Sprint Backlog during a sprint',
+      'Only the Product Owner can change it, since they own the backlog',
+      'Stakeholders can request changes directly if they are classified as urgent'
+    ],
+    ans: 1,
+    explain: 'Only the Development Team can modify the Sprint Backlog during a sprint. This protects their commitment from mid-sprint disruption.',
+    deep: 'Without this protection, stakeholders could constantly inject "urgent" items, making it impossible for the team to deliver on their commitments. The sprint is a protected container.'
+  },
+  {
+    cat: 'backlog', diff: 'med',
+    q: 'Why are bugs added to the Product Backlog rather than fixed immediately when discovered?',
+    opts: [
+      'Because bugs are never urgent and always wait',
+      'So bugs are visible and prioritised with other work',
+      'Because developers cannot fix unassigned bugs',
+      'Because every bug needs points before work starts'
+    ],
+    ans: 1,
+    explain: 'Treating bugs as backlog items makes them visible, estimated, and rationally prioritised against other work. Not all bugs are equally important.',
+    deep: 'A critical data loss bug gets highest priority. A minor cosmetic issue may rank below valuable new features. Backlog treatment enables rational prioritisation instead of reactive fire-fighting.'
+  },
+  {
+    cat: 'backlog', diff: 'hard',
+    q: 'A Product Owner wants to add an urgent new story midway through the sprint. What is the correct Scrum response?',
+    opts: [
+      'Add it to the Sprint Backlog so work can start now',
+      'Reject it because sprint changes are never allowed',
+      'Add it to the Product Backlog for a future sprint',
+      'Let the Scrum Master decide if it enters the sprint'
+    ],
+    ans: 2,
+    explain: 'New stories should go to the Product Backlog for the next sprint. Only a genuine product-threatening emergency warrants cancelling the current sprint entirely.',
+    deep: 'Sprint protection is one of Scrum\'s most important mechanisms. If stakeholders can inject stories mid-sprint, the team can never commit to anything — and trust in the process collapses.'
+  },
+  {
+    cat: 'backlog', diff: 'hard',
+    q: 'On Day 7 of a 10-day sprint, only 4 of 10 stories are done and the burn-down shows the team is significantly behind. What should happen?',
+    opts: [
+      'Extend the sprint so all committed stories finish',
+      'Use overtime to finish every story on time',
+      'Re-prioritise and focus on highest-value work',
+      'Cancel the sprint and restart with less work'
+    ],
+    ans: 2,
+    explain: 'Re-prioritise within the sprint. Focus remaining capacity on the highest-value stories. Lower-priority stories can spill to the next sprint. The sprint ends on time.',
+    deep: 'This is Empirical Process Control applied: inspect the situation (4/10 done, 3 days left) and adapt (focus on what matters most). Extending or cancelling are extreme options for rare situations.'
+  },
+  {
+    cat: 'backlog', diff: 'hard',
+    q: 'Why is the Product Backlog described as "prioritised" rather than simply "ordered"?',
+    opts: [
+      'The two terms mean exactly the same thing',
+      'Prioritised means business value drives the order',
+      'Ordered means only technical dependencies matter',
+      'Prioritised means the Scrum Master ranks items'
+    ],
+    ans: 1,
+    explain: '"Prioritised" means the order reflects deliberate business-value judgment — not arbitrary sequencing. The PO continuously reassesses whether the top items remain the most valuable.',
+    deep: 'As market conditions, user feedback, and business goals evolve, what was the highest-priority story last month may no longer be. Ongoing prioritisation keeps the backlog aligned with current reality.'
+  },
+
+  // ─────────────────────────────────────────────────────────
+  // VELOCITY (11 questions)
+  // ─────────────────────────────────────────────────────────
+  {
+    cat: 'vel', diff: 'easy',
+    q: 'What is velocity in Scrum, and what does it measure?',
+    opts: [
+      'The speed at which individual developers write and commit code each day',
+      'The number of story points a team completes per sprint — only fully done stories count',
+      'The total number of sprints completed since the project began',
+      'The average time taken to deliver a single user story from start to acceptance'
+    ],
+    ans: 1,
+    explain: 'Velocity = the number of story points completed per sprint. Only stories that fully meet the Definition of Done count. Partially done stories contribute zero.',
+    deep: 'Velocity measures team throughput — how much complete, working software is delivered per sprint. Partial completion never counts, which enforces the quality standard.'
+  },
+  {
+    cat: 'vel', diff: 'easy',
+    q: 'What is the primary purpose of tracking velocity in Scrum?',
+    opts: [
+      'To compare the team\'s performance against other Scrum teams in the organisation',
+      'To set an increasing performance target that motivates the team to work harder each sprint',
+      'To help the team make realistic sprint commitments based on what they actually completed in previous sprints',
+      'To measure individual developer productivity and identify who is underperforming'
+    ],
+    ans: 2,
+    explain: 'Velocity is a planning tool — it helps the team commit to a realistic amount of work based on their actual throughput in previous sprints.',
+    deep: 'Using velocity as a performance target or comparison metric is a dangerous anti-pattern. It leads to inflated estimates, over-commitment, incomplete stories, and eventual burnout.'
+  },
+  {
+    cat: 'vel', diff: 'easy',
+    q: 'A team\'s average velocity is 25 story points and they commit to 40 for the next sprint. What is the most likely outcome?',
+    opts: [
+      'The team will finish early and take more work',
+      'The sprint will likely leave stories incomplete',
+      'The Scrum Master will add a developer',
+      'The Product Owner will remove stories'
+    ],
+    ans: 1,
+    explain: 'Committing to 40 when averaging 25 almost guarantees incomplete stories. Velocity exists specifically to prevent this kind of over-commitment.',
+    deep: 'Over-commitment is one of the most common Scrum anti-patterns. It feels ambitious but erodes stakeholder trust when commitments are consistently broken.'
+  },
+  {
+    cat: 'vel', diff: 'med',
+    q: 'How does the velocity feedback loop work across sprints?',
+    opts: [
+      'The Scrum Master sets a new velocity target at the start of each sprint based on team capacity',
+      'Each sprint\'s actual completed points become the baseline for the next sprint\'s commitment — the loop is self-correcting',
+      'Velocity is calculated once at the project midpoint and used to forecast the final release date',
+      'The Product Owner sets velocity targets and the team must meet or exceed them each sprint'
+    ],
+    ans: 1,
+    explain: 'Each sprint\'s actual completed points inform the next sprint\'s commitment. If 28 points were completed, the team plans for approximately 28 next sprint. The system self-corrects.',
+    deep: 'Over-commit → incomplete stories → lower measured velocity → smaller next commitment → team finishes on time. The feedback loop finds a sustainable rhythm without management intervention.'
+  },
+  {
+    cat: 'vel', diff: 'med',
+    q: 'What happens to a team\'s velocity when they consistently underestimate their sprint workload?',
+    opts: [
+      'Velocity increases because the team works harder to compensate for the underestimate',
+      'Velocity drops because incomplete stories score zero, then next sprint\'s commitment decreases until the team finishes on time',
+      'Velocity remains stable because story points are re-estimated at the end of each sprint',
+      'The sprint is cancelled and replanned when the team realises they have underestimated'
+    ],
+    ans: 1,
+    explain: 'Underestimating → incomplete stories → lower measured velocity → smaller next sprint commitment → team finishes on time. The feedback loop self-corrects within 2–3 sprints.',
+    deep: 'The beauty of the velocity feedback loop is that it is self-regulating. Teams don\'t need a manager to correct their planning — the mechanism does it automatically.'
+  },
+  {
+    cat: 'vel', diff: 'med',
+    q: 'What is technical debt in the context of velocity, and why does it matter?',
+    opts: [
+      'Money owed for software licences and tools',
+      'Shortcuts that slow future sprint work',
+      'The cost of hiring senior developers',
+      'Bugs found during final release testing'
+    ],
+    ans: 1,
+    explain: 'Technical debt = shortcuts taken under pressure. Like financial debt, it accrues — future sprints slow down as the team works around messy, untested code.',
+    deep: 'Paying down technical debt is a legitimate backlog item. Teams that ignore it see velocity gradually decline over time as the codebase becomes increasingly difficult to extend.'
+  },
+  {
+    cat: 'vel', diff: 'med',
+    q: 'Why should adding more developers to a team be a last resort when velocity is declining?',
+    opts: [
+      'New developers are expensive and will always increase the project budget beyond approval limits',
+      'New developers need onboarding time and interrupt existing team members, initially reducing velocity before any benefit is seen',
+      'Adding developers requires renegotiating the contract with the client before proceeding',
+      'New developers change the team\'s velocity calculation, making historical data unreliable'
+    ],
+    ans: 1,
+    explain: 'Brooks\' Law: "Adding manpower to a late software project makes it later." New developers need time to onboard and interrupt existing members — initially reducing velocity.',
+    deep: 'Fred Brooks documented this in "The Mythical Man-Month" (1975). It remains true today. Adding headcount is a last resort, not a first response to declining velocity.'
+  },
+  {
+    cat: 'vel', diff: 'hard',
+    q: 'A team\'s velocity is: Sprint 1: 30, Sprint 2: 28, Sprint 3: 18, Sprint 4: 17, Sprint 5: 16. What does this trend most likely indicate?',
+    opts: [
+      'The team is steadily improving its estimation accuracy over time',
+      'This is normal random fluctuation and requires no special action from the Scrum Master',
+      'The team is accumulating technical debt or has unresolved impediments causing a sustained decline',
+      'The Product Owner is consistently adding too many stories to the sprint during planning'
+    ],
+    ans: 2,
+    explain: 'A sustained downward trend — not random variation — signals an underlying problem such as accumulating technical debt, growing codebase complexity, or unresolved team impediments.',
+    deep: 'This is precisely why the Retrospective exists. Three consecutive sprints of declining velocity demand a serious investigation. The Scrum Master should identify and remove the root cause.'
+  },
+  {
+    cat: 'vel', diff: 'hard',
+    q: 'A team completes all 10 sprint stories but 3 do not fully meet the Definition of Done. What is their correct velocity?',
+    opts: [
+      'The full 10 stories\' worth of points — the team did complete all the stories',
+      'Only the 7 fully done stories\' points count — incomplete DoD means zero contribution to velocity',
+      'A partial credit based on how close each of the 3 stories came to meeting the DoD',
+      'Zero — the sprint is considered a failure if any story misses the Definition of Done'
+    ],
+    ans: 1,
+    explain: 'Only stories that fully meet the Definition of Done count toward velocity. Stories 8, 9, and 10 contribute zero points — partial completion is not counted.',
+    deep: 'This rule prevents "velocity inflation" — claiming high velocity while shipping low-quality work. If partial completion counted, teams would be incentivised to start many stories and finish none properly.'
+  },
+  {
+    cat: 'vel', diff: 'hard',
+    q: 'Why does a "no overtime" policy help improve long-term velocity rather than reduce it?',
+    opts: [
+      'Overtime is prohibited by law in most workplaces',
+      'Tired developers create bugs and technical debt',
+      'Agile formally bans overtime in every project',
+      'Overtime uses budget reserved for later sprints'
+    ],
+    ans: 1,
+    explain: 'Overtime reduces long-term velocity. Tired developers produce more bugs and technical debt, creating rework that costs far more time than the overtime hours gained.',
+    deep: 'The Agile principle of "sustainable pace" means maintaining a rhythm the team can sustain indefinitely. Consistent, rested work consistently outperforms irregular crunch cycles over any meaningful time horizon.'
+  },
+  {
+    cat: 'vel', diff: 'hard',
+    q: 'A manager wants to compare Team A\'s velocity of 40 points per sprint to Team B\'s velocity of 25 points per sprint. Why is this comparison problematic?',
+    opts: [
+      'Velocity data must never be shared with managers',
+      'Story point scales differ between the teams',
+      'Teams need identical sprint lengths first',
+      'Teams need identical tools before comparison'
+    ],
+    ans: 1,
+    explain: 'Story points are relative to each team\'s own calibration. Team A\'s "5" and Team B\'s "5" likely represent entirely different amounts of work. Cross-team velocity comparison is meaningless.',
+    deep: 'Comparing team velocities creates perverse incentives — teams inflate estimates to appear more productive. Velocity is only valid as a within-team planning tool, never as a cross-team benchmark.'
+  }
+
 ];
 
 function shuffleQuestionOptions(question) {

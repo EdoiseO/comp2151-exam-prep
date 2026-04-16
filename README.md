@@ -24,6 +24,21 @@ Then open `http://localhost:8000`.
 - Score tracking
 - Per-question explanations
 
+## Question Quality
+
+Before adding or committing new question batches, run:
+
+```bash
+node scripts/audit-questions.js
+```
+
+Use the warnings as a review checklist:
+
+- Avoid trivia that only tests specific slide names, quotes, dates, or example characters.
+- Prefer concept questions that still work if the lecture examples change.
+- Keep all four answer options roughly the same length so the correct answer does not stand out.
+- Shuffle answer options before publishing a lecture file or use the shared shuffle helper pattern from Lectures 1-2.
+
 ## Adding Lectures
 
 Each lecture has its own data file in `data/`.
