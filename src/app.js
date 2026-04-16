@@ -1,6 +1,6 @@
 const lectures = window.COMP2151_LECTURES || [];
 
-let currentLecture = lectures.find(lecture => lecture.questions.length > 0) || lectures[0];
+let currentLecture = null;
 let currentCat = 'all';
 let questions = [];
 let qi = 0;
@@ -56,6 +56,19 @@ function renderLectureNav() {
   }).join('');
 }
 
+function showLectureSelect() {
+  document.getElementById('lecture-select-view').classList.add('active');
+  document.getElementById('quiz-view').classList.remove('active');
+  currentLecture = null;
+  currentCat = 'all';
+  renderLectureNav();
+}
+
+function showQuizView() {
+  document.getElementById('lecture-select-view').classList.remove('active');
+  document.getElementById('quiz-view').classList.add('active');
+}
+
 function renderLectureHeader() {
   const total = currentLecture?.questions.length || 0;
   document.getElementById('lecture-title').textContent = currentLecture
@@ -85,6 +98,7 @@ function setLecture(id) {
   currentLecture = nextLecture;
   currentCat = 'all';
   resetQuiz();
+  showQuizView();
   renderLectureNav();
   renderLectureHeader();
   renderNav();
@@ -240,12 +254,10 @@ function renderResults() {
 }
 
 window.setLecture = setLecture;
+window.showLectureSelect = showLectureSelect;
 window.setCat = setCat;
 window.ans = ans;
 window.nextQ = nextQ;
 
-resetQuiz();
 renderLectureNav();
-renderLectureHeader();
-renderNav();
-renderQ();
+showLectureSelect();
