@@ -5,6 +5,7 @@ const vm = require('vm');
 const root = path.resolve(__dirname, '..');
 const dataDir = path.join(root, 'data');
 const optionLengthSpreadLimit = 45;
+const answerSlotSpreadLimit = 8;
 const triviaPatterns = [
   /\bquote\b/i,
   /\bCharlotte\b/i,
@@ -39,6 +40,17 @@ function loadLectures() {
   return context.window.COMP2151_LECTURES || [];
 }
 
+function rawScoreDistribution(source) {
+  const counts = [0, 0, 0, 0];
+  for (const match of source.matchAll(/ans:\s*(\d)/g)) {
+    const index = Number(match[1]);
+    if (index >= 0 && index < counts.length) {
+      counts[index]++;
+    }
+  }
+  return counts;
+}
+
 function scoreDistribution(questions) {
   const counts = [0, 0, 0, 0];
   for (const question of questions) {
@@ -60,7 +72,17 @@ let totalWarnings = 0;
 for (const lecture of lectures) {
   const questions = lecture.questions || [];
   const distribution = scoreDistribution(questions);
-  console.log(`${lecture.id}: ${questions.length} questions, answer slots A-D = ${distribution.join('/')}`);
+  const sourcePath = path.join(dataDir, `${lecture.id}.js`);
+  const source = fs.existsSync(sourcePath) ? fs.readFileSync(sourcePath, 'utf8') : '';
+  const rawDistribution = rawScoreDistribution(source);
+  const rawSpread = Math.max(...rawDistribution) - Math.min(...rawDistribution);
+
+  console.log(`${lecture.id}: ${questions.length} questions, loaded answer slots A-D = ${distribution.join('/')}, raw A-D = ${rawDistribution.join('/')}`);
+
+  if (questions.length > 0 && rawSpread > answerSlotSpreadLimit) {
+    totalWarnings++;
+    console.log(`  Raw answer slot spread ${rawSpread}. Rebalance source opts/ans so correct answers are not concentrated in one letter.`);
+  }
 
   questions.forEach((question, index) => {
     const warnings = [];
