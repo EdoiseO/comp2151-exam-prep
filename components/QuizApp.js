@@ -404,7 +404,7 @@ export default function QuizApp() {
                       <span className="question-hint">Answer to reveal explanation</span>
                       {selectedChoice !== null && (
                         <button className="nbtn primary" onClick={handleNextQuestion} type="button">
-                          {questionIndex < questions.length - 1 ? 'Next ->' : 'See results ->'}
+                          {questionIndex < questions.length - 1 ? 'Next' : 'See results'}
                         </button>
                       )}
                     </div>
