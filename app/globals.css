@@ -137,7 +137,7 @@ body{padding:1rem .75rem}
 .page-header{margin-bottom:.8rem}
 .eyebrow{font-size:12px;margin-bottom:.35rem}
 .page-header h1{font-size:1.7rem;line-height:1.08;margin-bottom:6px}
-.page-header .sub{font-size:.98rem;line-height:1.55;max-width:30ch}
+.page-header .sub{font-size:.92rem;line-height:1.55;max-width:none;width:100%}
 .lecture-panel{padding:.75rem}
 .session-sidebar{display:grid;grid-template-columns:1fr;gap:.55rem}
 .progress-card{padding:.7rem}
