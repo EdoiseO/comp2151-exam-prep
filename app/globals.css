@@ -820,6 +820,20 @@ h2 {
     font-size: 13px;
   }
 
+  .explain-card,
+  .deep-card {
+    padding: 13px;
+    margin-top: 12px;
+  }
+
+  .explain-card,
+  .deep-card,
+  .explain-card p,
+  .deep-card p {
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
   .question-actions,
   .results-actions,
   .cat-row {
@@ -886,6 +900,26 @@ h2 {
 
   .question-heading {
     font-size: 1.38rem;
+  }
+
+  .explain-card,
+  .deep-card {
+    padding: 12px;
+    margin-top: 10px;
+  }
+
+  .explain-card,
+  .deep-card,
+  .explain-card p,
+  .deep-card p {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .explain-card strong,
+  .deep-card .row-kicker {
+    font-size: 10px;
+    margin-bottom: 6px;
   }
 
   .question-hint {
