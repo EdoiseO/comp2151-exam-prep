@@ -109,6 +109,11 @@ code {
   line-height: 1;
 }
 
+.theme-fab-icon {
+  width: 20px;
+  height: 20px;
+}
+
 .hero-kicker,
 .row-kicker,
 .lecture-card-num,
@@ -454,6 +459,7 @@ h2 {
 .progress-meta-row span {
   display: block;
   min-width: 0;
+  white-space: nowrap;
 }
 
 .progress-meta-row strong {
@@ -853,6 +859,11 @@ h2 {
     height: 38px;
   }
 
+  .theme-fab-icon {
+    width: 18px;
+    height: 18px;
+  }
+
   .mastery-value {
     font-size: 3.2rem;
   }
@@ -863,8 +874,8 @@ h2 {
 
   .progress-meta-row {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
-    font-size: 11px;
+    gap: 6px;
+    font-size: 10px;
   }
 
   .progress-meta-row span,
