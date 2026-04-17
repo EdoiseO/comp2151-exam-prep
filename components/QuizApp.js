@@ -8,6 +8,9 @@ const DIFFICULTY_POINTS = {
   hard: 3
 };
 
+const PROGRESS_STORAGE_KEY = 'comp2151-progress-v2';
+const THEME_STORAGE_KEY = 'comp2151-theme';
+
 function getAllCategory(lecture) {
   const total = lecture?.questions?.length || 0;
   return {key: 'all', label: `All ${total}`, cls: 'c0'};
@@ -15,8 +18,15 @@ function getAllCategory(lecture) {
 
 function getQuestionPool(lecture, categoryKey) {
   if (!lecture) return [];
-  if (categoryKey === 'all') return [...lecture.questions];
-  return lecture.questions.filter(question => question.cat === categoryKey);
+
+  const enrichedQuestions = lecture.questions.map((question, index) => ({
+    ...question,
+    sourceKey: `${lecture.id}:${index}`
+  }));
+
+  if (categoryKey === 'all') return enrichedQuestions;
+
+  return enrichedQuestions.filter(question => question.cat === categoryKey);
 }
 
 function createCategoryScores(lecture) {
@@ -65,9 +75,35 @@ function getResultsGrade(percentage) {
 }
 
 function getCategoryBarColor(percentage) {
-  if (percentage >= 70) return '#111';
-  if (percentage >= 45) return '#BA7517';
-  return '#E24B4A';
+  if (percentage >= 70) return 'var(--good)';
+  if (percentage >= 45) return 'var(--warn)';
+  return 'var(--bad)';
+}
+
+function getLectureProgress(progressStore, lecture) {
+  const lectureState = progressStore[lecture.id] || {};
+  const attempts = Object.keys(lectureState).length;
+  const mastered = Object.values(lectureState).filter(entry => entry?.correct).length;
+  const total = lecture.questions.length;
+
+  return {
+    attempts,
+    mastered,
+    total,
+    percentage: total > 0 ? Math.round((mastered / total) * 100) : 0
+  };
+}
+
+function getCourseProgress(lectures, progressStore) {
+  return lectures.reduce((summary, lecture) => {
+    const lectureProgress = getLectureProgress(progressStore, lecture);
+
+    return {
+      total: summary.total + lectureProgress.total,
+      attempts: summary.attempts + lectureProgress.attempts,
+      mastered: summary.mastered + lectureProgress.mastered
+    };
+  }, {total: 0, attempts: 0, mastered: 0});
 }
 
 export default function QuizApp() {
@@ -83,6 +119,8 @@ export default function QuizApp() {
   const [wrongCount, setWrongCount] = useState(0);
   const [selectedChoice, setSelectedChoice] = useState(null);
   const [categoryScores, setCategoryScores] = useState({});
+  const [lectureProgress, setLectureProgress] = useState({});
+  const [theme, setTheme] = useState('dark');
 
   useEffect(() => {
     let ignore = false;
@@ -117,6 +155,32 @@ export default function QuizApp() {
     };
   }, []);
 
+  useEffect(() => {
+    try {
+      const savedProgress = window.localStorage.getItem(PROGRESS_STORAGE_KEY);
+      const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+
+      if (savedProgress) {
+        setLectureProgress(JSON.parse(savedProgress));
+      }
+
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        setTheme(savedTheme);
+      }
+    } catch {
+      setLectureProgress({});
+    }
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+  }, [theme]);
+
+  useEffect(() => {
+    window.localStorage.setItem(PROGRESS_STORAGE_KEY, JSON.stringify(lectureProgress));
+  }, [lectureProgress]);
+
   const currentLecture = useMemo(
     () => lectures.find(lecture => lecture.id === currentLectureId) || null,
     [currentLectureId, lectures]
@@ -135,6 +199,11 @@ export default function QuizApp() {
       return counts;
     }, {});
   }, [categories, currentLecture]);
+
+  const courseProgress = useMemo(() => getCourseProgress(lectures, lectureProgress), [lectureProgress, lectures]);
+  const courseProgressPercentage = courseProgress.total > 0
+    ? Math.round((courseProgress.mastered / courseProgress.total) * 100)
+    : 0;
 
   const currentQuestion = questionIndex < questions.length ? questions[questionIndex] : null;
   const currentCategory = getAllCategory(currentLecture);
@@ -181,11 +250,31 @@ export default function QuizApp() {
     resetQuiz(currentLecture, categoryKey);
   }
 
+  function trackLectureProgress(answeredCorrectly) {
+    if (!currentLecture || !currentQuestion?.sourceKey) return;
+
+    setLectureProgress(existingProgress => {
+      const lectureState = existingProgress[currentLecture.id] || {};
+      const previousEntry = lectureState[currentQuestion.sourceKey];
+
+      return {
+        ...existingProgress,
+        [currentLecture.id]: {
+          ...lectureState,
+          [currentQuestion.sourceKey]: {
+            correct: answeredCorrectly || previousEntry?.correct || false
+          }
+        }
+      };
+    });
+  }
+
   function handleAnswer(choiceIndex) {
     if (!currentQuestion || selectedChoice !== null) return;
 
     const answeredCorrectly = choiceIndex === currentQuestion.ans;
     setSelectedChoice(choiceIndex);
+    trackLectureProgress(answeredCorrectly);
 
     if (answeredCorrectly) {
       setCorrectCount(count => count + 1);
@@ -229,19 +318,28 @@ export default function QuizApp() {
   }
 
   return (
-    <main className="app">
-      <header className="page-header">
+    <main className="app-shell">
+      <button
+        aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+        className="theme-fab"
+        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        type="button"
+      >
+        <span aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>
+      </button>
+
+      <header className="hero-shell">
         <div>
-          <div className="eyebrow">Study workspace</div>
-          <h1>COMP2151 Exam Prep</h1>
-          <p className="sub">Practice by lecture, retry missed questions, and build toward a full exam review set.</p>
+          <div className="hero-kicker">Study workspace</div>
+          <h1 className="hero-title">COMP2151 Exam Prep</h1>
+          <p className="hero-sub">Practice by lecture, retry missed questions, and build toward a full review set.</p>
         </div>
       </header>
 
       {status === 'loading' && (
         <section className="status-card">
           <h2>Loading lectures</h2>
-          <p>Preparing the question bank for the React app.</p>
+          <p>Preparing the question bank for the study session.</p>
         </section>
       )}
 
@@ -253,23 +351,64 @@ export default function QuizApp() {
       )}
 
       {status === 'ready' && isLectureSelectView && (
-        <section>
-          <h2>Select Lecture</h2>
-          <p className="sub">Choose a lecture to start a focused review session.</p>
-          <div className="lecture-nav">
+        <section className="home-shell">
+          <div className="mastery-card">
+            <div className="mastery-stat">
+              <div className="mastery-value">{courseProgressPercentage}<span>%</span></div>
+              <div className="mastery-label">of the course mastered so far</div>
+            </div>
+            <div className="mastery-progress">
+              <div className="row-kicker">
+                <span>Course mastery</span>
+                <span>{courseProgress.mastered} / {courseProgress.total} correct</span>
+              </div>
+              <div className="track-bar"><span style={{width: `${courseProgressPercentage}%`}} /></div>
+            </div>
+          </div>
+
+          <div className="lecture-head-row">
+            <div>
+              <h2>Select a lecture</h2>
+              <p className="section-copy">Pick up where you left off or start a fresh lecture run.</p>
+            </div>
+            <span className="section-meta">
+              {lectures.filter(lecture => lecture.questions.length > 0).length} available · {lectures.filter(lecture => lecture.questions.length === 0).length} coming soon
+            </span>
+          </div>
+
+          <div className="lecture-grid">
             {lectures.map(lecture => {
-              const questionCount = lecture.questions.length;
-              const statusLabel = questionCount > 0 ? `${questionCount} questions` : 'Coming soon';
+              const lectureSummary = getLectureProgress(lectureProgress, lecture);
+              const isLocked = lecture.questions.length === 0;
 
               return (
                 <button
                   key={lecture.id}
-                  className={`lecture-btn${currentLectureId === lecture.id ? ' active' : ''}`}
+                  className={`lecture-card${isLocked ? ' locked' : ''}`}
+                  disabled={isLocked}
                   onClick={() => handleLectureSelect(lecture.id)}
                   type="button"
                 >
-                  <span>{lecture.title}</span>
-                  <span className="lecture-count">{statusLabel}</span>
+                  <div>
+                    <div className="lecture-card-num">{lecture.id.replace('lecture', 'Lecture ')}</div>
+                    <div className="lecture-card-title">{lecture.subtitle}</div>
+                    <div className="lecture-card-meta">
+                      {lecture.questions.length > 0
+                        ? `${lecture.questions.length} questions · ${lectureSummary.attempts > 0 ? `${lectureSummary.attempts} attempted` : 'not started'}`
+                        : 'Content coming soon'}
+                    </div>
+                  </div>
+
+                  <div className="lecture-card-footer">
+                    <span className="lecture-chip">
+                      {lecture.questions.length > 0
+                        ? `${lectureSummary.mastered} / ${lecture.questions.length} mastered`
+                        : 'Locked'}
+                    </span>
+                    <div className="lecture-ring" style={{'--pct': `${lectureSummary.percentage}%`}}>
+                      <span>{lecture.questions.length > 0 ? `${lectureSummary.percentage}%` : '—'}</span>
+                    </div>
+                  </div>
                 </button>
               );
             })}
@@ -278,45 +417,35 @@ export default function QuizApp() {
       )}
 
       {status === 'ready' && currentLecture && (
-        <section>
-          <button className="back-btn" onClick={handleBackToLectures} type="button">
+        <section className="session-shell">
+          <button className="back-link" onClick={handleBackToLectures} type="button">
             ← Back to lectures
           </button>
 
-          <div className="lecture-panel">
-            <div className="lecture-head">
-              <div>
-                <h2>{`${currentLecture.title} - ${currentLecture.subtitle}`}</h2>
-                <p className="sub">{currentLecture.description}</p>
+          <div className="session-frame">
+            <div className="session-topline">
+              <div className="session-heading-block">
+                <div className="hero-kicker">{currentLecture.title}</div>
+                <h2 className="session-title">{currentLecture.subtitle}</h2>
               </div>
-              <div className="lecture-summary-pill">{questions.length} total questions</div>
+              <span className="lecture-pill">{currentLecture.questions.length} deep Q&amp;A questions</span>
             </div>
 
             <div className="session-layout">
               <aside className="session-sidebar">
-                <div className="panel-card session-stats-card">
-                  <div className="panel-label">Session stats</div>
-                  <div className="scoreboard">
-                    <div className="sc"><div className="sc-num">{score}</div><div className="sc-lbl">Points</div></div>
-                    <div className="sc"><div className="sc-num" style={{color: '#639922'}}>{correctCount}</div><div className="sc-lbl">Correct</div></div>
-                    <div className="sc"><div className="sc-num" style={{color: '#E24B4A'}}>{wrongCount}</div><div className="sc-lbl">Wrong</div></div>
-                    <div className="sc"><div className="sc-num">{accuracy}%</div><div className="sc-lbl">Accuracy</div></div>
-                    <div className="sc"><div className="sc-num">{remainingQuestions}</div><div className="sc-lbl">Remaining</div></div>
+                <div className="sidebar-card">
+                  <div className="panel-title">Progress</div>
+                  <div className="track-bar compact"><span style={{width: `${progressWidth}%`}} /></div>
+                  <div className="progress-meta-row">
+                    <span><strong>{answeredCount} / {questions.length || 0}</strong> answered</span>
+                    <span><strong>{remainingQuestions}</strong> left</span>
+                    <span><strong>{progressWidth}%</strong> complete</span>
                   </div>
                 </div>
 
-                <div className="panel-card progress-card">
-                  <div className="panel-label">Progress</div>
-                  <div className="pbar-wrap"><div className="pbar-fill" style={{width: `${progressWidth}%`}} /></div>
-                  <div className="progress-meta">
-                    <span className="progress-count">{answeredCount} / {questions.length || 0} answered</span>
-                    <span>{progressWidth}% complete</span>
-                  </div>
-                </div>
-
-                <div className="panel-card">
-                  <div className="panel-label">Filter by category</div>
-                  <div className="cat-nav compact">
+                <div className="sidebar-card">
+                  <div className="panel-title">Filter by category</div>
+                  <div className="cat-nav compact-row">
                     {[currentCategory, ...categories].map(category => (
                       <button
                         key={category.key}
@@ -334,91 +463,91 @@ export default function QuizApp() {
 
               <div className="session-main">
                 {isEmptyLecture && (
-                  <div className="results">
+                  <div className="results-card">
                     <div className="result-grade">{currentLecture.title} is ready for content.</div>
                     <p>{currentLecture.description}</p>
-                    <p>Add questions to <code>{`data/${currentLecture.id}.js`}</code> using the same shape as Lecture 1.</p>
+                    <p>Add questions in <code>{`data/${currentLecture.id}.json`}</code> to activate this lecture.</p>
                   </div>
                 )}
 
                 {!isEmptyLecture && !isResultsView && currentQuestion && (
-                  <>
-                    <div className="q-card">
-                  <div className="q-meta">
-                    <span className="q-num">Q{questionIndex + 1} of {questions.length}</span>
-                    <span className="q-cat">{currentQuestionCategory?.label || currentQuestion.cat}</span>
-                    <span className={`q-diff ${getDifficultyClass(currentQuestion.diff)}`}>{getDifficultyLabel(currentQuestion.diff)}</span>
-                    {currentQuestion.retry ? <span className="retry-badge">Retry {currentQuestion.retry}</span> : null}
-                  </div>
-
-                  <div className="q-text">{currentQuestion.q}</div>
-
-                  <div className="opts">
-                    {currentQuestion.opts.map((option, optionIndex) => {
-                      const isCorrectOption = optionIndex === currentQuestion.ans;
-                      const isWrongSelection = optionIndex === selectedChoice && selectedChoice !== currentQuestion.ans;
-                      let className = 'opt';
-
-                      if (selectedChoice !== null && isCorrectOption) {
-                        className += selectedChoice === currentQuestion.ans ? ' correct' : ' reveal';
-                      } else if (selectedChoice !== null && isWrongSelection) {
-                        className += ' wrong';
-                      }
-
-                      return (
-                        <button
-                          key={`${currentQuestion.q}-${optionIndex}`}
-                          className={className}
-                          disabled={selectedChoice !== null}
-                          onClick={() => handleAnswer(optionIndex)}
-                          type="button"
-                        >
-                          <span className="opt-letter">{String.fromCharCode(65 + optionIndex)}</span>
-                          <span>{option}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-
-                  {selectedChoice !== null && (
-                    <>
-                      <div className={`feedback ${selectedChoice === currentQuestion.ans ? 'ok' : 'bad'}`}>
-                        <strong>{selectedChoice === currentQuestion.ans ? 'Correct!' : 'Not quite.'}</strong>{' '}
-                        {currentQuestion.explain}
-                        {selectedChoice !== currentQuestion.ans ? (
-                          <>
-                            <br />
-                            <strong>Study loop:</strong> This question was added back into the remaining questions at a random spot.
-                          </>
-                        ) : null}
-                      </div>
-                      <div className="deep-dive">
-                        <div className="deep-label">Why this matters:</div>
-                        {currentQuestion.deep}
-                      </div>
-                    </>
-                  )}
+                  <article className="question-card">
+                    <div className="question-topline">
+                      <span className="row-kicker">Q {questionIndex + 1} of {questions.length}</span>
+                      <span className="accuracy-chip">{accuracy}% acc</span>
                     </div>
 
-                    <div className="q-footer">
+                    <div className="question-tags">
+                      <span className="tag neutral">{currentQuestionCategory?.label || currentQuestion.cat}</span>
+                      <span className={`tag ${getDifficultyClass(currentQuestion.diff)}`}>{getDifficultyLabel(currentQuestion.diff)}</span>
+                      {currentQuestion.retry ? <span className="tag retry">Retry {currentQuestion.retry}</span> : null}
+                    </div>
+
+                    <h2 className="question-heading">{currentQuestion.q}</h2>
+
+                    <div className="options-list">
+                      {currentQuestion.opts.map((option, optionIndex) => {
+                        const isCorrectOption = optionIndex === currentQuestion.ans;
+                        const isWrongSelection = optionIndex === selectedChoice && selectedChoice !== currentQuestion.ans;
+                        let className = 'option-btn';
+
+                        if (selectedChoice !== null && isCorrectOption) {
+                          className += selectedChoice === currentQuestion.ans ? ' correct' : ' reveal';
+                        } else if (selectedChoice !== null && isWrongSelection) {
+                          className += ' wrong';
+                        }
+
+                        return (
+                          <button
+                            key={`${currentQuestion.q}-${optionIndex}`}
+                            className={className}
+                            disabled={selectedChoice !== null}
+                            onClick={() => handleAnswer(optionIndex)}
+                            type="button"
+                          >
+                            <span className="option-key">{String.fromCharCode(65 + optionIndex)}</span>
+                            <span>{option}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {selectedChoice !== null && (
+                      <>
+                        <div className={`explain-card ${selectedChoice === currentQuestion.ans ? 'ok' : 'bad'}`}>
+                          <strong>{selectedChoice === currentQuestion.ans ? 'Explanation' : 'Review'}</strong>
+                          <p>{currentQuestion.explain}</p>
+                          {selectedChoice !== currentQuestion.ans ? (
+                            <p><strong>Study loop:</strong> This question has been placed back into the queue later in the run.</p>
+                          ) : null}
+                        </div>
+
+                        <div className="deep-card">
+                          <div className="row-kicker">Why this matters</div>
+                          <p>{currentQuestion.deep}</p>
+                        </div>
+                      </>
+                    )}
+
+                    <div className="question-actions">
                       <span className="question-hint">Answer to reveal explanation</span>
                       {selectedChoice !== null && (
-                        <button className="nbtn primary" onClick={handleNextQuestion} type="button">
-                          {questionIndex < questions.length - 1 ? 'Next' : 'See results'}
+                        <button className="action-btn primary" onClick={handleNextQuestion} type="button">
+                          {questionIndex < questions.length - 1 ? 'Next question' : 'See results'}
                         </button>
                       )}
                     </div>
-                  </>
+                  </article>
                 )}
 
                 {isResultsView && (
-                  <div className="results">
+                  <div className="results-card">
                     <div className="result-score">{correctCount}/{questions.length}</div>
                     <div className="result-grade">
                       {getResultsGrade(Math.round((correctCount / questions.length) * 100))}
-                      {' - '}
+                      {' · '}
                       {Math.round((correctCount / questions.length) * 100)}%
-                      {' - '}
+                      {' · '}
                       {score} / {questions.reduce((total, question) => total + (DIFFICULTY_POINTS[question.diff] || 0), 0)} pts
                     </div>
 
@@ -444,15 +573,15 @@ export default function QuizApp() {
                     <p>
                       {Math.round((correctCount / questions.length) * 100) >= 70
                         ? `Strong command of ${currentLecture.title}.`
-                        : 'Focus on the red categories above and retry those sections.'}
+                        : 'Focus on the lower-scoring categories above and retry those sections next.'}
                     </p>
 
                     <div className="results-actions">
-                      <button className="nbtn primary" onClick={() => handleCategorySelect('all')} type="button">
+                      <button className="action-btn primary" onClick={() => handleCategorySelect('all')} type="button">
                         Retry {getAllCategory(currentLecture).label.toLowerCase()}
                       </button>
                       {categories.map(category => (
-                        <button className="nbtn" key={category.key} onClick={() => handleCategorySelect(category.key)} type="button">
+                        <button className="action-btn" key={category.key} onClick={() => handleCategorySelect(category.key)} type="button">
                           {category.label}
                         </button>
                       ))}

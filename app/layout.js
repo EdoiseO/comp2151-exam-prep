@@ -1,4 +1,15 @@
 import './globals.css';
+import {JetBrains_Mono, Manrope} from 'next/font/google';
+
+const headingFont = Manrope({
+  subsets: ['latin'],
+  variable: '--font-heading'
+});
+
+const monoFont = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono'
+});
 
 export const metadata = {
   title: 'COMP2151 Exam Prep',
@@ -16,7 +27,7 @@ export const viewport = {
 export default function RootLayout({children}) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning>{children}</body>
+      <body className={`${headingFont.variable} ${monoFont.variable}`} suppressHydrationWarning>{children}</body>
     </html>
   );
 }
