@@ -1,8 +1,960 @@
 {
   "id": "lecture5",
   "title": "Lecture 5",
-  "subtitle": "Coming Soon",
-  "description": "Add Lecture 5 questions in this file when the content is ready.",
-  "categories": [],
-  "questions": []
+  "subtitle": "Test-Driven Development (TDD)",
+  "description": "65 deep Q&A questions on Test-Driven Development, the TDD cycle, Red-Green-Refactor, advantages, test types, and limitations.",
+  "categories": [
+    {
+      "key": "all",
+      "label": "All 65",
+      "cls": "c0"
+    },
+    {
+      "key": "what",
+      "label": "What is TDD?",
+      "cls": "c1"
+    },
+    {
+      "key": "steps",
+      "label": "TDD Steps",
+      "cls": "c2"
+    },
+    {
+      "key": "laws",
+      "label": "Three Laws",
+      "cls": "c3"
+    },
+    {
+      "key": "rgr",
+      "label": "Red-Green-Refactor",
+      "cls": "c4"
+    },
+    {
+      "key": "advantages",
+      "label": "Advantages",
+      "cls": "c5"
+    },
+    {
+      "key": "testtypes",
+      "label": "Test Types",
+      "cls": "c6"
+    },
+    {
+      "key": "limits",
+      "label": "Limitations",
+      "cls": "c7"
+    }
+  ],
+  "questions": [
+    {
+      "cat": "what",
+      "diff": "easy",
+      "q": "What is the defining characteristic that separates TDD from traditional development?",
+      "opts": [
+        "TDD requires more developers working simultaneously on the same feature",
+        "In TDD, the test that will fail is written before any production code exists",
+        "TDD eliminates the need for requirements documentation entirely",
+        "TDD requires all code to be reviewed by a separate QA team before testing"
+      ],
+      "ans": 1,
+      "explain": "The defining characteristic of TDD is that the failing test is written before any production code. Traditional development writes code first and tests afterwards.",
+      "deep": "This sequence reversal has profound effects. Writing the test first forces the developer to fully understand what the code must do before writing a single line of it."
+    },
+    {
+      "cat": "what",
+      "diff": "easy",
+      "q": "Which Agile framework introduced the concept of test-first programming?",
+      "opts": [
+        "Scrum — as part of its sprint planning and estimation process",
+        "Kanban — as a flow-based approach to continuous quality improvement",
+        "eXtreme Programming (XP) — which introduced test-first programming in 1999",
+        "SAFe — as a scaled enterprise approach to quality assurance"
+      ],
+      "ans": 2,
+      "explain": "eXtreme Programming (XP) introduced the concept of test-first programming in 1999. XP is one of the most popular Agile frameworks alongside Scrum.",
+      "deep": "XP is the source of many modern development practices: TDD, pair programming, and continuous integration all originated there. Scrum adopted TDD as a complementary practice but did not invent it."
+    },
+    {
+      "cat": "what",
+      "diff": "easy",
+      "q": "In TDD, what role does writing the test first serve beyond just testing?",
+      "opts": [
+        "It speeds up the overall development process by reducing the amount of code that needs to be written",
+        "It acts as a form of requirements elicitation — forcing the developer to deeply understand the requirement before coding",
+        "It removes the need for a Product Owner to define acceptance criteria for each story",
+        "It automatically generates documentation that describes how the feature should behave"
+      ],
+      "ans": 1,
+      "explain": "Writing the test first is a powerful requirements elicitation technique. To write a meaningful test, the developer must understand exactly what the feature should do — including edge cases and error conditions.",
+      "deep": "This is why TDD improves software quality beyond just catching bugs. It forces clarity of thought about requirements before implementation begins — when changing the understanding is cheapest."
+    },
+    {
+      "cat": "what",
+      "diff": "easy",
+      "q": "In the traditional development approach, when are tests typically written relative to production code?",
+      "opts": [
+        "Before writing any production code, to specify the expected behaviour",
+        "Simultaneously with production code, in separate paired programming sessions",
+        "After all the production code has been written",
+        "Only when a bug is discovered and needs a regression test"
+      ],
+      "ans": 2,
+      "explain": "Traditional development writes tests after all production code is complete — a linear, sequential approach. TDD reverses this entirely.",
+      "deep": "Testing after coding creates several problems: tests are written to confirm code that already exists (not to drive design), bugs discovered late are expensive to fix, and developers may unconsciously write tests that pass rather than tests that are meaningful."
+    },
+    {
+      "cat": "what",
+      "diff": "med",
+      "q": "TDD is described as producing a \"specification\" as well as a test suite. What does this mean?",
+      "opts": [
+        "The test suite automatically generates formal requirements documents that stakeholders can sign off on",
+        "Each test precisely describes the expected behaviour of the code — together they form a living, executable specification of the system",
+        "The tests replace the need for user stories and acceptance criteria in the Product Backlog",
+        "The specification is a separate document produced alongside the tests for auditing purposes"
+      ],
+      "ans": 1,
+      "explain": "Each TDD test precisely describes one expected behaviour. Collectively, the test suite forms a living, executable specification — any developer can read the tests to understand exactly what the system does and is expected to do.",
+      "deep": "Unlike static documentation that goes stale, a TDD test suite stays current because failing tests indicate a mismatch between the specification and the implementation. The specification is always in sync with the code."
+    },
+    {
+      "cat": "what",
+      "diff": "med",
+      "q": "Why does TDD improve software design in addition to software quality?",
+      "opts": [
+        "TDD tools automatically refactor code to follow established design patterns",
+        "Writing testable code naturally forces low coupling and high cohesion — code that is hard to test is almost always poorly designed",
+        "The TDD process requires code reviews before tests can be run, which catches design problems early",
+        "TDD requires pair programming, and two developers always produce better-designed code than one"
+      ],
+      "ans": 1,
+      "explain": "Code that is hard to test in isolation is typically highly coupled or has unclear responsibilities. TDD forces developers to write code that can be tested independently — which is inherently better designed.",
+      "deep": "When a developer finds their code difficult to unit-test, that difficulty is a design smell. TDD converts this feedback into immediate design pressure — making good design a natural consequence rather than an afterthought."
+    },
+    {
+      "cat": "what",
+      "diff": "hard",
+      "q": "A developer writes tests after completing a feature and all tests pass immediately. How is this fundamentally different from TDD?",
+      "opts": [
+        "It is equivalent to TDD because the outcome is the same — all tests pass and the feature works correctly",
+        "Tests written after the fact confirm existing behaviour rather than driving design — they may unconsciously avoid testing edge cases the code already handles incorrectly",
+        "Post-implementation tests are only different in that they take slightly more time to write than TDD tests",
+        "The difference is purely philosophical — both approaches produce identical test suites and code quality"
+      ],
+      "ans": 1,
+      "explain": "Tests written after the fact are confirmation tests — they describe what the code does, not what it should do. They tend to miss edge cases where the developer's assumptions were wrong, because the code was already written with those assumptions baked in.",
+      "deep": "In TDD, a test that passes immediately (before writing new code) is a signal that the test is redundant or the feature already exists. Post-implementation testing eliminates this signal entirely — every test is expected to pass immediately."
+    },
+    {
+      "cat": "what",
+      "diff": "hard",
+      "q": "TDD is described as \"proactive QA\" rather than \"reactive QA.\" What is the practical difference for a development team?",
+      "opts": [
+        "Proactive QA means the QA team works during sprints; reactive QA means they work between sprints",
+        "Proactive QA prevents defects from entering the codebase at all; reactive QA finds and fixes defects after they have already been introduced",
+        "Proactive QA is automated; reactive QA relies on manual testing by dedicated QA engineers",
+        "Proactive QA is performed before sprint planning; reactive QA is performed after sprint delivery"
+      ],
+      "ans": 1,
+      "explain": "Proactive QA (TDD) prevents defects from entering the codebase in the first place. Reactive QA finds bugs after they have already been introduced — when they are significantly more expensive to fix.",
+      "deep": "Research shows that defects found and fixed during development cost 1x. Defects found in testing cost 10x. Defects found in production cost 100x. TDD shifts quality as far left as possible — to the moment of creation."
+    },
+    {
+      "cat": "steps",
+      "diff": "easy",
+      "q": "In the correct TDD sequence, what happens immediately after writing a new test?",
+      "opts": [
+        "Write the production code to implement the feature being tested",
+        "Run the tests to confirm the new test fails before writing any code",
+        "Refactor the existing codebase to prepare it for the new feature",
+        "Review the test with another team member to validate its accuracy"
+      ],
+      "ans": 1,
+      "explain": "After writing the new test, you run the tests to confirm the new test fails. This failure confirms the test is genuine and that the feature does not yet exist.",
+      "deep": "Skipping this step is a common TDD mistake. Without seeing the test fail first, you have no confirmation that the test actually checks the new behaviour rather than passing vacuously."
+    },
+    {
+      "cat": "steps",
+      "diff": "easy",
+      "q": "In Step 3 of TDD (Write code to make the failing test pass), how much code should be written?",
+      "opts": [
+        "The full, comprehensive implementation of the feature including all anticipated future requirements",
+        "The minimum code necessary to make the currently failing test pass — nothing more",
+        "A rough draft of the complete feature that can be polished during refactoring",
+        "Code that makes the current test pass and anticipates the next two tests to save time"
+      ],
+      "ans": 1,
+      "explain": "Step 3 requires only the minimum code needed to make the failing test pass. Writing more than this violates TDD discipline and adds untested complexity.",
+      "deep": "This constraint feels unnatural at first. Developers instinctively want to write \"complete\" solutions. TDD forces deliberate restraint — the completeness emerges through the accumulation of many small, tested steps rather than one large leap."
+    },
+    {
+      "cat": "steps",
+      "diff": "easy",
+      "q": "What is the purpose of Step 4 in TDD (Run all tests), rather than just running the new test alone?",
+      "opts": [
+        "Running all tests is faster than identifying and running only the new test in isolation",
+        "Running all tests confirms the new code passes the new test without breaking any previously passing tests",
+        "The TDD framework requires all tests to be run to calculate an overall quality score",
+        "Running all tests helps identify which tests are redundant and can be removed from the suite"
+      ],
+      "ans": 1,
+      "explain": "Running all tests (not just the new one) confirms the new code passes the new test AND has not introduced regressions — broken behaviour in previously working features.",
+      "deep": "Regressions are one of the most destructive problems in software development. A change that fixes one bug while silently breaking three others is not a fix. The full test suite is the only reliable way to detect regressions instantly."
+    },
+    {
+      "cat": "steps",
+      "diff": "easy",
+      "q": "What is the goal of the Refactor step (Step 5) in TDD?",
+      "opts": [
+        "To add new features that were not covered by the current test cycle",
+        "To clean up the code — remove duplication, improve structure, and improve readability — without changing behaviour",
+        "To rewrite the tests to more accurately reflect the implemented code",
+        "To performance-test the new code under realistic load conditions"
+      ],
+      "ans": 1,
+      "explain": "Refactoring means improving the code's internal quality — removing duplication, improving structure and naming, reorganising — without changing what it does externally. The tests confirm behaviour is preserved.",
+      "deep": "The tests are the safety net that makes refactoring safe. Without tests, every refactor is a risk. With a comprehensive test suite, refactoring becomes a confident, routine activity rather than a risky undertaking."
+    },
+    {
+      "cat": "steps",
+      "diff": "med",
+      "q": "Why is it acceptable — and even expected — that the code written in Step 3 is imperfect or messy?",
+      "opts": [
+        "Because imperfect code is easier to test and will be replaced in the next sprint anyway",
+        "Because Step 5 (Refactor) is specifically designed to improve the code once all tests are passing — getting the test to pass is the only objective of Step 3",
+        "Because TDD does not require high-quality code, only working code that passes tests",
+        "Because messy code is faster to write and reduces the time spent in each TDD cycle"
+      ],
+      "ans": 1,
+      "explain": "Step 3's sole objective is making the failing test pass. Quality comes in Step 5 (Refactor). Separating these concerns prevents developers from trying to write perfect code and valid tests simultaneously — which is cognitively overwhelming.",
+      "deep": "This separation of concerns is one of TDD's most elegant features. \"Make it work\" (Step 3) and \"make it clean\" (Step 5) are distinct mental modes. Trying to do both at once typically results in neither being done well."
+    },
+    {
+      "cat": "steps",
+      "diff": "med",
+      "q": "In Step 1 of TDD, the developer uses requirements specifications to write the test. Why does this make TDD a good requirements technique?",
+      "opts": [
+        "It forces the developer to read requirements documentation, which they might otherwise skip",
+        "Writing a precise, executable test forces the developer to fully understand the requirement — including normal and exception scenarios — before writing any implementation code",
+        "Requirements written as tests are automatically validated by the testing framework",
+        "The tests replace requirements documents, reducing the amount of documentation the team needs to maintain"
+      ],
+      "ans": 1,
+      "explain": "To write a meaningful failing test, the developer must understand exactly what the feature should do — both for normal and exceptional scenarios. This deep engagement with requirements catches ambiguities before coding begins.",
+      "deep": "Ambiguous requirements are one of the top causes of software defects. TDD surfaces ambiguity at the cheapest possible moment — before a single line of production code exists — when changing the understanding costs almost nothing."
+    },
+    {
+      "cat": "steps",
+      "diff": "med",
+      "q": "What signals that the TDD cycle should move from Step 3 to Step 4 (Run all tests)?",
+      "opts": [
+        "A code review by another developer confirms the implementation is correct and complete",
+        "The developer is satisfied that the code is well-written and follows the team's coding standards",
+        "The specific failing test that prompted Step 3 now passes when the test suite is run",
+        "A set amount of time has elapsed since Step 3 began, regardless of the test's status"
+      ],
+      "ans": 2,
+      "explain": "The move to Step 4 is triggered by the failing test from Step 1 now passing. Once the previously failing test passes, run the entire suite to check for regressions.",
+      "deep": "This concrete, binary signal is one of TDD's strengths. There is no ambiguity about when to move forward — either the test passes or it doesn't. The developer never needs to guess whether \"enough\" has been done."
+    },
+    {
+      "cat": "steps",
+      "diff": "hard",
+      "q": "A developer runs the test suite after Step 5 (Refactor) and finds one previously passing test now fails. What should they do?",
+      "opts": [
+        "Update the failing test to match the refactored code, since the new structure supersedes the old test",
+        "Continue to the next cycle — occasional test failures after refactoring are expected and acceptable",
+        "Undo the refactoring that caused the failure and refactor more carefully until all tests pass again",
+        "Escalate to the Scrum Master, who is responsible for resolving test failures in TDD teams"
+      ],
+      "ans": 2,
+      "explain": "A test failure after refactoring means the refactoring changed the code's behaviour — which is not acceptable. The refactoring must be undone or revised until all tests pass again.",
+      "deep": "This is exactly what the test suite is there for. Refactoring should only improve structure, not change behaviour. A failing test after refactoring is not a nuisance — it is the safety net working as designed."
+    },
+    {
+      "cat": "steps",
+      "diff": "hard",
+      "q": "Why does Step 2 (Run tests and see the new one fail) provide valuable information before any code is written?",
+      "opts": [
+        "It measures the current test suite execution time so that future performance can be compared",
+        "It confirms the new test is genuinely checking new behaviour rather than accidentally passing due to existing code or a mistake in the test",
+        "It identifies which existing tests are most likely to be affected by the upcoming code change",
+        "It allows the developer to estimate how long writing the production code will take"
+      ],
+      "ans": 1,
+      "explain": "If the new test passes before any new code is written, it reveals the test is either checking existing behaviour (making it redundant) or contains an error (making it useless). Seeing it fail first confirms it is genuine.",
+      "deep": "A test that passes without being driven by code is not a TDD test — it is a verification test. The red phase is not just a ceremony; it is quality control on the test itself."
+    },
+    {
+      "cat": "steps",
+      "diff": "hard",
+      "q": "A team practices TDD but skips the Refactor step (Step 5) to save time. What is the long-term consequence?",
+      "opts": [
+        "The test suite grows more slowly because refactoring generates additional test cases",
+        "The codebase accumulates technical debt — working but messy code that becomes progressively harder to extend, understand, and test",
+        "The development speed increases permanently because refactoring overhead is eliminated",
+        "Test coverage decreases because the tests written for unrefactored code cannot be reused"
+      ],
+      "ans": 1,
+      "explain": "Skipping refactoring accumulates technical debt. The minimum viable code written in Step 3 works but is not clean. Over many cycles, this creates a codebase that is increasingly difficult to work with.",
+      "deep": "TDD without refactoring is \"Red-Green\" without the third step. The test suite grows, but the underlying code becomes messy. Eventually, the messy code makes tests hard to write, which undermines the entire TDD practice."
+    },
+    {
+      "cat": "steps",
+      "diff": "hard",
+      "q": "In TDD, the code written in Step 3 should provide \"sufficient functionality to pass the test.\" What problem does this rule prevent?",
+      "opts": [
+        "It prevents developers from writing more tests than necessary for a given feature",
+        "It prevents over-engineering — adding complexity, abstractions, and features the current tests do not require or validate",
+        "It prevents the refactoring step from becoming too extensive and time-consuming",
+        "It prevents other developers from modifying code that has not yet been fully reviewed"
+      ],
+      "ans": 1,
+      "explain": "Writing only what is needed to pass the current test prevents over-engineering — adding premature abstractions, unnecessary flexibility, or features driven by guesswork rather than validated requirements.",
+      "deep": "YAGNI — \"You Ain't Gonna Need It\" — is the principle at work here. Code written for hypothetical future requirements is code that is not tested, not validated, and may need to be removed or rewritten when actual requirements emerge."
+    },
+    {
+      "cat": "steps",
+      "diff": "hard",
+      "q": "Why does Step 6 (Repeat) begin by adding a new test rather than adding new production code directly?",
+      "opts": [
+        "Writing production code first is always less efficient than writing tests first in the TDD cycle",
+        "The rule that production code can only exist in response to a failing test must be maintained for every single feature — repeating the cycle from a new failing test preserves this discipline",
+        "Tests written before code are automatically verified by the IDE, saving a separate test-running step",
+        "Starting with a new test allows the developer to plan the entire next feature before committing to any implementation approach"
+      ],
+      "ans": 1,
+      "explain": "TDD's first law — no production code without a failing test — applies to every new feature without exception. Starting each cycle with a new failing test maintains this discipline consistently.",
+      "deep": "Consistency is what makes TDD reliable. A team that \"mostly\" does TDD — testing first when it's convenient but writing code first when under pressure — loses the benefits. The discipline must be maintained in every cycle to preserve the accumulating safety net."
+    },
+    {
+      "cat": "laws",
+      "diff": "easy",
+      "q": "What does the First Law of TDD require before writing any production code?",
+      "opts": [
+        "A code review from another developer confirming the design is sound",
+        "A failing test must exist — no production code may be written before a test that will fail is in place",
+        "A user story with acceptance criteria must be approved by the Product Owner",
+        "An architectural diagram showing how the new code will integrate with the existing system"
+      ],
+      "ans": 1,
+      "explain": "The First Law: you must write a failing test before writing any production code. No exceptions — this is the foundational rule of TDD.",
+      "deep": "This law is the hardest to maintain under time pressure. Developers often feel \"this is simple, I don't need a test first.\" That feeling is precisely when the law is most important — simple code with no test still accumulates untested assumptions."
+    },
+    {
+      "cat": "laws",
+      "diff": "easy",
+      "q": "The Second Law of TDD says \"you must not write more of a test than is sufficient to fail.\" What does this mean in practice?",
+      "opts": [
+        "Tests must be limited to a maximum of five assertions to keep them focused and maintainable",
+        "Write just enough of the test to cause it to fail or fail to compile — then stop and write the production code that makes it pass",
+        "A test must only check one assertion at a time to ensure maximum precision in failure reporting",
+        "Each test file must contain fewer than 100 lines to keep the test suite manageable over time"
+      ],
+      "ans": 1,
+      "explain": "The Second Law means stop writing the test as soon as it fails or fails to compile. Do not write a complete, comprehensive test upfront. Write a tiny failing fragment, make it pass, then continue.",
+      "deep": "This law keeps TDD cycles very short — measured in minutes. Writing complete, comprehensive tests before any code creates long cycles with lots of failing code at once. Small failing tests → small amounts of code → fast feedback."
+    },
+    {
+      "cat": "laws",
+      "diff": "easy",
+      "q": "The Third Law of TDD states you must not write more production code than is sufficient to make the currently failing test pass. What principle does this enforce?",
+      "opts": [
+        "Production code must always be reviewed and approved before it can be merged into the codebase",
+        "Minimal, purposeful code — write only what the current failing test requires, leaving future code for future tests",
+        "Code quality standards must be met before a test can be considered passing",
+        "Production code written in a TDD cycle must never exceed fifty lines per function"
+      ],
+      "ans": 1,
+      "explain": "The Third Law enforces minimal, purposeful code. Each piece of production code is written specifically in response to a test requirement — preventing over-engineering and untested speculation.",
+      "deep": "Over time, the accumulation of many small, test-driven increments produces a codebase that is comprehensively tested by design — not because tests were added after the fact, but because every line of code was written to satisfy a test."
+    },
+    {
+      "cat": "laws",
+      "diff": "med",
+      "q": "How do the Three Laws of TDD work together to keep development cycles very short?",
+      "opts": [
+        "The laws establish time limits for each phase — Red must take under 2 minutes, Green under 5, Refactor under 10",
+        "Each law constrains one phase: Law 1 ensures a test exists first, Law 2 prevents writing too much test, Law 3 prevents writing too much code — together they force tiny increments",
+        "The laws require the team to hold a retrospective after every ten cycles to ensure adherence",
+        "The laws limit the number of features that can be worked on simultaneously, preventing context switching"
+      ],
+      "ans": 1,
+      "explain": "Law 1 ensures a tiny test exists before any code. Law 2 prevents writing more test than needed to fail. Law 3 prevents writing more code than needed to pass. Together, they enforce extremely small, fast cycles.",
+      "deep": "A TDD cycle governed by all three laws typically takes 1–5 minutes. Over a working day, a developer completes dozens of these cycles, each producing a small increment of working, tested, clean code."
+    },
+    {
+      "cat": "laws",
+      "diff": "med",
+      "q": "What happens when a developer violates the First Law by writing production code before a test?",
+      "opts": [
+        "The code automatically fails a CI/CD pipeline check that enforces TDD compliance",
+        "The code exists without test coverage — if it later breaks, there is no automatic detection, and the behaviour is undocumented",
+        "The code must be deleted and rewritten after a test is written, adding unnecessary extra work",
+        "The team's velocity decreases because untested code cannot be counted as complete in Scrum"
+      ],
+      "ans": 1,
+      "explain": "Code written without a test has no coverage. If it breaks later (due to a change elsewhere), nothing detects it automatically. The behaviour is also undocumented — future developers have no specification for what the code is supposed to do.",
+      "deep": "This is the invisible cost of violating Law 1. The code works now. But over time, as the system grows, uncovered code silently breaks and no one notices until a user reports a bug — which is the most expensive way to find it."
+    },
+    {
+      "cat": "laws",
+      "diff": "med",
+      "q": "Why does the Second Law say to stop writing the test as soon as it \"fails to compile,\" even before the test runs?",
+      "opts": [
+        "A compilation failure is treated as a test failure in TDD — it is sufficient signal to proceed to writing production code",
+        "Continuing to write a test that already can't compile wastes time and adds code that doesn't yet have a matching implementation",
+        "The TDD framework treats compilation and runtime errors as separate categories requiring different responses",
+        "Compilation failures indicate the test is too complex and should be simplified before proceeding"
+      ],
+      "ans": 0,
+      "explain": "In TDD, a compilation failure IS a test failure. The code references types, methods, or classes that don't exist yet. That is sufficient — stop writing the test and write the production code that makes it compile.",
+      "deep": "This is elegant: even a test that won't compile is driving production code. The developer must now write enough production code to make the test compile. Then they run it, watch it fail for the right reason, and write more code."
+    },
+    {
+      "cat": "laws",
+      "diff": "hard",
+      "q": "A developer obeys Laws 1 and 2 but violates Law 3 by writing a complete feature implementation in one go. What risk does this introduce?",
+      "opts": [
+        "The complete implementation will definitely fail all tests since more code was written than the test requires",
+        "The code beyond what the test requires is untested — it may contain bugs that no test will catch, and its design has not been shaped by test-driven feedback",
+        "The developer will need to delete the extra code and rewrite it incrementally in the next cycle",
+        "The test suite will grow too large to run efficiently, slowing down the entire development workflow"
+      ],
+      "ans": 1,
+      "explain": "Code beyond what the test requires is untested. It may contain bugs no test will catch, and its design was not shaped by the feedback that writing tests first provides. It also accumulates complexity without validation.",
+      "deep": "Each additional feature written without a corresponding test is a gamble. It may work correctly, or it may not. Without a test, there is no way to know — and no way to protect against it breaking in the future."
+    },
+    {
+      "cat": "laws",
+      "diff": "hard",
+      "q": "A developer strictly follows all Three Laws and finds themselves writing code one tiny step at a time. A colleague says this is too slow. How should this be understood?",
+      "opts": [
+        "The colleague is right — TDD's three laws are guidelines for beginners and experienced developers should take larger steps",
+        "The colleague is wrong — tiny steps with immediate verification are faster than large steps with delayed bug discovery, because debugging consumes far more time than the small steps save",
+        "The colleague is right — the laws should be relaxed for simple or familiar features to maintain development speed",
+        "The colleague is wrong — TDD laws are mandatory for all Agile teams regardless of experience level or project complexity"
+      ],
+      "ans": 1,
+      "explain": "TDD's tiny steps look slow but are faster overall. The time spent writing small, validated increments is far less than the time spent debugging large, untested chunks of code written quickly.",
+      "deep": "This is one of the most counterintuitive aspects of TDD. Going \"slowly\" in 5-minute cycles all day is faster than going \"quickly\" in 30-minute bursts followed by hours of debugging. The savings compound over the entire project."
+    },
+    {
+      "cat": "laws",
+      "diff": "hard",
+      "q": "The Three Laws enforce constraints on both test size and code size per cycle. What design benefit emerges from these constraints over time?",
+      "opts": [
+        "The constraints ensure all methods remain under a fixed line count, making code uniformly readable",
+        "The constraints naturally produce small, focused, single-responsibility units of code and test — because each production code unit was written to satisfy exactly one specific failing test",
+        "The constraints guarantee that the final codebase will have 100% test coverage across all branches",
+        "The constraints prevent any single developer from writing more code than another, ensuring equitable workload distribution"
+      ],
+      "ans": 1,
+      "explain": "When every unit of production code is written specifically to satisfy one failing test, the code naturally becomes small, focused, and single-responsibility — not by design rule enforcement, but as an emergent consequence of the process.",
+      "deep": "The Single Responsibility Principle is extremely difficult to enforce by review or convention. TDD enforces it automatically — code that tries to do too many things becomes very difficult to test, and TDD's constraints push back against that complexity immediately."
+    },
+    {
+      "cat": "laws",
+      "diff": "hard",
+      "q": "Why do the Three Laws require the developer to run the test suite frequently rather than batching all changes and running tests at the end?",
+      "opts": [
+        "Running tests frequently is a contractual requirement in most enterprise TDD implementations",
+        "Frequent test runs provide immediate feedback — when a test breaks, the developer knows exactly which small recent change caused it, making the fix trivial",
+        "Batching changes and running tests at the end requires a more powerful build server than most teams have",
+        "The testing framework tracks cycle counts and requires a minimum number of test runs per hour"
+      ],
+      "ans": 1,
+      "explain": "Frequent test runs provide immediate, precise feedback. When you run tests after every small change and one fails, you know exactly which change broke it. Batching changes means hunting through many changes to find the culprit.",
+      "deep": "The debugging principle: the longer the gap between writing code and discovering a bug, the harder the bug is to fix. TDD's frequent test runs minimise this gap to minutes, making debugging nearly trivial."
+    },
+    {
+      "cat": "rgr",
+      "diff": "easy",
+      "q": "In the Red-Green-Refactor cycle, what does the \"Red\" phase represent?",
+      "opts": [
+        "The code has a critical error that must be fixed before testing can proceed",
+        "A test has been written and run, and it fails because the feature does not yet exist",
+        "The refactoring step has introduced a regression into previously passing tests",
+        "The sprint is at risk because too many stories remain incomplete near the sprint deadline"
+      ],
+      "ans": 1,
+      "explain": "\"Red\" means a test has been written and run, and it fails — because the code to make it pass does not yet exist. Red is the expected, desired starting state of every TDD cycle.",
+      "deep": "The colour metaphor comes from test runners that display failing tests in red and passing tests in green. Seeing red is not a problem — it is a signal that real work is about to begin."
+    },
+    {
+      "cat": "rgr",
+      "diff": "easy",
+      "q": "What does \"Green\" mean in the Red-Green-Refactor cycle?",
+      "opts": [
+        "The code has been reviewed and approved by all team members",
+        "All tests in the suite are passing — the new code satisfies the failing test without breaking existing tests",
+        "The refactoring step is complete and the code is clean and production-ready",
+        "The sprint is on track and the team will complete all committed stories on time"
+      ],
+      "ans": 1,
+      "explain": "\"Green\" means all tests pass — the previously failing test now passes, and no existing tests have been broken by the new code.",
+      "deep": "Green is a checkpoint, not a destination. The code works but may still be messy. The Refactor phase takes the working Green code and makes it clean — preserving the green state throughout."
+    },
+    {
+      "cat": "rgr",
+      "diff": "easy",
+      "q": "What is the developer thinking about during the Refactor phase of Red-Green-Refactor?",
+      "opts": [
+        "How to add new features that the existing tests do not cover yet",
+        "How to improve the existing implementation — removing duplication, improving structure — while keeping all tests green",
+        "How to write the next failing test for the upcoming feature",
+        "How to optimise the test suite to run faster by removing redundant tests"
+      ],
+      "ans": 1,
+      "explain": "During Refactor, the developer improves the existing implementation — removing duplication, improving naming, simplifying structure — while ensuring all tests remain green.",
+      "deep": "The separation of \"make it work\" (Green) from \"make it clean\" (Refactor) is deliberate. Trying to write correct, clean code simultaneously is harder than doing each separately. Green first, clean second."
+    },
+    {
+      "cat": "rgr",
+      "diff": "med",
+      "q": "If a new test passes immediately in the Red phase (without writing any new code), what does this reveal?",
+      "opts": [
+        "The test was written correctly and the existing code already meets the new requirement",
+        "The test is either redundant (testing already existing behaviour) or contains an error that makes it pass trivially — it needs to be revised",
+        "The developer has exceptional skill and was able to write code and a test simultaneously",
+        "The testing framework has cached previous test results and is not re-running the new test"
+      ],
+      "ans": 1,
+      "explain": "A test that passes immediately before any new code is written is either redundant (the behaviour already exists) or contains an error making it pass regardless. Either way, it needs investigation.",
+      "deep": "A test that never fails is not a TDD test — it provides no useful information. The red phase is quality control on the test itself. A test must fail for the right reason before it has any value as a specification."
+    },
+    {
+      "cat": "rgr",
+      "diff": "med",
+      "q": "Why must previously written tests also be run before committing any code change in the Refactor phase?",
+      "opts": [
+        "Running previous tests is a compliance requirement to maintain test suite completeness metrics",
+        "Changes in one part of the codebase may unintentionally affect other parts — previous tests detect these regressions immediately",
+        "Previous tests verify that the refactoring has not changed the code structure in unexpected ways",
+        "Running all tests at commit time is a CI/CD pipeline requirement unrelated to TDD principles"
+      ],
+      "ans": 1,
+      "explain": "Code changes can have unintended side effects on other parts of the system. Running all previously written tests before committing ensures no regressions were introduced — even in seemingly unrelated code.",
+      "deep": "This is why a comprehensive test suite is described as a \"safety net.\" Its protection extends to every future change. The larger and more complete the test suite, the broader the safety net."
+    },
+    {
+      "cat": "rgr",
+      "diff": "med",
+      "q": "The Red-Green-Refactor cycle is described as a \"short development cycle.\" Approximately how long should a single cycle take?",
+      "opts": [
+        "One full sprint (1–2 weeks) — each cycle produces one complete user story",
+        "One full working day — each cycle produces one significant feature increment",
+        "Minutes — each cycle produces a tiny, tested, clean increment of functionality",
+        "One hour — each cycle produces a method or function ready for integration"
+      ],
+      "ans": 2,
+      "explain": "A single Red-Green-Refactor cycle should take minutes. Over a working day, a developer completes many cycles, each producing a tiny, verified, clean increment.",
+      "deep": "The short cycle time is the source of TDD's quality benefits. Bugs caught within minutes of being introduced cost almost nothing to fix. The same bug caught days later may require understanding large amounts of context to diagnose."
+    },
+    {
+      "cat": "rgr",
+      "diff": "med",
+      "q": "How does the Red-Green-Refactor framework map to the Three Laws of TDD?",
+      "opts": [
+        "Red corresponds to Law 3, Green to Law 1, and Refactor to Law 2",
+        "Red enforces Laws 1 and 2 (write a tiny failing test first), Green enforces Law 3 (write minimal code to pass), and Refactor is the quality improvement step beyond the laws",
+        "The framework and the laws are independent concepts that do not directly correspond to each other",
+        "Red corresponds to Law 2, Green to Law 3, and Refactor to Law 1 in that order"
+      ],
+      "ans": 1,
+      "explain": "Red = Laws 1 and 2 (write a tiny test first, stop as soon as it fails). Green = Law 3 (write just enough code to pass). Refactor = the quality improvement step that the laws enable.",
+      "deep": "The Three Laws define the constraints; Red-Green-Refactor is the mental model that makes those constraints actionable. They are two ways of describing the same discipline — one rule-based, one cycle-based."
+    },
+    {
+      "cat": "rgr",
+      "diff": "hard",
+      "q": "A test fails during refactoring. The developer argues the test is wrong because the new code structure is better. Should the test be updated?",
+      "opts": [
+        "Yes — if the new code structure is better, the tests should be updated to match it",
+        "No — refactoring must preserve behaviour, not change it. If a test fails, the refactoring changed the behaviour. Fix the code, not the test.",
+        "It depends on whether the change is a design improvement or a functional change",
+        "Yes — tests should evolve alongside the code structure to remain meaningful and relevant"
+      ],
+      "ans": 1,
+      "explain": "Refactoring must preserve behaviour. A failing test after refactoring means the refactoring changed what the code does — which is not refactoring, it is modification. The code must be fixed, not the test.",
+      "deep": "Updating tests to match broken refactoring is one of the most dangerous practices in TDD. It erodes the test suite's trustworthiness. Tests that are changed whenever they fail offer no protection at all."
+    },
+    {
+      "cat": "rgr",
+      "diff": "hard",
+      "q": "Why is the Refactor phase only safe to perform after reaching Green (all tests passing)?",
+      "opts": [
+        "Tests cannot be executed during refactoring because the code may be temporarily in an incomplete state",
+        "Refactoring while tests are failing means improving code whose behaviour is already broken — the tests cannot distinguish refactoring regressions from pre-existing failures",
+        "The refactoring tools in most IDEs are only available when all tests in the suite are passing",
+        "Refactoring before Green violates the Third Law of TDD and invalidates the current test cycle"
+      ],
+      "ans": 1,
+      "explain": "Refactoring while tests fail means working on broken code. If a refactoring introduces a new failure, you cannot distinguish it from the pre-existing failure. You need a clean Green baseline to detect refactoring regressions clearly.",
+      "deep": "This is why the sequence is fixed: Red → Green → Refactor, not Red → Refactor → Green. The green state is the stable, verified foundation from which safe refactoring can begin."
+    },
+    {
+      "cat": "rgr",
+      "diff": "hard",
+      "q": "What does the Red-Green-Refactor cycle prevent that writing code without TDD does not?",
+      "opts": [
+        "It prevents developers from writing code in programming languages the team has not approved",
+        "It prevents the separation of \"working\" code from \"clean\" code — ensuring code is both correct and well-structured in every cycle",
+        "It prevents large, unfocused work sessions that lack clear completion criteria",
+        "It prevents multiple developers from working on the same area of the codebase simultaneously"
+      ],
+      "ans": 2,
+      "explain": "The cycle prevents the common trap of stopping at \"working\" (Green) without cleaning (Refactor). It makes code quality a continuous, cycle-level discipline rather than a deferred task.",
+      "deep": "Without the Refactor step, working code accumulates technical debt sprint after sprint. With it, every increment of working code is also cleaned before the next cycle begins — preventing debt from building up at all."
+    },
+    {
+      "cat": "rgr",
+      "diff": "hard",
+      "q": "How does the Red-Green-Refactor cycle relate to the concept of \"sustainable pace\" in Agile?",
+      "opts": [
+        "The cycle enforces sprint time limits so teams cannot work more than their allocated sprint hours",
+        "The short cycles with built-in refactoring prevent technical debt accumulation — keeping the codebase in a state that remains fast and enjoyable to work with long-term",
+        "The cycle mandates rest periods between development sessions to maintain developer energy levels",
+        "The cycle prevents overtime by limiting each developer to a fixed number of cycles per day"
+      ],
+      "ans": 1,
+      "explain": "By preventing technical debt accumulation through continuous refactoring, TDD keeps the codebase maintainable. This sustains development velocity over time rather than seeing it degrade as the codebase becomes increasingly complex.",
+      "deep": "Teams without TDD often experience declining velocity as projects age — the codebase becomes harder to work with. Teams with rigorous TDD and refactoring often maintain or improve velocity because the codebase stays clean and manageable."
+    },
+    {
+      "cat": "rgr",
+      "diff": "hard",
+      "q": "A team completes the Red and Green phases perfectly but argues that Refactor is unnecessary because the code \"works.\" What is the long-term consequence?",
+      "opts": [
+        "No consequence — if the code works and all tests pass, quality is already proven",
+        "Gradual accumulation of working-but-messy code that becomes progressively harder to extend, test, and understand — ultimately slowing the team down significantly",
+        "The test suite will gradually become unable to detect regressions because un-refactored code is too complex to test",
+        "The Product Owner will reject stories that do not include refactoring in their Definition of Done"
+      ],
+      "ans": 1,
+      "explain": "Skipping refactoring leaves technical debt with every cycle. Each cycle's minimum viable code works but is not clean. Over many cycles, this creates a progressively worse codebase that is slow and risky to change.",
+      "deep": "\"It works\" is a dangerously low bar for production code. Code that works but is messy is code that will be difficult to understand, difficult to change, and difficult to test — accumulating drag on every future sprint."
+    },
+    {
+      "cat": "advantages",
+      "diff": "easy",
+      "q": "TDD is said to produce \"better software design\" through low coupling and high cohesion. What is low coupling?",
+      "opts": [
+        "Each component contains a small amount of code — under a defined maximum line count",
+        "Components depend on each other as little as possible — changes in one component do not cascade into unintended changes in many others",
+        "Components are connected through a central router that manages all inter-component communication",
+        "The number of developers working on each component is kept to a minimum to reduce coordination overhead"
+      ],
+      "ans": 1,
+      "explain": "Low coupling means components depend on each other as little as possible. Changes to one component do not ripple through many others. TDD enforces this because highly coupled code is very difficult to test in isolation.",
+      "deep": "The connection between testability and good design is direct: if you need to set up 12 other objects just to test one method, that method is too tightly coupled to the rest of the system."
+    },
+    {
+      "cat": "advantages",
+      "diff": "easy",
+      "q": "What does \"reduced defect density\" as an advantage of TDD mean in practice?",
+      "opts": [
+        "TDD reduces the number of lines of code written, which statistically means fewer opportunities for bugs",
+        "The test-first approach catches bugs at the moment they are introduced, preventing them from accumulating and reaching production",
+        "TDD automatically removes duplicate code, which is the most common source of software defects",
+        "The refactoring step repairs all bugs introduced during the Green phase before they can spread"
+      ],
+      "ans": 1,
+      "explain": "TDD catches bugs at the moment they are introduced — within minutes, while the code is fresh and the context is clear. This dramatically reduces the number of defects that accumulate and reach production.",
+      "deep": "Defect density (bugs per unit of code) decreases with TDD because every line of production code was written in response to a test. Code without a corresponding test is code without a specification — a natural source of defects."
+    },
+    {
+      "cat": "advantages",
+      "diff": "med",
+      "q": "Why does TDD lead to \"quicker delivery\" despite the additional time spent writing tests?",
+      "opts": [
+        "Tests run faster than manual QA processes, which reduces the overall time spent in quality checking",
+        "The time spent writing tests is recovered through dramatically reduced debugging, fewer regressions, and less time spent fixing production defects",
+        "TDD eliminates sprint planning and retrospective ceremonies, freeing more time for development",
+        "Tests written in TDD can be reused across projects, reducing the investment needed for future products"
+      ],
+      "ans": 1,
+      "explain": "Writing tests upfront costs time. But debugging, fixing regressions, and dealing with production defects costs far more. TDD's upfront investment is recovered many times over through reduced downstream problems.",
+      "deep": "This is one of TDD's most misunderstood aspects. Managers see tests as overhead. The reality is that debugging and rework are far more expensive. TDD trades cheap upfront test-writing for expensive late-stage debugging elimination."
+    },
+    {
+      "cat": "advantages",
+      "diff": "med",
+      "q": "TDD improves the client relationship. How does having a comprehensive test suite contribute to this?",
+      "opts": [
+        "Clients can read the tests directly to understand the system, removing the need for separate documentation",
+        "When all tests are green, the team can demonstrate working software with confidence rather than hoping nothing breaks during the demo",
+        "Clients can run the test suite themselves to independently verify the software meets their requirements",
+        "The test suite reduces client involvement in the Sprint Review because functionality is already verified"
+      ],
+      "ans": 1,
+      "explain": "A comprehensive green test suite gives the team confidence to demonstrate software publicly. Consistently reliable demonstrations build client trust far more effectively than software that occasionally breaks during reviews.",
+      "deep": "Nothing damages client trust faster than a live demo that fails. TDD reduces this risk significantly. When clients experience consistent, reliable software delivery sprint after sprint, they develop confidence in the team's ability to deliver."
+    },
+    {
+      "cat": "advantages",
+      "diff": "med",
+      "q": "What does \"increased developer productivity\" as a TDD advantage mean, given that TDD requires writing tests in addition to production code?",
+      "opts": [
+        "Developers write fewer lines of code because TDD enforces the minimum viable implementation",
+        "The immediate feedback from short cycles and the safety net of tests reduce time spent on debugging and investigation — which typically consumes far more time than writing tests",
+        "TDD removes the need for code reviews, freeing developers to work on more features per sprint",
+        "Pair programming, which is required alongside TDD, makes each developer effectively twice as productive"
+      ],
+      "ans": 1,
+      "explain": "Developers in non-TDD environments often spend 30–40% of their time debugging. TDD's immediate feedback and comprehensive test safety net dramatically reduces debugging time — producing a net productivity gain.",
+      "deep": "Studies of TDD-practicing teams consistently show a short-term productivity dip (learning curve + test writing overhead) followed by a sustained long-term productivity gain (reduced debugging, fewer regressions, easier refactoring)."
+    },
+    {
+      "cat": "advantages",
+      "diff": "hard",
+      "q": "TDD's test suite is described as a \"living specification.\" How does this benefit future developers joining the project?",
+      "opts": [
+        "New developers can automatically generate code from the test suite using modern IDE tools",
+        "New developers can read the tests to understand exactly what the system does and is expected to do — without needing to decipher code or ask colleagues",
+        "New developers are tested on their knowledge of the test suite during their onboarding assessment",
+        "The test suite generates documentation that new developers receive during their project introduction"
+      ],
+      "ans": 1,
+      "explain": "Each test describes one expected behaviour in executable form. New developers can read the test suite to understand the system's complete specification — and run it to verify their changes don't break existing behaviour.",
+      "deep": "Traditional codebases require new developers to spend weeks understanding \"how things work.\" A well-tested TDD codebase has its behaviours documented in tests that new developers can run, read, and learn from immediately."
+    },
+    {
+      "cat": "advantages",
+      "diff": "hard",
+      "q": "How does TDD's advantage of \"better code quality\" support the Agile goal of sustainable development pace over multiple sprints?",
+      "opts": [
+        "Better code quality reduces the time needed for sprint retrospectives because fewer process problems are discussed",
+        "Clean, well-structured code produced by continuous refactoring keeps the codebase easy to extend — preventing the velocity decline that typically occurs as poorly structured systems grow larger",
+        "Better code quality means the team can skip integration testing in later sprints, freeing capacity for new features",
+        "The test suite size grows proportionally with code quality, providing an automatic measure of development progress"
+      ],
+      "ans": 1,
+      "explain": "Clean code from continuous refactoring keeps the codebase extensible. Teams without this discipline see velocity decline sprint over sprint as the codebase becomes more complex and harder to change. TDD prevents this accumulation.",
+      "deep": "The relationship between code quality and velocity is real but delayed. Bad code doesn't slow Sprint 1. It slows Sprint 10, Sprint 20. By then, the team may not connect the cause (poor code quality from early sprints) with the effect (declining velocity)."
+    },
+    {
+      "cat": "advantages",
+      "diff": "hard",
+      "q": "TDD is said to make refactoring safe. Why is this advantage particularly significant in an Agile context?",
+      "opts": [
+        "Agile projects have mandatory refactoring sprints where all code is cleaned between feature sprints",
+        "Agile's iterative nature means requirements change frequently — TDD's tests allow the codebase to be safely restructured to accommodate new requirements without fear of breaking existing functionality",
+        "Agile teams have smaller codebases than Waterfall teams, making refactoring easier regardless of test coverage",
+        "TDD makes refactoring safe specifically because Agile sprints are short and refactoring can be completed within a single cycle"
+      ],
+      "ans": 1,
+      "explain": "In Agile, requirements change every sprint. The codebase must evolve to accommodate these changes. TDD's test suite allows developers to refactor confidently — restructuring the code to fit new requirements without breaking existing features.",
+      "deep": "In Waterfall, the codebase is designed once and not expected to change. In Agile, the codebase must be continuously restructured. Without tests, this restructuring is risky. With tests, it is safe — and therefore actually happens rather than being deferred indefinitely."
+    },
+    {
+      "cat": "testtypes",
+      "diff": "easy",
+      "q": "What is the difference between a positive test and a negative test in TDD?",
+      "opts": [
+        "Positive tests verify the happy path where inputs are valid and outcomes are expected; negative tests verify error handling and exception scenarios",
+        "Positive tests are written by the developer; negative tests are written by a dedicated QA engineer",
+        "Positive tests are run before refactoring; negative tests are run after refactoring to confirm quality",
+        "Positive tests use real data; negative tests use synthetic or mocked test data"
+      ],
+      "ans": 0,
+      "explain": "Positive tests verify the happy path — valid inputs producing expected outputs. Negative tests verify exception and error cases — what happens when something goes wrong, input is invalid, or a boundary is exceeded.",
+      "deep": "Both are essential. A system tested only on happy paths will fail when real users encounter edge cases, invalid inputs, or network failures. Negative tests are where many production bugs hide."
+    },
+    {
+      "cat": "testtypes",
+      "diff": "easy",
+      "q": "What are the two primary sources of test cases in TDD?",
+      "opts": [
+        "Code complexity metrics and the developer's personal experience with similar features",
+        "Requirements (what the feature should and should not do) and errors (defects reported by testers and users)",
+        "Automated static analysis tools and competitor product feature comparisons",
+        "Sprint velocity data and story point estimates from previous similar stories"
+      ],
+      "ans": 1,
+      "explain": "Test cases come from two sources: requirements (what the feature should and should not do) and errors (bugs and failures reported by testers and users that should not recur).",
+      "deep": "Requirements drive prospective tests — testing what should work. Errors drive retrospective tests — ensuring past failures can never recur. Together, they produce a comprehensive test suite that covers both expected and discovered behaviour."
+    },
+    {
+      "cat": "testtypes",
+      "diff": "med",
+      "q": "When a bug reported by a user is fixed, what TDD practice should accompany the fix?",
+      "opts": [
+        "The existing test suite should be reviewed to identify which test should have caught the bug",
+        "A regression test should be written for the specific bug before fixing it, ensuring the bug can never silently recur",
+        "The bug should be added to the Product Backlog as a story for the next sprint rather than fixed immediately",
+        "The developer who introduced the bug should write an additional 10 tests as a quality improvement measure"
+      ],
+      "ans": 1,
+      "explain": "When fixing a bug, write a regression test that specifically tests for that bug before fixing it. This test will fail (confirming the bug exists), then pass after the fix (confirming it's fixed), and will prevent the bug from ever silently recurring.",
+      "deep": "This practice converts past failures into permanent protection. Every bug that has ever occurred in the system now has a test preventing its recurrence. The test suite grows stronger with every bug found and fixed."
+    },
+    {
+      "cat": "testtypes",
+      "diff": "med",
+      "q": "A test may \"not even compile in the beginning\" according to the lecture. Why is this acceptable in TDD?",
+      "opts": [
+        "It is not acceptable — tests must always compile before they can be written into the test suite",
+        "A compilation failure is itself a failing test — it signals that the types, methods, or classes being tested don't yet exist and must be created",
+        "Non-compiling tests are stored in a separate pending queue until the production code is ready for them",
+        "TDD tools automatically generate stub code to make tests compile before the developer writes the implementation"
+      ],
+      "ans": 1,
+      "explain": "In TDD, a compilation failure IS a form of test failure. The test references something that doesn't exist yet — that's sufficient. Write enough production code to make it compile, then run it and watch it fail, then make it pass.",
+      "deep": "This is an important nuance. Many developers think a test must compile and run before it is a \"real\" test. In TDD, a test that won't compile is already driving development — you must create the types and methods it references."
+    },
+    {
+      "cat": "testtypes",
+      "diff": "hard",
+      "q": "Requirements specify both what a feature \"should\" and \"should not\" do. How does the \"should not\" part translate into test cases?",
+      "opts": [
+        "\"Should not\" requirements are excluded from TDD because tests can only verify positive behaviour",
+        "\"Should not\" requirements become negative tests that verify the system rejects invalid inputs, prevents unauthorised actions, and handles edge cases gracefully",
+        "\"Should not\" requirements are captured in comments within the production code rather than in tests",
+        "\"Should not\" requirements become acceptance criteria that are verified manually by the Product Owner"
+      ],
+      "ans": 1,
+      "explain": "\"Should not\" requirements become negative tests. \"The system should not allow a negative price\" becomes a test that submits a negative price and verifies the system rejects it with an appropriate error.",
+      "deep": "Security, validation, and error handling are almost entirely composed of \"should not\" behaviours. These are consistently undertested in non-TDD systems because developers focus on making features work rather than making them fail correctly."
+    },
+    {
+      "cat": "testtypes",
+      "diff": "hard",
+      "q": "User stories and acceptance criteria from the Product Backlog map directly to TDD test cases. How does this connect Scrum and TDD?",
+      "opts": [
+        "Each sprint must contain exactly the same number of TDD tests as user stories to maintain the correct ratio",
+        "Acceptance criteria are the natural source of TDD tests — each criterion describes an expected behaviour that can be directly expressed as a failing test to drive implementation",
+        "Scrum and TDD are independent practices and connecting them requires a formal integration framework",
+        "User stories are too high-level to map to TDD tests — they must be broken into tasks before tests can be written"
+      ],
+      "ans": 1,
+      "explain": "Each acceptance criterion describes an expected behaviour that can be directly expressed as a TDD test. This connects the team's sprint commitment (user stories) to their implementation approach (TDD cycles).",
+      "deep": "This connection is powerful. The acceptance criteria the Product Owner writes become the tests the developer writes first. When all those tests pass, the story's acceptance criteria are met by definition — creating a direct, verifiable line between business requirement and working code."
+    },
+    {
+      "cat": "testtypes",
+      "diff": "hard",
+      "q": "A user story has five acceptance criteria. How many positive and negative tests might a thorough TDD approach produce for this story?",
+      "opts": [
+        "Exactly five tests — one test per acceptance criterion, all positive",
+        "Exactly ten tests — one positive and one negative test per acceptance criterion",
+        "Many more than five — each criterion generates at least one positive test, plus additional negative tests for boundary conditions, error cases, and invalid inputs",
+        "The number of tests is irrelevant in TDD — what matters is that all acceptance criteria map to at least one test"
+      ],
+      "ans": 2,
+      "explain": "Each acceptance criterion generates at least one positive test, but also multiple negative tests for invalid inputs, boundary conditions, and error cases. A story with five criteria might produce 15–20 tests.",
+      "deep": "The depth of testing reflects the completeness of understanding. A developer who writes only positive tests has not fully thought through the story. Negative tests reveal the edge cases where requirements are often unclear or unstated."
+    },
+    {
+      "cat": "testtypes",
+      "diff": "hard",
+      "q": "Why should test cases derived from past errors be treated as permanent additions to the test suite rather than temporary fixes?",
+      "opts": [
+        "Permanent tests are required by most development frameworks to satisfy their minimum coverage requirements",
+        "Bugs tend to recur if only fixed in the code without a test — the underlying conditions that caused them often reappear as the system evolves",
+        "Temporary tests are removed during the refactoring phase, creating gaps in coverage that lead to new bugs",
+        "Permanent tests prevent the Product Owner from re-opening the same bug in future sprints"
+      ],
+      "ans": 1,
+      "explain": "Bugs recur. The conditions that caused a bug often reappear as the system evolves — through refactoring, new features, or dependency changes. A permanent test ensures the system cannot regress to a previously fixed state.",
+      "deep": "This is why experienced developers say \"every bug is a missing test.\" Not just missing from before the bug was found — missing permanently. A bug fixed without a test is a bug that will likely reappear. A bug fixed with a test is closed forever."
+    },
+    {
+      "cat": "limits",
+      "diff": "easy",
+      "q": "What type of testing does TDD struggle with most, according to the lecture?",
+      "opts": [
+        "Unit testing of individual functions with well-defined inputs and outputs",
+        "Full functional tests of user interfaces, database-dependent code, and network-dependent programs",
+        "Integration testing between services that share a common API contract",
+        "Performance and load testing under realistic concurrent user conditions"
+      ],
+      "ans": 1,
+      "explain": "TDD struggles with full functional tests — user interfaces, database-dependent programs, and network-dependent code — because these require external systems that are difficult to isolate and control in unit tests.",
+      "deep": "This is why TDD is not a complete testing strategy. It excels at unit and component testing. Integration testing, end-to-end testing, and UI testing require complementary strategies such as integration test suites, mock frameworks, and dedicated UI testing tools."
+    },
+    {
+      "cat": "limits",
+      "diff": "easy",
+      "q": "What are \"blind spots\" in the context of TDD limitations?",
+      "opts": [
+        "Sections of code that test coverage tools cannot analyse due to compiler optimisations",
+        "Requirements that the developer misunderstands or ignores — these will be absent from both the tests and the production code",
+        "Test cases that pass correctly but do not test the most critical system behaviours",
+        "Areas of the codebase where refactoring cannot be safely applied due to complex dependencies"
+      ],
+      "ans": 1,
+      "explain": "Blind spots in TDD occur when the developer misunderstands or ignores requirements. Since the same person writes both the tests and the code, incorrect assumptions affect both — the tests cannot catch what the developer never knew to test for.",
+      "deep": "This is why TDD does not replace code review, pair programming, or stakeholder feedback. A developer who has completely misunderstood a requirement will write tests that pass and code that does the wrong thing — both perfectly consistently."
+    },
+    {
+      "cat": "limits",
+      "diff": "med",
+      "q": "Why do \"badly written tests become a maintenance overhead\" — a limitation of TDD?",
+      "opts": [
+        "Poor tests run slowly, increasing the time the team waits for test suite feedback during development",
+        "Fragile, redundant, or poorly structured tests fail unnecessarily on minor code changes — slowing down development and discouraging refactoring",
+        "Bad tests use more memory and computing resources, causing build server capacity problems",
+        "Poorly written tests cannot be read by static analysis tools, reducing the codebase's measurable quality metrics"
+      ],
+      "ans": 1,
+      "explain": "Fragile tests fail on every minor code change, even when the behaviour is correct. This creates a maintenance burden — the team spends time fixing tests rather than developing features, and may start distrusting or ignoring the test suite.",
+      "deep": "A test suite that the team distrusts is worse than no test suite — it creates false confidence and wastes time. Writing good tests is a skill that requires as much care and craft as writing good production code."
+    },
+    {
+      "cat": "limits",
+      "diff": "med",
+      "q": "TDD does not perform well for programs that depend on specific network configurations. Why?",
+      "opts": [
+        "Network-dependent code changes too frequently for tests to remain valid across sprints",
+        "Unit tests cannot replicate the full complexity of real network environments — tests may pass in isolation but fail in deployment due to network-specific conditions",
+        "Network configuration is managed by operations teams who are outside the Scrum process",
+        "TDD testing frameworks do not include network simulation tools as part of their standard libraries"
+      ],
+      "ans": 1,
+      "explain": "Network-dependent code requires real network conditions to test meaningfully. Unit tests cannot fully replicate network latency, packet loss, connection failures, or infrastructure-specific behaviour — making TDD insufficient on its own.",
+      "deep": "This is addressed with integration and environment testing that complements TDD. Mocking frameworks can simulate some network behaviour, but truly network-dependent features require testing in environments that mirror production."
+    },
+    {
+      "cat": "limits",
+      "diff": "hard",
+      "q": "TDD's blind spot limitation means a developer's misunderstanding affects both tests and code. What practice best mitigates this specific limitation?",
+      "opts": [
+        "Writing more tests per feature to increase the probability of catching misunderstood requirements",
+        "Having someone other than the developer who wrote the code review both the tests and the acceptance criteria to catch misaligned assumptions",
+        "Running the tests in a separate environment to ensure they don't pass due to local machine configuration",
+        "Using automated code generation tools to produce tests from acceptance criteria without developer interpretation"
+      ],
+      "ans": 1,
+      "explain": "Code review that compares tests against acceptance criteria by someone other than the original developer is the best mitigation. A fresh perspective can identify where the developer's assumptions diverge from the actual requirement.",
+      "deep": "Pair programming addresses this too — a second developer writing tests alongside the first catches misunderstandings in real time. The key is having someone with different assumptions review the relationship between requirements and tests."
+    },
+    {
+      "cat": "limits",
+      "diff": "hard",
+      "q": "TDD struggles with UI testing. What is the fundamental reason for this limitation?",
+      "opts": [
+        "UI frameworks do not support the TDD lifecycle because they were designed before TDD was widely adopted",
+        "UIs involve rendering, layout, and user interaction that are inherently visual and stateful — making them difficult to express as precise, isolated unit tests",
+        "UI tests are too slow to run within a TDD cycle, breaking the discipline of short feedback loops",
+        "UI testing requires specialised hardware that most development teams do not have available"
+      ],
+      "ans": 1,
+      "explain": "UIs are visual, stateful, and interaction-driven. Expressing \"does this button look correctly positioned after this animation?\" as a unit test is fundamentally difficult. Full functional tests are often needed — which TDD alone cannot provide.",
+      "deep": "Modern UI testing tools (e.g. Selenium, Cypress, Playwright) address this partially. But they operate at a different level than TDD unit tests — they are slower, more brittle, and harder to maintain. A mixed strategy (TDD for logic + UI tests for interaction) is the typical solution."
+    },
+    {
+      "cat": "limits",
+      "diff": "hard",
+      "q": "Given TDD's limitations with UI, database, and network testing, how should a team position TDD within their overall quality strategy?",
+      "opts": [
+        "TDD should replace all other testing strategies to avoid confusion about which type of test to write",
+        "TDD is most effective as a unit and component testing discipline, complemented by integration tests, end-to-end tests, and UI tests that address the areas TDD cannot cover",
+        "TDD should only be used for the back-end and business logic, with all UI and integration code being manually tested",
+        "TDD limitations mean it should only be adopted by teams with dedicated QA engineers who can cover the gaps"
+      ],
+      "ans": 1,
+      "explain": "TDD works best as a unit and component testing discipline. It should be complemented by integration tests (component interactions), end-to-end tests (full system flows), and UI tests — each addressing the gaps TDD cannot cover.",
+      "deep": "The testing pyramid: many fast unit tests (TDD's domain) at the base, fewer integration tests in the middle, and a small number of slow end-to-end tests at the top. TDD fills the base comprehensively; other strategies cover the rest."
+    }
+  ]
 }

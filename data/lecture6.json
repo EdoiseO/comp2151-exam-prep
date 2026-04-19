@@ -1,8 +1,931 @@
 {
   "id": "lecture6",
   "title": "Lecture 6",
-  "subtitle": "Coming Soon",
-  "description": "Add Lecture 6 questions in this file when the content is ready.",
-  "categories": [],
-  "questions": []
+  "subtitle": "Design Patterns: Singleton, Adapter, MVC",
+  "description": "64 deep Q&A questions on design patterns, Singleton, Adapter, and MVC architecture.",
+  "categories": [
+    {
+      "key": "all",
+      "label": "All 64",
+      "cls": "c0"
+    },
+    {
+      "key": "overview",
+      "label": "Overview",
+      "cls": "c1"
+    },
+    {
+      "key": "singleton",
+      "label": "Singleton",
+      "cls": "c2"
+    },
+    {
+      "key": "adapter",
+      "label": "Adapter",
+      "cls": "c3"
+    },
+    {
+      "key": "mvc",
+      "label": "MVC",
+      "cls": "c4"
+    }
+  ],
+  "questions": [
+    {
+      "cat": "overview",
+      "diff": "easy",
+      "q": "What is a software design pattern?",
+      "opts": [
+        "A specific algorithm that solves a known computational problem in the most efficient way",
+        "A proven, reusable solution to a commonly occurring problem within a given context in software design",
+        "A mandatory coding standard that all developers on a team must follow for consistency",
+        "A testing strategy that ensures code quality by defining expected inputs and outputs"
+      ],
+      "ans": 1,
+      "explain": "A design pattern is a proven, reusable solution to a commonly occurring problem within a given context. Patterns are templates — not finished code — that can be adapted to many situations.",
+      "deep": "Patterns are discovered, not invented. They emerge from observing what experienced developers repeatedly do when facing the same class of problem, then formalising and naming those solutions."
+    },
+    {
+      "cat": "overview",
+      "diff": "easy",
+      "q": "The GoF classification groups design patterns into three categories. What are they?",
+      "opts": [
+        "Simple, Moderate, and Complex — ranked by implementation difficulty",
+        "Frontend, Backend, and Database — categorised by the system layer they apply to",
+        "Creational, Structural, and Behavioural — categorised by the type of problem they solve",
+        "Class-level, Object-level, and System-level — categorised by their scope of application"
+      ],
+      "ans": 2,
+      "explain": "The GoF classification defines three categories: Creational (how objects are created), Structural (how classes and objects are composed), and Behavioural (how objects communicate and collaborate).",
+      "deep": "This lecture covers: Singleton (Creational), Adapter (Structural), and MVC (Architectural — a higher-level pattern beyond the original GoF classification applied to overall system design)."
+    },
+    {
+      "cat": "overview",
+      "diff": "easy",
+      "q": "What does a Creational design pattern specifically address?",
+      "opts": [
+        "How objects communicate and delegate responsibility to one another at runtime",
+        "How classes and objects are composed to form larger, more complex structures",
+        "How objects are created — controlling the instantiation process so the system does not depend on how objects are made",
+        "How the overall application architecture is divided into separate functional layers"
+      ],
+      "ans": 2,
+      "explain": "Creational patterns address how objects are created. They control the instantiation process so the rest of the system does not depend on specific creation details.",
+      "deep": "Without Creational patterns, code that creates objects is scattered throughout the system — creating tight coupling. Centralising object creation makes the system more flexible and testable."
+    },
+    {
+      "cat": "overview",
+      "diff": "easy",
+      "q": "What does a Structural design pattern specifically address?",
+      "opts": [
+        "How objects are created and initialised when a system first starts up",
+        "How classes and objects are composed and organised into larger structures",
+        "How responsibilities are distributed among objects during runtime interactions",
+        "How the system adapts to changing requirements between software releases"
+      ],
+      "ans": 1,
+      "explain": "Structural patterns address how classes and objects are composed into larger structures — organising relationships to achieve new functionality without changing existing classes.",
+      "deep": "The Adapter is a classic Structural pattern: it organises the relationship between an existing class (Adaptee) and a new interface (ITarget) without modifying either one."
+    },
+    {
+      "cat": "overview",
+      "diff": "med",
+      "q": "Why do design patterns give developers a \"shared vocabulary,\" and why does this matter for team productivity?",
+      "opts": [
+        "Pattern names are required by most enterprise development standards and documentation frameworks",
+        "Saying a pattern name instantly communicates a complete design decision — reducing the need to explain the full structure and intent every time",
+        "Shared vocabulary is required by the Scrum Guidance Body for technical discussions in Sprint Planning",
+        "Pattern names are used by automated code generation tools to produce standard implementations"
+      ],
+      "ans": 1,
+      "explain": "Pattern names carry a complete design decision. Saying \"use a Singleton here\" instantly communicates intent, structure, and trade-offs — saving the time of explaining the full solution from scratch.",
+      "deep": "This shared vocabulary is especially valuable in code reviews and pair programming. When team members share a pattern vocabulary, design discussions become faster, more precise, and less ambiguous."
+    },
+    {
+      "cat": "overview",
+      "diff": "med",
+      "q": "How do design patterns relate to the TDD practice introduced in Lecture 5?",
+      "opts": [
+        "Design patterns replace TDD because well-patterned code does not require unit tests",
+        "Well-patterned code tends to be loosely coupled and focused in responsibility — properties that make it much easier to test in isolation using TDD",
+        "TDD automatically identifies which design pattern should be applied to each failing test",
+        "Design patterns and TDD are independent practices that operate at different levels and do not interact"
+      ],
+      "ans": 1,
+      "explain": "Design patterns produce loosely coupled, cohesive code — the exact qualities TDD requires to test components in isolation. Patterns and TDD reinforce each other.",
+      "deep": "Code that is difficult to unit-test is often poorly designed. Design patterns guide developers toward designs that are naturally testable — making TDD easier and more effective when used together."
+    },
+    {
+      "cat": "overview",
+      "diff": "hard",
+      "q": "Design patterns are described as \"discovered, not invented.\" What does this distinction mean?",
+      "opts": [
+        "Patterns are found in nature and directly translate mathematical structures into software solutions",
+        "Patterns are formalised observations of solutions experienced developers repeatedly use — they existed in practice before being named and documented",
+        "Patterns can only be identified by algorithm analysis tools, not by human observation of codebases",
+        "Patterns must be discovered in open-source projects and validated by the community before being formally named"
+      ],
+      "ans": 1,
+      "explain": "Patterns are formalised observations of what experienced developers repeatedly do when facing the same class of problem. They existed in practice before being named — the naming made implicit knowledge explicit.",
+      "deep": "This is important because it means pattern knowledge is grounded in real-world experience, not theoretical invention. Each pattern represents a solution that has been proven effective across many real projects."
+    },
+    {
+      "cat": "overview",
+      "diff": "hard",
+      "q": "Why are design patterns more valuable in Agile projects than in Waterfall projects?",
+      "opts": [
+        "Waterfall projects use different programming languages that do not support design pattern implementation",
+        "Agile projects require frequent code changes as requirements evolve — patterns produce loosely coupled, maintainable code that accommodates change far more easily than ad-hoc designs",
+        "Design patterns are a recent invention and were not available when Waterfall was the dominant methodology",
+        "Waterfall projects are larger and too complex for design patterns to be applied consistently"
+      ],
+      "ans": 1,
+      "explain": "Agile requires code to evolve sprint after sprint as requirements change. Patterns produce loosely coupled, maintainable structures that absorb change gracefully — a critical quality in iterative development.",
+      "deep": "In Waterfall, the design is fixed upfront. In Agile, the design must evolve. Patterns provide stable, well-understood structures that can be safely combined, extended, and refactored as the product grows."
+    },
+    {
+      "cat": "singleton",
+      "diff": "easy",
+      "q": "What is the intent of the Singleton design pattern?",
+      "opts": [
+        "Allow a class to create as many instances as needed for parallel processing tasks",
+        "Ensure a class has only one instance and provide a global point of access to it",
+        "Prevent a class from being inherited so that its implementation cannot be changed",
+        "Allow multiple instances of a class but restrict access to only one at a time"
+      ],
+      "ans": 1,
+      "explain": "The Singleton pattern's intent is to ensure a class has exactly one instance and to provide a global point of access to that instance.",
+      "deep": "Both parts of the intent are important. \"Only one instance\" is the constraint. \"Global point of access\" is the mechanism — a well-known location where any part of the system can retrieve the instance."
+    },
+    {
+      "cat": "singleton",
+      "diff": "easy",
+      "q": "What is the purpose of making the constructor private in a Singleton class?",
+      "opts": [
+        "Private constructors improve performance by reducing the overhead of object instantiation",
+        "It prevents external code from creating new instances using the new keyword — only the class itself can create its own instance",
+        "Private constructors ensure the Singleton can only be used within the same package or namespace",
+        "It allows the Singleton to be serialised and deserialised across network boundaries safely"
+      ],
+      "ans": 1,
+      "explain": "Making the constructor private prevents any external code from calling new Singleton(). Only the class itself can create an instance — enforcing the single-instance constraint.",
+      "deep": "This is the key enforcement mechanism. Without a private constructor, any code anywhere could call new Singleton() and create additional instances, destroying the guarantee that only one exists."
+    },
+    {
+      "cat": "singleton",
+      "diff": "easy",
+      "q": "What is \"lazy initialisation\" in the context of Singleton, and why is it used?",
+      "opts": [
+        "The instance is created at program startup so it is always ready when first needed",
+        "The instance is created only when first requested — the \"if null, create\" check ensures it is not created until actually needed",
+        "The instance is destroyed and recreated each time it is accessed to ensure fresh state",
+        "The class delays its constructor logic to a background thread to avoid blocking the main thread"
+      ],
+      "ans": 1,
+      "explain": "Lazy initialisation creates the instance only when first requested, not at startup. The check \"if (instance == null) { create it }\" ensures the instance is only created once and only when needed.",
+      "deep": "Lazy initialisation avoids the cost of creating the Singleton if it is never actually needed. For expensive resources (database connections, file systems), this can meaningfully reduce startup time and resource consumption."
+    },
+    {
+      "cat": "singleton",
+      "diff": "easy",
+      "q": "The static field holding the Singleton instance is declared private. What does \"static\" mean in this context?",
+      "opts": [
+        "The field is immutable — once set, its value can never be changed by any code",
+        "The field belongs to the class itself rather than to any particular object instance — there is exactly one copy shared across the whole program",
+        "The field can only be accessed by methods that are also declared static in the same class",
+        "The field is stored in a separate memory area that is faster to access than regular instance fields"
+      ],
+      "ans": 1,
+      "explain": "Static means the field belongs to the class, not to any individual instance. There is exactly one copy of a static field, shared across the entire program — which is how the single Singleton reference is maintained.",
+      "deep": "The combination of private + static is essential. Private means only the class can access it. Static means there is one shared copy. Together, they provide a controlled, class-owned storage location for the one permitted instance."
+    },
+    {
+      "cat": "singleton",
+      "diff": "med",
+      "q": "When two different parts of a program call Singleton.Instance, what do they receive?",
+      "opts": [
+        "Two different objects with the same configuration but independent state",
+        "The exact same object — the single instance created on the first call and returned on every subsequent call",
+        "A copy of the original object created specifically for each caller to avoid concurrency issues",
+        "The most recently created object, which replaces the previous one if the system has been restarted"
+      ],
+      "ans": 1,
+      "explain": "Both callers receive the exact same object. The first call creates the instance and stores it in the static field. Every subsequent call returns the already-stored instance.",
+      "deep": "This is the fundamental guarantee of Singleton. Because both callers share the same object, any state changes one caller makes are immediately visible to the other — which is both the power and the risk of the pattern."
+    },
+    {
+      "cat": "singleton",
+      "diff": "med",
+      "q": "The Singleton pattern is said to \"reduce namespace pollution.\" What does this mean?",
+      "opts": [
+        "The pattern reduces the number of files in a project by consolidating related classes",
+        "It avoids the need for global variables to hold the single instance — the pattern manages its own reference internally through the static field",
+        "The pattern prevents developers from giving variables names that conflict with system keywords",
+        "It reduces the number of public methods exposed by a class, making the API cleaner"
+      ],
+      "ans": 1,
+      "explain": "Without Singleton, a developer might use a global variable to store the single instance. Singleton internalises this within the class itself, eliminating the need for externally visible global variables.",
+      "deep": "Global variables are widely considered poor practice — they create hidden dependencies and make code hard to test. Singleton provides the \"globally accessible single instance\" benefit without the drawbacks of a raw global variable."
+    },
+    {
+      "cat": "singleton",
+      "diff": "med",
+      "q": "Which of the following is the most appropriate real-world use case for the Singleton pattern?",
+      "opts": [
+        "A class representing a customer order, where thousands of orders may exist simultaneously",
+        "A class representing a database connection pool that should be shared across the entire application",
+        "A class representing a product in an e-commerce system, where each product has unique properties",
+        "A class representing a user account, where each user has their own independent session state"
+      ],
+      "ans": 1,
+      "explain": "A database connection pool is a classic Singleton use case — there should be exactly one pool shared across the application. Having multiple pools would waste resources and cause inconsistent connection management.",
+      "deep": "Other classic Singletons: logging systems, configuration managers, thread pools, caches, and window managers. The common trait: there is one shared resource that multiple parts of the system need to access consistently."
+    },
+    {
+      "cat": "singleton",
+      "diff": "med",
+      "q": "The Singleton pattern states that its sole instance is \"extensible by sub-classing.\" What benefit does this provide?",
+      "opts": [
+        "It allows the Singleton to create multiple instances of itself when subclasses are needed",
+        "Clients can use an extended (subclassed) version of the Singleton without modifying their code — they access it through the same global access point",
+        "Subclassing the Singleton removes the single-instance constraint, allowing more flexible use",
+        "Extension by sub-classing automatically creates a new instance each time the subclass is accessed"
+      ],
+      "ans": 1,
+      "explain": "The Singleton can be extended through sub-classing, and clients can use the extended version dynamically without any modification to their code — they still use the same Instance accessor.",
+      "deep": "This means the Singleton pattern does not prevent evolution. You can specialise the Singleton for different environments (e.g. a TestConfigurationManager that extends ConfigurationManager) without changing any client code."
+    },
+    {
+      "cat": "singleton",
+      "diff": "hard",
+      "q": "A class has its constructor set to public and maintains a counter of how many instances have been created. This is NOT a Singleton. What specific Singleton mechanism is missing?",
+      "opts": [
+        "The class is missing a static field to count the number of instances created so far",
+        "The class has a public constructor — Singleton requires a private constructor to prevent external instantiation",
+        "The class does not implement a recognised interface, which is required for Singleton registration",
+        "The class lacks a Dispose method to clean up resources when the single instance is no longer needed"
+      ],
+      "ans": 1,
+      "explain": "The public constructor allows any code to call new ClassName() — creating additional instances. A Singleton requires a private constructor to enforce that only the class itself can create an instance.",
+      "deep": "A class that counts instances and refuses to create more than one through logic is a partial solution — but it can still be subverted by reflection or other mechanisms. A private constructor is the only reliable enforcement."
+    },
+    {
+      "cat": "singleton",
+      "diff": "hard",
+      "q": "Two threads simultaneously call Singleton.Instance for the first time. Both check \"instance == null\" simultaneously and both find it null. What problem occurs, and what does it reveal about the basic Singleton implementation?",
+      "opts": [
+        "Both threads receive null and neither can proceed — the application deadlocks until one thread yields",
+        "Both threads create a new instance — the basic lazy-initialisation Singleton is not thread-safe without additional synchronisation",
+        "The second thread automatically waits for the first to complete because static fields are thread-safe by default",
+        "The first thread's instance is returned to both callers because the JVM or CLR resolves the race condition automatically"
+      ],
+      "ans": 1,
+      "explain": "The basic lazy-initialisation Singleton is not thread-safe. Two threads can simultaneously pass the null check and both create instances — violating the single-instance guarantee. Thread-safe Singletons require locking or double-checked locking.",
+      "deep": "This is the most important Singleton limitation for real systems. In multithreaded environments (virtually all modern applications), the basic implementation needs a thread-safety mechanism such as lock(syncRoot) or static initialisation."
+    },
+    {
+      "cat": "singleton",
+      "diff": "hard",
+      "q": "The Singleton pattern provides \"a global point of access.\" Why is this both a benefit and a potential design concern?",
+      "opts": [
+        "Global access is always desirable because it reduces the number of parameters methods need to accept",
+        "Global access enables convenient sharing but creates hidden dependencies — any code anywhere can access and potentially modify the Singleton's state, making the system harder to test and reason about",
+        "Global access is a benefit in Singleton but not in other patterns because the instance is read-only by design",
+        "Global access is a concern only in distributed systems where network latency affects Singleton performance"
+      ],
+      "ans": 1,
+      "explain": "Global access is convenient but creates hidden dependencies. Any component can access the Singleton without declaring the dependency, making code harder to test (the Singleton cannot easily be replaced with a mock) and harder to reason about.",
+      "deep": "This is why Singleton is sometimes called an anti-pattern in modern design. For testing, Dependency Injection (passing the instance explicitly) is often preferred — it makes dependencies visible and replaceable."
+    },
+    {
+      "cat": "singleton",
+      "diff": "hard",
+      "q": "A developer argues that using a global variable is simpler than implementing a Singleton. Why does the Singleton pattern still provide advantages over a plain global variable?",
+      "opts": [
+        "Singletons are faster to access than global variables because they use static memory rather than heap allocation",
+        "Singleton encapsulates the creation logic, enforces the single-instance constraint, supports lazy initialisation, and is extensible — none of which plain global variables provide",
+        "Global variables are not supported in modern object-oriented languages, making Singleton the only viable alternative",
+        "Singletons automatically handle concurrency through built-in thread synchronisation that global variables lack"
+      ],
+      "ans": 1,
+      "explain": "Singleton encapsulates creation (controlled through private constructor), enforces the constraint (only one instance possible), supports lazy initialisation, and can be extended via subclassing — advantages plain global variables do not offer.",
+      "deep": "A global variable is just a storage location with no enforcement, no controlled creation, and no encapsulation. Singleton adds all of these around the same concept of \"one shared instance globally accessible.\""
+    },
+    {
+      "cat": "singleton",
+      "diff": "easy",
+      "q": "What happens on the very first call to Singleton.Instance in a lazy-initialisation implementation?",
+      "opts": [
+        "The existing instance is returned from a pre-populated instance pool",
+        "The null check fails and an exception is thrown until the instance is manually initialised",
+        "The null check passes, a new instance is created and stored in the static field, and that instance is returned",
+        "The constructor is called but the instance is not stored — it is recreated on every call"
+      ],
+      "ans": 2,
+      "explain": "On the first call, instance is null, so the new instance is created and assigned to the static field. From this point on, every call returns the already-stored instance.",
+      "deep": "After the first call, the null check in all subsequent calls evaluates to false immediately — returning the stored instance without creating anything new. The creation happens exactly once across the entire program lifetime."
+    },
+    {
+      "cat": "singleton",
+      "diff": "med",
+      "q": "Why would a file system manager be a poor design choice to implement as a non-Singleton class?",
+      "opts": [
+        "File system managers are too complex to benefit from the single-instance constraint",
+        "Having multiple file system manager instances could lead to conflicting file locks, inconsistent state, and duplicated resource consumption",
+        "Non-Singleton file managers would run too slowly because they cannot cache file metadata effectively",
+        "Operating systems prevent multiple file system managers from existing simultaneously at the hardware level"
+      ],
+      "ans": 1,
+      "explain": "Multiple file system manager instances could create conflicting locks on the same files, inconsistent views of file state, and wasteful duplication of resources like directory caches.",
+      "deep": "The file system is a shared resource with exclusive access requirements. Two managers competing to manage the same files would create race conditions and corruption. A single coordinating instance is the only safe design."
+    },
+    {
+      "cat": "singleton",
+      "diff": "hard",
+      "q": "A Singleton stores application configuration that is loaded once at startup. A developer wants to write a unit test that uses different configuration values. What is the fundamental testing challenge?",
+      "opts": [
+        "Unit tests cannot access static fields, making it impossible to verify the Singleton's configuration values",
+        "Because the Singleton is globally shared and its state persists between tests, one test's configuration can bleed into another, producing unreliable results",
+        "The private constructor prevents test frameworks from creating test-specific subclasses of the Singleton",
+        "Unit tests run in a separate thread that cannot access the Singleton's instance without synchronisation locks"
+      ],
+      "ans": 1,
+      "explain": "Singleton state persists across tests because it is globally shared. If Test A sets a configuration value and Test B runs next, it may inherit Test A's configuration rather than starting fresh — making tests order-dependent and unreliable.",
+      "deep": "This is the core testing problem with Singletons. It is why modern testing advice often recommends Dependency Injection instead — so each test can inject its own isolated instance. Testing the Singleton usually requires a reset mechanism."
+    },
+    {
+      "cat": "singleton",
+      "diff": "med",
+      "q": "The Singleton's public accessor is both static and public. What does this combination achieve?",
+      "opts": [
+        "Static ensures the accessor runs on a separate thread; public ensures it is safely accessible from multiple classes",
+        "Static means it belongs to the class and can be called without creating an object; public means any code in the system can call it — together they implement the \"global access point\"",
+        "Static prevents garbage collection of the instance; public allows the garbage collector to clean up when needed",
+        "Static makes the accessor available only within the same assembly; public extends this to external code"
+      ],
+      "ans": 1,
+      "explain": "Static means you call it on the class itself (Singleton.Instance) without needing to create an object first. Public means any code anywhere can call it. Together they create the globally accessible single-instance access point.",
+      "deep": "This is why Singleton.Instance is the correct calling pattern rather than creating an object to call the accessor on. The class IS the access point, not any particular instance of it."
+    },
+    {
+      "cat": "singleton",
+      "diff": "easy",
+      "q": "Which of the following best describes when NOT to use the Singleton pattern?",
+      "opts": [
+        "When the system needs to run on multiple threads simultaneously",
+        "When a class represents a shared resource that must be globally unique, like a configuration manager",
+        "When you need many independent instances of a class, each with their own separate state",
+        "When the system must work across multiple servers in a distributed environment"
+      ],
+      "ans": 2,
+      "explain": "Singleton is inappropriate when many independent instances are needed — such as customer objects, product records, or user accounts where each instance has its own unique, independent state.",
+      "deep": "The decision criterion is simple: does having more than one instance cause a problem? If yes (file system, config manager), use Singleton. If no (customer, order, product), do not — using Singleton would incorrectly prevent natural instantiation."
+    },
+    {
+      "cat": "singleton",
+      "diff": "hard",
+      "q": "A Singleton in a web application serves thousands of simultaneous HTTP requests. What design consideration becomes critical that does not arise in single-threaded desktop applications?",
+      "opts": [
+        "The Singleton's memory footprint must be kept small to avoid exhausting server RAM across thousands of concurrent users",
+        "The Singleton must be designed to handle concurrent access safely — multiple threads reading or modifying shared state simultaneously can cause race conditions and data corruption",
+        "The Singleton must implement serialisation to maintain state across server restarts and load balancer failovers",
+        "The Singleton must use lazy initialisation to ensure it is not created before the web framework has fully initialised"
+      ],
+      "ans": 1,
+      "explain": "In a multithreaded web environment, thousands of threads may simultaneously read or modify the Singleton's state. Without proper synchronisation, race conditions can corrupt the shared state.",
+      "deep": "Thread safety is the dominant real-world concern for Singletons in production systems. Immutable Singletons (read-only state) are naturally thread-safe. Mutable Singletons require careful locking or concurrent data structures."
+    },
+    {
+      "cat": "adapter",
+      "diff": "easy",
+      "q": "What is the core problem that the Adapter pattern solves?",
+      "opts": [
+        "A class has too many methods and needs to be simplified into a smaller, more focused interface",
+        "Two classes that need to work together have incompatible interfaces — one class cannot call the other without modification",
+        "An application needs to create many instances of a class but wants to control the creation process centrally",
+        "A class needs to notify many other objects when its state changes without knowing who is listening"
+      ],
+      "ans": 1,
+      "explain": "The Adapter pattern solves the problem of incompatible interfaces. It allows an existing class (Adaptee) to work with code that expects a different interface (ITarget), without modifying either.",
+      "deep": "Interface incompatibility is extremely common when integrating third-party libraries, legacy systems, or vendor code. The Adapter is the standard solution — translate, don't modify."
+    },
+    {
+      "cat": "adapter",
+      "diff": "easy",
+      "q": "The Adapter pattern is modelled on a real-world electrical adapter. What is the analogy?",
+      "opts": [
+        "Your device (Client) has one type of plug, the wall socket (Adaptee) has a different type, and the adapter translates between them without modifying either the device or the socket",
+        "Your device needs more power than the socket provides, and the adapter steps up the voltage to the required level",
+        "The adapter prevents electrical surges by regulating the current before it reaches the device",
+        "Multiple devices can share one socket through the adapter, just as multiple clients can share one Adaptee"
+      ],
+      "ans": 0,
+      "explain": "The electrical adapter analogy: your device (Client) has a specific plug shape, the socket (Adaptee) has a different shape, and the adapter lets them connect without modifying either. The Adapter pattern works exactly the same way.",
+      "deep": "This analogy is perfect because it emphasises the key constraint: neither the device nor the socket is modified. The adapter is a new, intermediate piece that bridges the incompatibility."
+    },
+    {
+      "cat": "adapter",
+      "diff": "easy",
+      "q": "In the Adapter pattern, what is the role of the ITarget interface?",
+      "opts": [
+        "ITarget is the legacy class whose interface is incompatible with the rest of the system",
+        "ITarget is the interface the Client uses — it defines the methods the Client knows how to call",
+        "ITarget is the Adapter class that translates between the Client and the Adaptee",
+        "ITarget is a configuration class that maps the Client's method calls to the Adaptee's methods"
+      ],
+      "ans": 1,
+      "explain": "ITarget is the interface the Client uses to achieve its functionality. The Client is programmed to ITarget — it calls ITarget's methods without knowing whether it is talking to an Adapter or a native implementation.",
+      "deep": "Programming to an interface (ITarget) rather than a concrete class is what makes the Adapter pattern work. The Client never needs to change — it always talks to ITarget, regardless of what is on the other side."
+    },
+    {
+      "cat": "adapter",
+      "diff": "easy",
+      "q": "In the Adapter pattern, what is the Adaptee?",
+      "opts": [
+        "The new class being written to replace the legacy system with modern code",
+        "The client code that wants to use the existing functionality but cannot due to interface mismatch",
+        "The existing class with incompatible interface that contains the functionality the Client actually needs",
+        "The interface that both the Client and the existing class must implement to communicate"
+      ],
+      "ans": 2,
+      "explain": "The Adaptee is the existing class that has the desired functionality but with an interface incompatible with what the Client expects. It cannot be modified — the Adapter wraps it instead.",
+      "deep": "The Adaptee is often a third-party library, legacy code, or off-the-shelf component that the team cannot or should not modify. The Adapter provides the translation layer so the Client can use it as-is."
+    },
+    {
+      "cat": "adapter",
+      "diff": "med",
+      "q": "In the Adapter pattern, the Client never directly references the Adaptee class. Why is this important?",
+      "opts": [
+        "Direct references to the Adaptee would make the code run slower due to additional method call overhead",
+        "Keeping the Client isolated from the Adaptee means the Adaptee can be replaced or updated without the Client ever needing to change",
+        "Direct Adaptee references are prevented by the programming language's access control mechanisms",
+        "The Client cannot reference the Adaptee because they are in separate packages with no shared dependencies"
+      ],
+      "ans": 1,
+      "explain": "The Client's isolation from the Adaptee means the Adaptee can be swapped, updated, or replaced with a different implementation entirely — without the Client knowing or needing to change.",
+      "deep": "This is the open/closed principle in action: the system is open for extension (new Adaptees can be introduced) but closed for modification (the Client never changes). The interface layer is the key."
+    },
+    {
+      "cat": "adapter",
+      "diff": "med",
+      "q": "A team has existing code that connects to Database A. They want to switch to Database B, which has a completely different API. Which approach uses the Adapter pattern correctly?",
+      "opts": [
+        "Rewrite all code that currently uses Database A to directly call Database B's API instead",
+        "Create an Adapter that implements the existing database interface but internally calls Database B's API — allowing all existing code to continue unchanged",
+        "Create a new version of every class that uses the database, replacing Database A calls with Database B calls throughout",
+        "Add conditional logic to every database call that checks which database is configured and calls the appropriate API"
+      ],
+      "ans": 1,
+      "explain": "The Adapter implements the existing database interface (ITarget) but internally calls Database B's API. All existing code continues to use the familiar interface without any modification.",
+      "deep": "This is the Adapter pattern's most valuable real-world application. Legacy integration, vendor switching, and API migration can all be handled by adding a new Adapter — without touching any existing client code."
+    },
+    {
+      "cat": "adapter",
+      "diff": "med",
+      "q": "The lecture describes adapting programs for \"evolving input/output\" as a key use case. Why is I/O particularly suited to the Adapter pattern?",
+      "opts": [
+        "I/O operations are inherently slow, and the Adapter pattern adds a performance optimisation layer that buffers them",
+        "I/O interfaces change frequently — new hardware, new protocols, new formats — and the Adapter lets existing code continue working by translating to new interfaces",
+        "The Adapter pattern is the only way to handle asynchronous I/O operations in object-oriented languages",
+        "I/O code is always third-party and cannot be modified, making the Adapter the only available integration approach"
+      ],
+      "ans": 1,
+      "explain": "I/O interfaces evolve constantly — new hardware, protocols, and formats appear regularly. The Adapter lets existing code remain unchanged while new Adapters provide compatibility with new I/O interfaces.",
+      "deep": "The lecture example: programs written in the 1980s have very different I/O models from those written in the 2000s. Adapting those old systems to new hardware through Adapters is far more cost-effective than full rewrites."
+    },
+    {
+      "cat": "adapter",
+      "diff": "med",
+      "q": "The Adapter class in the pattern both \"implements ITarget\" and \"contains a reference to Adaptee.\" Why are both of these necessary?",
+      "opts": [
+        "Implementing ITarget makes the Adapter visible to the Client; containing the Adaptee allows it to forward calls to the desired functionality",
+        "Implementing ITarget gives the Adapter access to the Client's private methods; the Adaptee reference allows state synchronisation between them",
+        "Both are required by the programming language compiler when creating wrapper classes in object-oriented systems",
+        "Implementing ITarget allows the Adapter to override the Adaptee's methods; the reference provides a fallback if the override fails"
+      ],
+      "ans": 0,
+      "explain": "Implementing ITarget makes the Adapter look like ITarget to the Client — the Client can use it. Containing an Adaptee reference lets the Adapter forward calls to the actual functionality.",
+      "deep": "The Adapter is a bridge with two ends: the ITarget end faces the Client (who calls it), and the Adaptee end faces the legacy/incompatible code (which does the work). Both connections are necessary."
+    },
+    {
+      "cat": "adapter",
+      "diff": "hard",
+      "q": "A team decides to directly modify a third-party library's source code to make it compatible with their system rather than using an Adapter. What risks does this approach create?",
+      "opts": [
+        "Modified third-party code will run slower because the optimisations applied by the vendor are removed",
+        "When the library is updated by the vendor, the team's custom modifications will be overwritten — breaking the integration and requiring the modifications to be reapplied repeatedly",
+        "Modifying third-party source code is illegal in most jurisdictions and violates software licensing agreements",
+        "The modified library will conflict with other libraries in the project that depend on the original unmodified version"
+      ],
+      "ans": 1,
+      "explain": "Modifying the vendor's code means every library update overwrites the custom modifications — breaking the integration and requiring manual reapplication each time, forever.",
+      "deep": "This is exactly the problem the Adapter solves. The Adapter wraps the library without modifying it. When the library updates, the Adapter may need small adjustments but the Client code never changes at all."
+    },
+    {
+      "cat": "adapter",
+      "diff": "hard",
+      "q": "In the online shopping portal example, why is VendorAdapter implemented as a separate class rather than having ShoppingPortalClient directly instantiate VendorAdaptee?",
+      "opts": [
+        "VendorAdaptee is in a different namespace that ShoppingPortalClient cannot access directly",
+        "Using VendorAdapter keeps the Client programmed to the stable ITarget interface — if the vendor changes their API, only VendorAdapter needs updating, not ShoppingPortalClient",
+        "Direct instantiation of VendorAdaptee would create multiple instances, violating a Singleton constraint on the vendor's inventory system",
+        "The programming language prevents a class from instantiating another class that is not in the same inheritance hierarchy"
+      ],
+      "ans": 1,
+      "explain": "ShoppingPortalClient is programmed to the stable ITarget interface. If VendorAdaptee's API changes, only VendorAdapter needs updating — ShoppingPortalClient is completely isolated from those changes.",
+      "deep": "This is the open/closed principle: ShoppingPortalClient is closed for modification even when the vendor changes their API. Only the small, focused VendorAdapter changes. All other code remains untouched."
+    },
+    {
+      "cat": "adapter",
+      "diff": "hard",
+      "q": "How does the Adapter pattern relate to the principle of \"programming to an interface, not an implementation\"?",
+      "opts": [
+        "The Adapter pattern replaces all interfaces with abstract classes to provide more flexible extension",
+        "The Client programs to ITarget (an interface) — never knowing whether ITarget is implemented by a native class or an Adapter wrapping incompatible code",
+        "The Adapter pattern requires the Adaptee to implement ITarget, forcing legacy code to comply with modern interface standards",
+        "Programming to interfaces is the alternative approach to using Adapters — teams choose one or the other"
+      ],
+      "ans": 1,
+      "explain": "The Client programs to ITarget — it calls ITarget's methods without knowing what is on the other side. This could be a native implementation or an Adapter wrapping completely incompatible legacy code. The Client never knows or cares.",
+      "deep": "This is one of the most important principles in object-oriented design. The Adapter pattern is a concrete example of how programming to interfaces enables flexibility: the implementation (Adapter vs native) can change without affecting the Client."
+    },
+    {
+      "cat": "adapter",
+      "diff": "easy",
+      "q": "What is the main difference between the Adapter pattern and simply rewriting the Adaptee to have the correct interface?",
+      "opts": [
+        "Adapters are faster to implement because they reuse existing code instead of writing new code from scratch",
+        "The Adapter preserves the Adaptee unchanged — rewriting would require modifying, re-testing, and potentially breaking existing code that already depends on the Adaptee",
+        "Adapters are required by software licenses that prohibit modifications to third-party code",
+        "Rewriting the Adaptee is always technically impossible because of how modern compilers manage class interfaces"
+      ],
+      "ans": 1,
+      "explain": "The Adapter preserves the Adaptee exactly as it is. Rewriting the Adaptee could break other code that currently depends on it, requires re-testing, and is impossible if the code is third-party.",
+      "deep": "This is the \"don't modify existing working code\" principle. If the Adaptee works correctly and is tested, changing it introduces new risk. Adding an Adapter adds new code without touching the working system."
+    },
+    {
+      "cat": "adapter",
+      "diff": "med",
+      "q": "A system uses ITarget to call GetProducts(). Over time, three different Adaptees are needed for three different vendor APIs. How does the Adapter pattern handle this growth?",
+      "opts": [
+        "A single Adapter is updated each time to support a new vendor API, accumulating all translation logic",
+        "A new concrete Adapter class is created for each vendor — each implements ITarget and wraps its specific vendor API",
+        "ITarget must be updated to include each vendor's specific methods as new vendors are integrated",
+        "The Client must be updated for each new vendor to specify which Adapter to use at runtime"
+      ],
+      "ans": 1,
+      "explain": "A separate concrete Adapter is created for each vendor — VendorAAdapter, VendorBAdapter, VendorCAdapter — each implementing ITarget. The Client continues using ITarget without any modification.",
+      "deep": "This is the extensibility benefit. Adding a new vendor means adding one new Adapter class. Zero existing code changes. The system is open for extension (new Adapters) but closed for modification (existing code untouched)."
+    },
+    {
+      "cat": "adapter",
+      "diff": "easy",
+      "q": "What does the Adapter class do with the call it receives from the Client?",
+      "opts": [
+        "It stores the call in a queue and processes it asynchronously to improve performance",
+        "It translates the call from the Client's expected interface (ITarget) into the call the Adaptee actually provides, then returns the result back to the Client",
+        "It validates the call against a schema and rejects it if the parameters are not in the expected format",
+        "It broadcasts the call to multiple Adaptees simultaneously and returns the first successful response"
+      ],
+      "ans": 1,
+      "explain": "The Adapter receives a call in the Client's language (ITarget method), translates it into the Adaptee's language (the actual method the Adaptee exposes), calls the Adaptee, and returns the result.",
+      "deep": "The translation is typically trivial — often just a method name difference or a parameter format difference. But this simple layer completely decouples the Client from the Adaptee, providing enormous flexibility."
+    },
+    {
+      "cat": "adapter",
+      "diff": "hard",
+      "q": "The Adapter pattern is classified as a Structural pattern. What does this classification tell us about how it solves its problem?",
+      "opts": [
+        "It solves the problem by controlling how objects are created and initialised at runtime",
+        "It solves the problem by organising the relationship and composition between classes — adding a new structural layer (the Adapter) that bridges incompatible interfaces",
+        "It solves the problem by defining communication protocols between objects during their interaction at runtime",
+        "It solves the problem by partitioning the application into separate architectural layers with defined interaction rules"
+      ],
+      "ans": 1,
+      "explain": "Structural patterns solve problems through class and object composition. The Adapter adds a new structural layer that organises the relationship between Client, ITarget, and Adaptee — bridging what was incompatible.",
+      "deep": "The structural classification distinguishes the Adapter from Creational patterns (which control instantiation) and Behavioural patterns (which control runtime communication). The Adapter's solution is structural: a new class that organises an existing relationship."
+    },
+    {
+      "cat": "adapter",
+      "diff": "med",
+      "q": "Legacy code from 20 years ago uses a character-based interface for displaying data. New code expects an object-oriented display interface. Which pattern solves this without rewriting the legacy code?",
+      "opts": [
+        "Singleton — ensuring only one display manager exists throughout the application",
+        "Adapter — wrapping the legacy character-based interface with the new object-oriented display interface",
+        "MVC — separating the legacy display code (View) from the new data processing code (Model)",
+        "Facade — creating a simplified interface that hides the complexity of both old and new display systems"
+      ],
+      "ans": 1,
+      "explain": "The Adapter wraps the legacy character-based display system with the new object-oriented interface — allowing modern code to use the legacy system without rewriting it.",
+      "deep": "This is exactly the I/O evolution use case from the lecture. Programs written in different eras have different interface styles. The Adapter bridges the gap, preserving working legacy code while enabling integration with modern systems."
+    },
+    {
+      "cat": "adapter",
+      "diff": "hard",
+      "q": "A developer argues that ITarget is unnecessary — the Client should directly call a method on the Adapter without an interface. What design quality is lost without ITarget?",
+      "opts": [
+        "Without ITarget, the Adapter cannot use polymorphism to delegate calls to the correct Adaptee implementation",
+        "Without ITarget, the Client is directly coupled to VendorAdapter — replacing the adapter with a different implementation requires modifying the Client",
+        "Without ITarget, the Adapter cannot implement the translation logic required to bridge the incompatible interfaces",
+        "Without ITarget, the Adaptee cannot receive calls from the Adapter because there is no shared type system connection"
+      ],
+      "ans": 1,
+      "explain": "Without ITarget, the Client couples directly to the specific Adapter class. Replacing the Adapter (e.g. switching vendors) means modifying the Client. ITarget is what gives the Client its independence.",
+      "deep": "Removing the interface collapses the pattern from \"Client → ITarget ← Adapter → Adaptee\" to \"Client → Adapter → Adaptee.\" The Client loses its isolation and must change whenever the Adapter implementation changes."
+    },
+    {
+      "cat": "adapter",
+      "diff": "easy",
+      "q": "Why is the Adapter pattern described as connecting \"contemporary software to legacy code\"?",
+      "opts": [
+        "New software can only call older code through an adapter because modern runtimes cannot directly execute legacy binaries",
+        "Legacy code often has interfaces designed for older requirements that no longer match modern system expectations — the Adapter bridges this gap without rewriting the legacy code",
+        "The Adapter pattern was specifically created for migration projects where old systems are being phased out",
+        "Contemporary software uses design patterns while legacy code does not — the Adapter translates between the two paradigms"
+      ],
+      "ans": 1,
+      "explain": "Legacy code was written for older requirements with older interface conventions. Modern code expects different interfaces. The Adapter bridges this incompatibility without touching the legacy code.",
+      "deep": "This is enormously valuable in enterprise software where legacy systems may contain decades of business logic that would be risky and expensive to rewrite. The Adapter lets that investment continue working alongside modern systems."
+    },
+    {
+      "cat": "adapter",
+      "diff": "med",
+      "q": "After implementing the Adapter pattern, a bug is found in the Adaptee (the third-party vendor code). Where is the fix applied, and what does this tell us about the pattern's isolation?",
+      "opts": [
+        "The fix is applied in ITarget because that is the interface defining the contract that was violated",
+        "The fix is applied directly to the Adaptee — and because the Adapter insulates the Client from the Adaptee, the Client code remains completely unchanged",
+        "The fix is applied in the Adapter class which translates the Adaptee's incorrect output into the correct result",
+        "The fix must be applied in both the Adaptee and the Adapter simultaneously to ensure the translation remains accurate"
+      ],
+      "ans": 1,
+      "explain": "Bugs in the Adaptee are fixed in the Adaptee itself (or handled in the Adapter if the Adaptee cannot be changed). Either way, the Client code is completely isolated and requires no modification.",
+      "deep": "This is the isolation benefit in practice. When the Adaptee changes (for any reason — bug fix, vendor update, API version change), the change is absorbed at the Adapter boundary. The Client sees none of it."
+    },
+    {
+      "cat": "mvc",
+      "diff": "easy",
+      "q": "MVC divides an application into three components. What are they?",
+      "opts": [
+        "Manager, Viewer, and Connector",
+        "Module, Validator, and Cache",
+        "Model, View, and Controller",
+        "Master, Version, and Container"
+      ],
+      "ans": 2,
+      "explain": "MVC stands for Model, View, and Controller. These three components are interconnected but designed to be independent of each other.",
+      "deep": "The names describe their roles exactly: Model = data and logic, View = what the user sees, Controller = what handles user input. Each has one clear responsibility."
+    },
+    {
+      "cat": "mvc",
+      "diff": "easy",
+      "q": "What is the primary responsibility of the Model in MVC?",
+      "opts": [
+        "Rendering the user interface and handling all display logic for the application",
+        "Receiving and validating user input before forwarding it to the appropriate business logic",
+        "Managing data, logic, and the rules of the application — the central component that does the real work",
+        "Coordinating the communication between the View and other server-side services"
+      ],
+      "ans": 2,
+      "explain": "The Model is the central component — it manages data, business logic, and application rules. It models the actual problem being solved.",
+      "deep": "The Model is the most important component in MVC. The View and Controller are specific to one presentation context, but the Model is universal — the same Model can serve multiple different Views and Controllers."
+    },
+    {
+      "cat": "mvc",
+      "diff": "easy",
+      "q": "What is the primary responsibility of the View in MVC?",
+      "opts": [
+        "Validating all user inputs and passing valid inputs to the Model for processing",
+        "Providing the presentation layer — how data from the Model is displayed to the user",
+        "Storing and retrieving application data from the database",
+        "Routing user requests to the correct Controller method for processing"
+      ],
+      "ans": 1,
+      "explain": "The View provides the presentation layer. It displays data from the Model to the user in a particular format — HTML page, mobile screen, chart, report, etc.",
+      "deep": "The View should contain no business logic. It simply renders what it receives. This purity is what enables one Model to support many different Views simultaneously without any changes to the Model itself."
+    },
+    {
+      "cat": "mvc",
+      "diff": "easy",
+      "q": "What is the primary responsibility of the Controller in MVC?",
+      "opts": [
+        "Storing the application's state and notifying other components when it changes",
+        "Receiving user input, validating it, and forwarding it to the Model as commands",
+        "Rendering the user interface components based on data received from the Model",
+        "Managing database transactions and ensuring data consistency across the application"
+      ],
+      "ans": 1,
+      "explain": "The Controller receives user input, validates it, and converts it into commands for the Model or View. It is the intermediary between the View and the Model.",
+      "deep": "The Controller's role is coordination, not processing. Processing belongs to the Model. The Controller simply receives user intent (input), translates it into a Model command, and lets the Model do the real work."
+    },
+    {
+      "cat": "mvc",
+      "diff": "easy",
+      "q": "MVC is described as an \"Architectural\" design pattern. How does this differ from Singleton (Creational) and Adapter (Structural)?",
+      "opts": [
+        "MVC is simpler than Singleton and Adapter because it requires fewer classes to implement",
+        "MVC organises the entire application's structure at a system-wide level, whereas Singleton and Adapter are applied to specific classes or components",
+        "MVC was invented after Singleton and Adapter and is therefore considered more modern and superior",
+        "MVC is specific to web applications while Singleton and Adapter apply to all types of software"
+      ],
+      "ans": 1,
+      "explain": "MVC is an architectural pattern — it organises the entire application's structure at a system-wide level. Singleton and Adapter are applied to specific classes or component interactions, not the whole system.",
+      "deep": "The scale distinction matters. MVC is the scaffolding of the whole building. Singleton and Adapter are solutions to specific rooms within that building. Both levels of abstraction are needed in a complete system."
+    },
+    {
+      "cat": "mvc",
+      "diff": "med",
+      "q": "The Model in MVC should be \"independent of both the Controller and the View.\" Why is this independence critical?",
+      "opts": [
+        "Model independence improves database query performance by eliminating overhead from Controller and View interactions",
+        "Independence gives the system flexibility — the Model can be reused with different Views and Controllers, and can be tested in isolation without any UI dependency",
+        "Model independence is required by MVC frameworks to allow hot-reloading of UI components without restarting the server",
+        "Independence ensures the Model can be deployed as a separate microservice in distributed architectures"
+      ],
+      "ans": 1,
+      "explain": "An independent Model can be reused with completely different Views and Controllers. It can be tested in isolation without any UI involvement. And it can change independently without breaking the presentation layer.",
+      "deep": "A Model that depends on the View cannot be tested without the View. A Model that depends on the Controller cannot be reused across different interaction modes. Independence is what gives the Model — the most important component — maximum utility and longevity."
+    },
+    {
+      "cat": "mvc",
+      "diff": "med",
+      "q": "MVC enables \"multiple views of one model.\" Give an example of how this works in practice.",
+      "opts": [
+        "Three developers can work on the Model simultaneously, each having their own private View of the source code",
+        "The same product data (Model) can simultaneously power a web page (HTML View), a mobile screen (Native View), a PDF report (Print View), and an API response (JSON View)",
+        "Each user of the application sees a personalised View of the Model based on their account preferences and history",
+        "Multiple developers can create different Controller implementations that all connect to the same View layer"
+      ],
+      "ans": 1,
+      "explain": "One Model can serve many different Views simultaneously. Product data (Model) can power an HTML page for browser users, a native mobile screen, a printed report, and an API JSON response — all from the same Model.",
+      "deep": "This is one of MVC's most powerful features. Without it, every presentation format requires a completely separate data management implementation. With MVC, the business logic lives once in the Model and different Views present it differently."
+    },
+    {
+      "cat": "mvc",
+      "diff": "med",
+      "q": "The design of the Controller depends on the Model, but the Model must NOT depend on the Controller. Why is this one-way dependency important?",
+      "opts": [
+        "It prevents circular dependencies that would cause the application to fail during initialisation",
+        "It preserves the Model's independence — a Model that depends on the Controller cannot be used with a different Controller or tested without one",
+        "It ensures that Controller code compiles before Model code, which is required by most build systems",
+        "It prevents developers from inadvertently mixing business logic with input handling code"
+      ],
+      "ans": 1,
+      "explain": "If the Model depended on the Controller, you could not swap Controllers (keyboard, mouse, touch, API) without changing the Model. The one-way dependency preserves the Model's ability to work with any Controller.",
+      "deep": "Dependency direction matters in design. The Controller knows about the Model (it calls Model methods). The Model does not know about the Controller (it just provides services). This asymmetry is intentional and fundamental to MVC."
+    },
+    {
+      "cat": "mvc",
+      "diff": "med",
+      "q": "What does the Controller do after receiving a user action such as a button click?",
+      "opts": [
+        "It directly updates the View to reflect the user's action without involving the Model",
+        "It determines which object was manipulated, calls the appropriate Model method, which makes the change and then notifies Views to update",
+        "It stores the user action in a queue and processes all actions in batch at the end of the user session",
+        "It validates the action against the current View state and rejects any action that conflicts with the displayed data"
+      ],
+      "ans": 1,
+      "explain": "The Controller determines what was clicked/changed, calls the appropriate Model method to make the change, the Model updates its state and notifies Views, and the Views re-render the updated data.",
+      "deep": "This flow is the MVC interaction cycle. Notice the Controller does not directly update the View — it tells the Model what to do, and the Model tells the Views to update. This keeps the separation clean."
+    },
+    {
+      "cat": "mvc",
+      "diff": "med",
+      "q": "MVC makes an application \"scalable and maintainable.\" How does separation of concerns achieve this?",
+      "opts": [
+        "Separating components reduces the total amount of code written, making the application smaller and faster to load",
+        "When components are independent, each can be developed, modified, and tested separately without cascading changes throughout the system",
+        "Separation allows each component to run on a separate server, enabling horizontal scaling of the application",
+        "Independent components can be compiled separately, reducing build times as the application grows larger"
+      ],
+      "ans": 1,
+      "explain": "Independent components can be changed separately. Redesigning the View doesn't require changing the Model. Updating business logic in the Model doesn't require touching the View. Each change is contained.",
+      "deep": "This is the practical meaning of \"maintainable.\" In a system without MVC, changing the UI might require hunting through business logic code. With MVC, the UI is entirely in the View — the change is localised and safe."
+    },
+    {
+      "cat": "mvc",
+      "diff": "hard",
+      "q": "MVC Variant 1 combines the Controller and View but never merges either with the Model. Why is the Model the component that must always remain separate?",
+      "opts": [
+        "The Model contains sensitive data that must be protected from direct user access through the View",
+        "The Model contains the business logic and data — merging it with UI or input handling would destroy the separation that makes the logic reusable, testable, and maintainable independently",
+        "The Model is typically the largest component and merging it would make the combined component too large to manage",
+        "Framework limitations prevent the Model from being compiled together with View or Controller code"
+      ],
+      "ans": 1,
+      "explain": "The Model is the most valuable and reusable component — it contains the core business logic and data. Merging it with the View or Controller would make it inseparable from specific UI or input concerns, destroying its reusability and testability.",
+      "deep": "In both MVC variants, the Model stays independent. This is the non-negotiable core of MVC. A View-Controller combination is a pragmatic compromise for small systems. A Model-View or Model-Controller combination is always a design mistake."
+    },
+    {
+      "cat": "mvc",
+      "diff": "hard",
+      "q": "In MVC Variant 2, all interaction goes through the Controller — the View never directly accesses the Model. What is the trade-off of this stricter approach?",
+      "opts": [
+        "The application runs faster because direct View-Model communication is replaced with indirect Controller-mediated communication",
+        "Strict separation maximises decoupling between View and Model, but increases the Controller's responsibility — the Controller must now manage all data flow between Model and View",
+        "This variant prevents the Model from notifying the View of updates, requiring the View to poll for changes periodically",
+        "Routing all communication through the Controller makes the application more secure by preventing direct database access from the View layer"
+      ],
+      "ans": 1,
+      "explain": "Variant 2 maximises the separation between View and Model — the View never directly touches the Model. But this comes at a cost: the Controller must manage all data flow between the two, increasing its complexity and responsibility.",
+      "deep": "Neither variant is universally \"better.\" Variant 1 (combined View/Controller) suits small, simple UIs. Variant 2 (all through Controller) suits systems where strict separation between UI and data is critical, such as testability-focused architectures."
+    },
+    {
+      "cat": "mvc",
+      "diff": "hard",
+      "q": "A developer places SQL database queries directly inside a View template. Why does this violate MVC and what are the consequences?",
+      "opts": [
+        "It violates MVC because Views are not permitted to use database drivers in most MVC frameworks",
+        "It violates the separation of concerns — data retrieval belongs in the Model. The View now contains business logic, making it impossible to change the presentation without risking data access bugs, and impossible to reuse the query logic in other Views",
+        "It violates the Controller's role as intermediary — all database calls must pass through the Controller first",
+        "It violates the Singleton constraint — database connections must be managed through a single shared connection pool Singleton"
+      ],
+      "ans": 1,
+      "explain": "Data retrieval logic belongs in the Model. Putting SQL in the View merges presentation and data concerns — making the View untestable in isolation, the query logic unreusable, and both components fragile when either needs to change.",
+      "deep": "This is one of the most common MVC violations in real projects. \"Fat Views\" that contain database logic, business rules, or calculation logic are the result. The remedy is always the same: move the logic to the Model."
+    },
+    {
+      "cat": "mvc",
+      "diff": "easy",
+      "q": "MVC is described as providing \"a logical structure for heavily interactive systems.\" Why does interactivity make MVC especially valuable?",
+      "opts": [
+        "Highly interactive systems require faster database queries, and MVC optimises the data access layer",
+        "Interactive systems have constant input-process-display cycles — MVC's three-component structure maps perfectly to these three phases of interaction",
+        "MVC reduces the number of user interface events that must be handled, simplifying interaction design",
+        "Interactive systems run in real time, and MVC enables parallel processing of the three components"
+      ],
+      "ans": 1,
+      "explain": "Interactive systems constantly cycle through input (Controller), processing (Model), and display (View). MVC's three-component structure maps directly onto these three phases — providing a natural, logical organisation for complex interaction.",
+      "deep": "Without MVC, interactive systems tend to become entangled monoliths — input handling mixed with data processing mixed with display logic. Each interaction becomes a tangled web rather than a clean, predictable three-step flow."
+    },
+    {
+      "cat": "mvc",
+      "diff": "med",
+      "q": "MVC promotes \"delegated control.\" What does this mean in the context of the three components?",
+      "opts": [
+        "Control is delegated to external services and APIs rather than being handled within the application",
+        "Each component handles only its own area of responsibility — the Controller does not display, the View does not process, the Model does not accept input — control is delegated to the right place",
+        "The framework delegates control to the developer by providing hooks at every stage of the MVC lifecycle",
+        "Control is delegated from senior developers to junior ones as they become familiar with each MVC layer"
+      ],
+      "ans": 1,
+      "explain": "Delegated control means each component handles only what it is responsible for. Input handling is delegated to the Controller. Display is delegated to the View. Data and logic are delegated to the Model.",
+      "deep": "Delegated control is the enforcement mechanism for separation of concerns. Without it, developers would naturally mix concerns — \"I'll just put this logic in the View because it's easier.\" MVC's structure delegates each responsibility to exactly one place."
+    },
+    {
+      "cat": "mvc",
+      "diff": "hard",
+      "q": "A system is built with MVC. The business requirement changes so that the same data needs to be displayed in a new mobile format. Which components need to change and which do not?",
+      "opts": [
+        "All three components change — the Model changes to support mobile data formats, the View changes for mobile display, and the Controller changes to handle mobile input events",
+        "Only a new View is added for the mobile format — the Model and Controller remain unchanged, because the data and logic are independent of the presentation format",
+        "Only the Controller changes to route mobile requests differently — the Model and View remain unchanged",
+        "The Model and View both change to accommodate mobile requirements — the Controller remains unchanged as a neutral intermediary"
+      ],
+      "ans": 1,
+      "explain": "Adding a new mobile View is a purely presentation concern. The Model (data and logic) and Controller (input handling) are unchanged — only a new View is added. This is MVC's core benefit.",
+      "deep": "This scenario demonstrates why MVC is so valuable for multi-platform development. Web, mobile, tablet, print, and API — all can be served by the same Model and potentially the same Controller, with only different Views."
+    },
+    {
+      "cat": "mvc",
+      "diff": "hard",
+      "q": "How does MVC support the Agile principle that code should accommodate change sprint over sprint?",
+      "opts": [
+        "MVC automatically versions the codebase at the end of each sprint, making it easy to roll back changes",
+        "MVC's independent components allow UI, business logic, and input handling to evolve separately — change requests in one area are isolated and do not cascade through the entire system",
+        "MVC frameworks automatically generate unit tests for each component, ensuring changes do not break existing functionality",
+        "MVC reduces the amount of code written per sprint, leaving more capacity for implementing change requests"
+      ],
+      "ans": 1,
+      "explain": "MVC's independence means sprint-over-sprint changes are localised. A UX redesign (View), a business rule change (Model), or a new input method (Controller) each affect only one component.",
+      "deep": "In Agile, requirements change constantly. Without MVC, every change potentially touches all layers. With MVC, the change is contained to its appropriate layer — making changes faster, safer, and more predictable."
+    },
+    {
+      "cat": "mvc",
+      "diff": "easy",
+      "q": "Which major programming platforms include built-in MVC framework support?",
+      "opts": [
+        "Only web-specific languages like PHP and JavaScript, because MVC originated from web development",
+        "Only compiled languages like C++ and Rust, because MVC requires strict type systems to enforce component separation",
+        "Most major platforms — Java, C#, Ruby, PHP, and others all have built-in MVC frameworks",
+        "Only open-source platforms, because proprietary vendors prefer their own architectural patterns over MVC"
+      ],
+      "ans": 2,
+      "explain": "MVC is so widely adopted that most major development platforms include built-in MVC frameworks — Java (Spring MVC), C# (ASP.NET MVC), Ruby (Rails), PHP (Laravel), and many others.",
+      "deep": "The breadth of MVC adoption across languages and platforms confirms its value as a universal architectural solution. It is not tied to any specific language or paradigm — the principle works wherever applications need UI and business logic."
+    },
+    {
+      "cat": "mvc",
+      "diff": "med",
+      "q": "What is meant by \"information hiding\" as a design principle in MVC?",
+      "opts": [
+        "Encrypting sensitive data before storing it in the Model to protect it from unauthorised access",
+        "Each component exposes only what other components need to know — the Model hides its internal data management, the View hides its rendering details, the Controller hides its input parsing",
+        "Hiding the application's source code from end users by compiling it into non-readable binary form",
+        "Preventing the View from displaying confidential business data that users should not see"
+      ],
+      "ans": 1,
+      "explain": "Information hiding means each component exposes only the services other components need — hiding internal implementation details. The Model hides how data is stored; the View hides how data is rendered.",
+      "deep": "Information hiding reduces coupling between components. If the Model changes its internal database structure but keeps its service interface the same, the View and Controller never know anything changed. The internal details are hidden behind a stable interface."
+    }
+  ]
 }
