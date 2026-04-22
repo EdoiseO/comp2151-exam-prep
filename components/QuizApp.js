@@ -281,19 +281,6 @@ export default function QuizApp() {
       setScore(total => total + (DIFFICULTY_POINTS[currentQuestion.diff] || 0));
     } else {
       setWrongCount(count => count + 1);
-      setQuestions(existingQuestions => {
-        const nextQuestions = [...existingQuestions];
-        const retryQuestion = {
-          ...currentQuestion,
-          ...shuffleOptions(currentQuestion),
-          retry: (currentQuestion.retry || 0) + 1
-        };
-        const firstPossibleIndex = questionIndex + 1;
-        const lastPossibleIndex = nextQuestions.length;
-        const insertAt = Math.floor(Math.random() * (lastPossibleIndex - firstPossibleIndex + 1)) + firstPossibleIndex;
-        nextQuestions.splice(insertAt, 0, retryQuestion);
-        return nextQuestions;
-      });
     }
 
     if (currentQuestion.cat) {
@@ -372,7 +359,7 @@ export default function QuizApp() {
         <div>
           <div className="hero-kicker">Study workspace</div>
           <h1 className="hero-title">COMP2151 Exam Prep</h1>
-          <p className="hero-sub">Practice by lecture, retry missed questions, and build toward a full review set.</p>
+          <p className="hero-sub">Practice by lecture and build toward a full review set.</p>
         </div>
       </header>
 
@@ -520,7 +507,6 @@ export default function QuizApp() {
                     <div className="question-tags">
                       <span className="tag neutral">{currentQuestionCategory?.label || currentQuestion.cat}</span>
                       <span className={`tag ${getDifficultyClass(currentQuestion.diff)}`}>{getDifficultyLabel(currentQuestion.diff)}</span>
-                      {currentQuestion.retry ? <span className="tag retry">Retry {currentQuestion.retry}</span> : null}
                     </div>
 
                     <h2 className="question-heading">{currentQuestion.q}</h2>
@@ -557,9 +543,6 @@ export default function QuizApp() {
                         <div className={`explain-card ${selectedChoice === currentQuestion.ans ? 'ok' : 'bad'}`}>
                           <strong>{selectedChoice === currentQuestion.ans ? 'Explanation' : 'Review'}</strong>
                           <p>{currentQuestion.explain}</p>
-                          {selectedChoice !== currentQuestion.ans ? (
-                            <p><strong>Study loop:</strong> This question has been placed back into the queue later in the run.</p>
-                          ) : null}
                         </div>
 
                         <div className="deep-card">

@@ -13,7 +13,7 @@ const monoFont = JetBrains_Mono({
 
 export const metadata = {
   title: 'COMP2151 Exam Prep',
-  description: 'Practice by lecture, retry missed questions, and build toward a full exam review set.',
+  description: 'Practice by lecture and build toward a full exam review set.',
   applicationName: 'COMP2151 Exam Prep'
 };
 
