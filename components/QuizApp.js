@@ -417,7 +417,7 @@ export default function QuizApp() {
                   type="button"
                 >
                   <div>
-                    <div className="lecture-card-num">{lecture.id.replace('lecture', 'Lecture ')}</div>
+                    <div className="lecture-card-num">{lecture.title}</div>
                     <div className="lecture-card-title">{lecture.subtitle}</div>
                     <div className="lecture-card-meta">
                       {lecture.questions.length > 0

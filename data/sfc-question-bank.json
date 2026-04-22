@@ -1,0 +1,160 @@
+{
+  "id": "sfc-question-bank",
+  "title": "SFC QuestionBank",
+  "subtitle": "Scrum Fundamentals Certified",
+  "description": "Imported Scrum Fundamentals Certified question bank items from the provided PDF source.",
+  "categories": [
+    {
+      "key": "all",
+      "label": "All 10",
+      "cls": "c0"
+    },
+    {
+      "key": "fundamentals",
+      "label": "Fundamentals",
+      "cls": "c1"
+    }
+  ],
+  "questions": [
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Which process best supports the progressive improvement of requirements during a Scrum project?",
+      "opts": [
+        "Conduct Daily Standup",
+        "Ship Deliverables",
+        "Groom Prioritized Product Backlog",
+        "Retrospect Sprint"
+      ],
+      "ans": 2,
+      "explain": "Backlog grooming or refinement is the Scrum activity used to clarify, revise, split, and reprioritize requirements as the team learns more.",
+      "deep": "Progressive elaboration of requirements happens through repeated backlog refinement, not through shipping or a status event. Retrospectives improve the process, while refinement improves the work itself."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "During which Scrum event does the Scrum Team discuss day-to-day progress updates?",
+      "opts": [
+        "Conduct Daily Standup",
+        "Create Project Vision",
+        "Create Deliverables",
+        "Groom Prioritized Product Backlog"
+      ],
+      "ans": 0,
+      "explain": "The Daily Standup exists specifically for quick progress updates, coordination, and identification of blockers.",
+      "deep": "Daily coordination is time-boxed into the standup so the team can inspect progress and adapt its plan for the next 24 hours."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which role is identified in the Create Project Vision process?",
+      "opts": [
+        "Product Owner",
+        "Scrum Master",
+        "Stakeholder",
+        "Scrum Team"
+      ],
+      "ans": 0,
+      "explain": "The Product Owner is the role most directly responsible for articulating and owning the product vision.",
+      "deep": "Scrum depends on clear product direction. The Product Owner connects business goals, stakeholder expectations, and backlog priorities through that vision."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which role is primarily responsible for the Business Justification aspect in a Scrum project?",
+      "opts": [
+        "Scrum Team",
+        "Scrum Master",
+        "Product Owner",
+        "Chief Scrum Master"
+      ],
+      "ans": 2,
+      "explain": "The Product Owner is accountable for maximizing value and maintaining the business case behind the product work.",
+      "deep": "Business justification belongs with the role that prioritizes value and represents stakeholder needs, which is why it sits with the Product Owner rather than the delivery team."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Which Scrum principle best helps teams manage change while building products that satisfy customer needs?",
+      "opts": [
+        "Time-Boxing",
+        "Iterative Development",
+        "Value-based Prioritization",
+        "Self-organization"
+      ],
+      "ans": 1,
+      "explain": "Iterative development allows teams to inspect outcomes frequently and adjust the product as requirements or feedback evolve.",
+      "deep": "Short iterations reduce the cost of being wrong. Instead of locking in one large plan, the team learns and adapts as the product takes shape."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which role group includes customers, users, and sponsors who frequently interact with the Scrum Core Team?",
+      "opts": [
+        "Vendor",
+        "Chief Product Owner",
+        "Scrum Guidance Body",
+        "Stakeholders"
+      ],
+      "ans": 3,
+      "explain": "Stakeholders are the broader group with an interest in the product outcome, including customers, users, and sponsors.",
+      "deep": "Scrum depends on regular stakeholder feedback so the team can validate whether it is building the right thing, not just building it correctly."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which statement best describes the Scrum principle of Collaboration?",
+      "opts": [
+        "This principle treats time as the main planning constraint and manages work through fixed time-boxes",
+        "This principle emphasizes self-management by letting workers organize themselves instead of relying on command-and-control structures",
+        "This principle focuses on awareness, articulation, and appropriation, and treats project work as a shared value-creation process",
+        "This principle emphasizes maximizing business value by ordering work so the highest-value items are delivered first"
+      ],
+      "ans": 2,
+      "explain": "Collaboration in Scrum is about people working together with shared awareness, coordinated action, and adaptation of tools and practices to create value.",
+      "deep": "Scrum is not just a flow of tasks. It depends on continuous interaction among team members and stakeholders so decisions, feedback, and delivery remain aligned."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which of the following pairs is incorrectly matched?",
+      "opts": [
+        "Prioritized delivery: Focus only on business value",
+        "Appropriation: Adapting technology to one's own situation",
+        "Adaptation: Risk identification is performed and iterated throughout the project",
+        "Collaboration: Stakeholders and development team interact continually"
+      ],
+      "ans": 0,
+      "explain": "Prioritized delivery is about maximizing business value, but not about focusing only on business value while ignoring other constraints such as risk, feasibility, and dependencies.",
+      "deep": "Good Scrum prioritization balances value with timing, effort, uncertainty, and learning. Reducing it to one dimension oversimplifies the decision process."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "What artifact is often used to track the status of work and activities being carried out by the Scrum Team?",
+      "opts": [
+        "Sprint Burndown chart",
+        "Project Vision statement",
+        "Product Backlog",
+        "Scrumboard"
+      ],
+      "ans": 3,
+      "explain": "A Scrumboard provides visible, current status of tasks and work in progress for the team.",
+      "deep": "Its value is transparency. By making work visible, the team can coordinate more easily and spot blocked or unfinished work quickly."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Which set of Scrum practices most directly supports transparency?",
+      "opts": [
+        "Scrumboard, Impediment Log, and Daily Standup",
+        "Scrumboard, Daily Standup, and Video Conferencing",
+        "Scrumboard, Impediment Log, Daily Standup, and Video Conferencing",
+        "Only Scrumboard"
+      ],
+      "ans": 0,
+      "explain": "Transparency in Scrum is strengthened by visible work tracking, visible impediments, and regular progress communication.",
+      "deep": "Video conferencing can support communication, but it is not itself a core Scrum transparency mechanism. The key idea is making work, blockers, and status easy to inspect."
+    }
+  ]
+}

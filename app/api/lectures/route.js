@@ -22,8 +22,20 @@ function loadLectures() {
   const dataDirectory = path.join(process.cwd(), 'data');
   const lectureFiles = fs
     .readdirSync(dataDirectory)
-    .filter(name => /^lecture\d+\.json$/.test(name))
-    .sort();
+    .filter(name => name.endsWith('.json'))
+    .sort((left, right) => {
+      const leftMatch = left.match(/^lecture(\d+)\.json$/);
+      const rightMatch = right.match(/^lecture(\d+)\.json$/);
+
+      if (leftMatch && rightMatch) {
+        return Number(leftMatch[1]) - Number(rightMatch[1]);
+      }
+
+      if (leftMatch) return -1;
+      if (rightMatch) return 1;
+
+      return left.localeCompare(right);
+    });
 
   return lectureFiles.map(fileName => {
     const source = fs.readFileSync(path.join(dataDirectory, fileName), 'utf8');
