@@ -1,12 +1,12 @@
 {
   "id": "scrum-fundamentals-mock-exam",
   "title": "SCRUM Fundamentals Mock Exam",
-  "subtitle": "Scrum Certification Practice Set",
-  "description": "Imported Scrum mock-exam questions based on the provided PDF content.",
+  "subtitle": "40 Questions with SBOK Explanations",
+  "description": "Complete 40-question Scrum Fundamentals mock exam based on the provided SBOK-aligned source.",
   "categories": [
     {
       "key": "all",
-      "label": "All 34",
+      "label": "All 40",
       "cls": "c0"
     },
     {
@@ -19,6 +19,90 @@
     {
       "cat": "fundamentals",
       "diff": "easy",
+      "q": "Who is responsible for maximizing the business value of the product?",
+      "opts": [
+        "Scrum Master",
+        "Product Owner",
+        "Scrum Team",
+        "Stakeholders"
+      ],
+      "ans": 1,
+      "explain": "The Product Owner represents the customer and stakeholders and is responsible for maximizing business value by prioritizing the Product Backlog.",
+      "deep": "In Scrum, value optimization is centralized in the Product Owner role so one person remains accountable for ordering work against business outcomes."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "What is the time-boxed iteration in Scrum called?",
+      "opts": [
+        "Release",
+        "Sprint",
+        "Increment",
+        "Product cycle"
+      ],
+      "ans": 1,
+      "explain": "A Sprint is a time-boxed iteration during which the Scrum Team creates a potentially shippable product increment.",
+      "deep": "The Sprint is the core delivery cadence in Scrum. It creates rhythm, limits delay, and provides regular opportunities for inspection and adaptation."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which role is responsible for removing impediments for the Scrum Team?",
+      "opts": [
+        "Product Owner",
+        "Scrum Master",
+        "Stakeholder",
+        "Project Manager"
+      ],
+      "ans": 1,
+      "explain": "The Scrum Master ensures the team follows Scrum practices and removes impediments affecting productivity.",
+      "deep": "Removing impediments protects team flow. It is part of the Scrum Master's servant-leadership role rather than line-management authority."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which artifact contains a prioritized list of product requirements?",
+      "opts": [
+        "Sprint Backlog",
+        "Product Backlog",
+        "Release Plan",
+        "Task Board"
+      ],
+      "ans": 1,
+      "explain": "The Product Backlog is a prioritized list of business and project requirements maintained by the Product Owner.",
+      "deep": "The backlog is intentionally dynamic. It evolves as the team learns more about customer needs, constraints, and delivery progress."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which Scrum event occurs every day?",
+      "opts": [
+        "Sprint Planning",
+        "Daily Scrum",
+        "Sprint Review",
+        "Sprint Retrospective"
+      ],
+      "ans": 1,
+      "explain": "The Daily Scrum is a 15-minute meeting where the team synchronizes activities and plans work for the next 24 hours.",
+      "deep": "Its value is short-cycle coordination. The Daily Scrum keeps the Sprint plan alive instead of leaving it static after planning."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Who owns the Sprint Backlog?",
+      "opts": [
+        "Product Owner",
+        "Scrum Master",
+        "Scrum Team",
+        "Stakeholders"
+      ],
+      "ans": 2,
+      "explain": "The Scrum Team owns and manages the Sprint Backlog, which contains tasks required to complete selected Product Backlog items.",
+      "deep": "This ownership reinforces self-organization. The team commits to Sprint work and manages the execution details needed to complete it."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
       "q": "What is the recommended size of a Scrum Team?",
       "opts": [
         "2-5",
@@ -27,8 +111,8 @@
         "15-20"
       ],
       "ans": 1,
-      "explain": "SBOK recommends a Scrum Team size of six members plus or minus three, which gives a practical range of three to nine.",
-      "deep": "That range keeps communication manageable while still allowing enough breadth of skills to deliver increments."
+      "explain": "SBOK recommends Scrum Teams of six members plus or minus three, meaning 3-9 members, to maintain effective communication.",
+      "deep": "That range balances coordination cost and delivery capability. Teams that are too large lose communication efficiency, while teams that are too small may lack needed skills."
     },
     {
       "cat": "fundamentals",
@@ -41,8 +125,8 @@
         "Release Plan"
       ],
       "ans": 1,
-      "explain": "Each Sprint should produce a potentially shippable product increment.",
-      "deep": "The increment is evidence that Scrum is delivery-focused. Progress is measured in working product, not just activity."
+      "explain": "Each Sprint results in a potentially shippable product increment, which is the sum of completed Product Backlog items.",
+      "deep": "A Scrum Sprint measures progress through usable output, not just effort spent. The increment is the clearest evidence of real progress."
     },
     {
       "cat": "fundamentals",
@@ -55,8 +139,8 @@
         "Retrospective"
       ],
       "ans": 1,
-      "explain": "The Sprint Review is used to inspect the increment with stakeholders and gather feedback.",
-      "deep": "This event closes the feedback loop between delivery and business expectations."
+      "explain": "The Sprint Review is used to present the product increment to stakeholders and gather feedback.",
+      "deep": "The Sprint Review turns delivery into learning. Demonstration is useful because it invites real feedback on real work."
     },
     {
       "cat": "fundamentals",
@@ -69,8 +153,8 @@
         "Stakeholders"
       ],
       "ans": 2,
-      "explain": "The Scrum Team is self-organizing and decides how to accomplish the work.",
-      "deep": "Scrum separates the what from the how. The Product Owner orders value, while the team determines execution."
+      "explain": "Scrum Teams are self-organizing, meaning they determine how work will be completed.",
+      "deep": "Scrum separates business direction from implementation control. The Product Owner decides what matters most, while the team decides how to deliver it."
     },
     {
       "cat": "fundamentals",
@@ -83,8 +167,8 @@
         "Release product"
       ],
       "ans": 1,
-      "explain": "Sprint Planning defines the Sprint Goal and the work the team commits to for the Sprint.",
-      "deep": "It aligns backlog selection with capacity and creates a shared plan for the Sprint."
+      "explain": "Sprint Planning defines the Sprint Goal and selects Product Backlog items that the team commits to completing.",
+      "deep": "A strong Sprint Plan aligns purpose and scope. It is not just task selection, but a shared intent for the Sprint."
     },
     {
       "cat": "fundamentals",
@@ -97,8 +181,8 @@
         "Assign tasks"
       ],
       "ans": 1,
-      "explain": "The Retrospective is focused on inspecting the team's process and identifying improvements.",
-      "deep": "It exists so Scrum can improve not just the product, but also the system that produces the product."
+      "explain": "The Retrospective enables the team to inspect the previous Sprint and identify improvements.",
+      "deep": "Scrum improves both product and process. Retrospectives keep the team from repeating the same delivery problems Sprint after Sprint."
     },
     {
       "cat": "fundamentals",
@@ -111,8 +195,8 @@
         "Detailed documentation"
       ],
       "ans": 1,
-      "explain": "Scrum is built on empirical process control using transparency, inspection, and adaptation.",
-      "deep": "Complex work cannot be fully predicted upfront, so Scrum relies on learning from real outcomes instead."
+      "explain": "Scrum is based on empirical process control, which relies on transparency, inspection, and adaptation.",
+      "deep": "Complex work cannot be fully understood in advance. Scrum uses short feedback cycles to learn from reality rather than over-relying on prediction."
     },
     {
       "cat": "fundamentals",
@@ -125,13 +209,13 @@
         "Risk register"
       ],
       "ans": 1,
-      "explain": "A Burndown Chart shows remaining work against time during the Sprint.",
-      "deep": "It provides a quick visual signal of whether the Sprint is on track."
+      "explain": "A Burndown Chart shows remaining work versus time during a Sprint.",
+      "deep": "The Burndown is useful because it quickly shows whether the Sprint trajectory is improving, stalling, or slipping."
     },
     {
       "cat": "fundamentals",
       "diff": "easy",
-      "q": "Which Scrum value emphasizes honest and transparent communication?",
+      "q": "Which Scrum value emphasizes honest communication?",
       "opts": [
         "Commitment",
         "Openness",
@@ -139,8 +223,8 @@
         "Courage"
       ],
       "ans": 1,
-      "explain": "Openness encourages transparency and clear communication inside and around the team.",
-      "deep": "Without openness, inspection and adaptation break down because the team cannot see reality clearly."
+      "explain": "Openness is a Scrum value that encourages transparency and clear communication within the team.",
+      "deep": "Without openness, inspection loses accuracy. Scrum depends on visible progress, visible problems, and visible tradeoffs."
     },
     {
       "cat": "fundamentals",
@@ -153,13 +237,13 @@
         "Stakeholders"
       ],
       "ans": 1,
-      "explain": "The Product Owner orders backlog items according to value and other product needs.",
-      "deep": "This keeps prioritization accountable to a single role rather than becoming a negotiation by committee."
+      "explain": "The Product Owner ensures backlog items are prioritized according to business value.",
+      "deep": "Prioritization is a value-management decision. Scrum keeps that accountability with the Product Owner rather than dispersing it across the team."
     },
     {
       "cat": "fundamentals",
       "diff": "easy",
-      "q": "Which Scrum meeting is limited to 15 minutes?",
+      "q": "Which meeting is limited to 15 minutes?",
       "opts": [
         "Sprint Review",
         "Sprint Planning",
@@ -167,8 +251,8 @@
         "Retrospective"
       ],
       "ans": 2,
-      "explain": "The Daily Scrum is a 15-minute time-boxed event.",
-      "deep": "The short time-box forces focus on coordination rather than drifting into problem-solving sessions."
+      "explain": "The Daily Scrum is a 15-minute time-boxed meeting.",
+      "deep": "The short duration keeps it focused on coordination and immediate planning rather than deep discussion."
     },
     {
       "cat": "fundamentals",
@@ -181,8 +265,8 @@
         "Individually assigned tasks"
       ],
       "ans": 1,
-      "explain": "Scrum expects teams to organize their own work and decide how best to deliver it.",
-      "deep": "Self-organization improves ownership, adaptability, and local decision-making."
+      "explain": "Scrum emphasizes self-organization, allowing teams to determine the best way to accomplish work.",
+      "deep": "Self-organization improves responsiveness because the people closest to the work make the execution decisions."
     },
     {
       "cat": "fundamentals",
@@ -195,8 +279,8 @@
         "Sprint goal"
       ],
       "ans": 1,
-      "explain": "The Definition of Done is a shared standard for what qualifies as complete.",
-      "deep": "It protects quality by making completion criteria explicit rather than assumed."
+      "explain": "The Definition of Done is a shared understanding of what it means for work to be complete.",
+      "deep": "It protects quality and consistency by preventing the team from applying different completion standards to similar work."
     },
     {
       "cat": "fundamentals",
@@ -209,13 +293,13 @@
         "Waterfall process"
       ],
       "ans": 1,
-      "explain": "Scrum promotes iterative and incremental delivery so value can be released early and often.",
-      "deep": "Smaller increments reduce risk and improve learning from stakeholder feedback."
+      "explain": "Scrum promotes iterative and incremental delivery to provide value early and frequently.",
+      "deep": "Incremental delivery lowers risk and creates earlier opportunities to validate whether the product is moving in the right direction."
     },
     {
       "cat": "fundamentals",
       "diff": "easy",
-      "q": "Who represents stakeholder interests in Scrum?",
+      "q": "Who represents stakeholder interests?",
       "opts": [
         "Product Owner",
         "Scrum Master",
@@ -223,8 +307,8 @@
         "Release Manager"
       ],
       "ans": 0,
-      "explain": "The Product Owner represents customer and stakeholder interests.",
-      "deep": "That role connects business priorities to backlog ordering and product direction."
+      "explain": "The Product Owner represents customers and stakeholders.",
+      "deep": "This role translates stakeholder interests into product priorities and makes tradeoff decisions visible in the backlog order."
     },
     {
       "cat": "fundamentals",
@@ -233,12 +317,12 @@
       "opts": [
         "Tasks for the current Sprint",
         "Long-term product strategy",
-        "Enterprise risk controls",
-        "Only completed stories"
+        "Only accepted deliverables",
+        "Stakeholder approval records"
       ],
       "ans": 0,
-      "explain": "The Sprint Backlog contains the selected work and tasks for the current Sprint.",
-      "deep": "It is the team's working plan for turning chosen backlog items into a usable increment."
+      "explain": "The Sprint Backlog contains selected backlog items and the implementation tasks for the current Sprint.",
+      "deep": "It is not a product-wide planning artifact. It is the team's focused operational plan for the active Sprint."
     },
     {
       "cat": "fundamentals",
@@ -246,13 +330,13 @@
       "q": "What principle allows Scrum teams to adapt quickly?",
       "opts": [
         "Inspection and adaptation",
-        "Predictive planning",
-        "Command-and-control reporting",
-        "Scope locking"
+        "Strict phase-gating",
+        "Fixed long-term planning",
+        "Centralized task assignment"
       ],
       "ans": 0,
-      "explain": "Inspection and adaptation let teams detect reality early and respond quickly.",
-      "deep": "This is one of the core mechanisms behind empirical process control."
+      "explain": "Empirical process control supports frequent adaptation through inspection and adaptation.",
+      "deep": "Scrum works because teams inspect real outcomes and then adjust, rather than waiting until late phases to discover problems."
     },
     {
       "cat": "fundamentals",
@@ -260,13 +344,13 @@
       "q": "Scrum promotes what type of development?",
       "opts": [
         "Iterative and incremental",
-        "Sequential and fixed",
-        "Vendor-driven and gated",
-        "Documentation-first"
+        "Sequential and linear",
+        "Documentation-driven",
+        "Big-bang release-based"
       ],
       "ans": 0,
-      "explain": "Scrum delivers work in short iterative cycles that add value incrementally.",
-      "deep": "That structure reduces risk and supports continuous learning."
+      "explain": "Scrum work is delivered in short cycles and grows the product iteratively and incrementally.",
+      "deep": "This approach creates continuous feedback, smaller risk windows, and better control over changing requirements."
     },
     {
       "cat": "fundamentals",
@@ -274,27 +358,27 @@
       "q": "What is the main goal of Scrum?",
       "opts": [
         "Deliver maximum business value quickly",
-        "Minimize meetings and documentation",
-        "Create perfect long-term plans",
-        "Eliminate all requirement changes"
+        "Reduce all meetings to zero",
+        "Freeze requirements from the start",
+        "Separate planning entirely from delivery"
       ],
       "ans": 0,
-      "explain": "Scrum focuses on maximizing business value through frequent delivery and feedback.",
-      "deep": "Its purpose is not ceremony for its own sake, but faster value realization under uncertainty."
+      "explain": "Scrum focuses on maximizing value through frequent delivery.",
+      "deep": "The framework is designed to move useful outcomes into users' hands early, not to optimize documentation or upfront certainty."
     },
     {
       "cat": "fundamentals",
       "diff": "easy",
       "q": "Who attends the Sprint Review?",
       "opts": [
-        "Only the Scrum Master",
-        "Only the Product Owner and developers",
+        "Only the Scrum Team",
+        "Only the Product Owner and Scrum Master",
         "Scrum Team and stakeholders",
-        "Executives only"
+        "Only external customers"
       ],
       "ans": 2,
-      "explain": "The Sprint Review includes the Scrum Team and relevant stakeholders.",
-      "deep": "This event exists so feedback reaches the product decisions directly."
+      "explain": "The Review includes stakeholders so they can see the increment and provide feedback.",
+      "deep": "That stakeholder interaction is what turns the Sprint Review into a product-learning event rather than just an internal status update."
     },
     {
       "cat": "fundamentals",
@@ -302,27 +386,27 @@
       "q": "Which artifact evolves throughout the project?",
       "opts": [
         "Product Backlog",
+        "Sprint Goal",
         "Daily Scrum agenda",
-        "Definition of Done",
-        "Sprint Burndown chart"
+        "Impediment Log"
       ],
       "ans": 0,
-      "explain": "The Product Backlog is continuously refined, reprioritized, and updated as the project progresses.",
-      "deep": "It remains dynamic because knowledge, priorities, and market needs change over time."
+      "explain": "The Product Backlog is continuously refined and reprioritized.",
+      "deep": "Because knowledge changes over time, Scrum expects the backlog to remain flexible instead of fixed."
     },
     {
       "cat": "fundamentals",
       "diff": "med",
-      "q": "What is velocity in Scrum?",
+      "q": "What is velocity?",
       "opts": [
-        "Team morale across Sprints",
         "Amount of work completed in a Sprint",
-        "Number of daily blockers raised",
-        "Cycle time of one backlog item"
+        "Number of blockers raised each day",
+        "Average duration of a Daily Scrum",
+        "Time needed to release to production"
       ],
-      "ans": 1,
-      "explain": "Velocity measures how much work a team completes in a Sprint.",
-      "deep": "It is useful for forecasting, but only when treated as a planning signal rather than a performance target."
+      "ans": 0,
+      "explain": "Velocity measures team productivity across Sprints by tracking completed work.",
+      "deep": "Its main use is forecasting. Treated correctly, it helps planning; treated badly, it becomes a misleading target."
     },
     {
       "cat": "fundamentals",
@@ -330,27 +414,27 @@
       "q": "What type of teams does Scrum require?",
       "opts": [
         "Cross-functional teams",
-        "Functionally isolated teams",
-        "Manager-led specialist teams",
-        "Temporary reporting teams"
+        "Single-discipline teams",
+        "Executive-led teams",
+        "Rotating governance teams"
       ],
       "ans": 0,
-      "explain": "Scrum Teams are expected to be cross-functional so they can deliver increments without handing work off across silos.",
-      "deep": "Cross-functionality reduces dependencies and speeds up delivery."
+      "explain": "Scrum Teams must have all skills needed to deliver increments.",
+      "deep": "Cross-functionality reduces handoffs and dependency delays, which is essential for short Sprint cycles."
     },
     {
       "cat": "fundamentals",
       "diff": "easy",
-      "q": "What happens to unfinished work at the end of a Sprint?",
+      "q": "What happens to unfinished work?",
       "opts": [
-        "It is automatically marked complete",
-        "It is returned to the Product Backlog",
-        "It is deleted permanently",
-        "It becomes part of the Definition of Done"
+        "Returned to Product Backlog",
+        "Automatically carried over unchanged",
+        "Counted as done if mostly complete",
+        "Moved to the Retrospective notes"
       ],
-      "ans": 1,
-      "explain": "Unfinished work goes back to the Product Backlog for re-evaluation and reprioritization.",
-      "deep": "Scrum avoids pretending incomplete work is done. The backlog remains the source of truth."
+      "ans": 0,
+      "explain": "Unfinished items are returned to the Product Backlog and reprioritized.",
+      "deep": "Scrum avoids hiding incomplete work. Sending it back to the backlog keeps prioritization honest."
     },
     {
       "cat": "fundamentals",
@@ -358,32 +442,32 @@
       "q": "What is the purpose of backlog refinement?",
       "opts": [
         "Clarify and estimate backlog items",
-        "Close the Sprint formally",
-        "Approve release budgets",
-        "Assign titles to team members"
+        "Approve final releases",
+        "Assign team roles",
+        "Document completed Sprint work"
       ],
       "ans": 0,
-      "explain": "Backlog refinement improves backlog readiness by clarifying, splitting, and estimating items.",
-      "deep": "A refined backlog makes Sprint Planning faster and improves the team's ability to make realistic commitments."
+      "explain": "Refinement improves backlog readiness by clarifying, splitting, and estimating items.",
+      "deep": "Well-refined items reduce confusion during Sprint Planning and improve commitment quality."
     },
     {
       "cat": "fundamentals",
       "diff": "easy",
-      "q": "Which communication style does Scrum encourage most strongly?",
+      "q": "Scrum encourages which communication style?",
       "opts": [
         "Face-to-face communication",
-        "Formal monthly reports",
-        "Escalation through management only",
-        "Asynchronous sign-off chains"
+        "Formal monthly reporting",
+        "Management-only communication",
+        "Approval-chain communication"
       ],
       "ans": 0,
-      "explain": "Scrum emphasizes direct communication because it reduces delay and misunderstanding.",
-      "deep": "The closer the feedback loop, the faster the team can coordinate and adapt."
+      "explain": "SBOK highlights direct communication for efficiency.",
+      "deep": "Direct communication shortens feedback loops and reduces the distortion that accumulates through layers of reporting."
     },
     {
       "cat": "fundamentals",
       "diff": "easy",
-      "q": "Who ensures Scrum practices are followed and facilitates the framework?",
+      "q": "Who ensures Scrum practices are followed?",
       "opts": [
         "Product Owner",
         "Scrum Master",
@@ -391,36 +475,36 @@
         "Stakeholders"
       ],
       "ans": 1,
-      "explain": "The Scrum Master facilitates Scrum and helps the team follow effective Scrum practices.",
-      "deep": "This is a coaching and enabling role, not a command role."
+      "explain": "The Scrum Master acts as facilitator and coach for Scrum practices.",
+      "deep": "The role helps the team use Scrum effectively without turning the framework into command-and-control process policing."
     },
     {
       "cat": "fundamentals",
       "diff": "med",
-      "q": "What does transparency ensure in Scrum?",
+      "q": "What does transparency ensure?",
       "opts": [
         "Shared understanding of progress",
-        "Guaranteed scope stability",
-        "No need for retrospectives",
-        "Permanent resource allocation"
+        "Guaranteed on-time delivery",
+        "No need for backlog refinement",
+        "Automatic stakeholder approval"
       ],
       "ans": 0,
-      "explain": "Transparency ensures everyone can see the real state of work, progress, and problems.",
-      "deep": "Inspection is only useful when the thing being inspected is visible and truthful."
+      "explain": "Transparency is essential for inspection because it creates a shared understanding of progress.",
+      "deep": "If the current state of work is not visible and trusted, adaptation decisions will be based on false assumptions."
     },
     {
       "cat": "fundamentals",
       "diff": "easy",
-      "q": "Which meeting occurs after the Sprint Review?",
+      "q": "Which meeting occurs after Sprint Review?",
       "opts": [
         "Sprint Planning",
         "Daily Scrum",
         "Sprint Retrospective",
-        "Backlog Creation Workshop"
+        "Backlog Refinement"
       ],
       "ans": 2,
       "explain": "The Sprint Retrospective follows the Sprint Review and focuses on process improvement.",
-      "deep": "The Review inspects the product outcome, while the Retrospective inspects the team's way of working."
+      "deep": "The sequence matters: first inspect the product with stakeholders, then inspect the team's way of working."
     },
     {
       "cat": "fundamentals",
@@ -428,13 +512,13 @@
       "q": "What is the key output of the Sprint Review?",
       "opts": [
         "Stakeholder feedback",
-        "New team hierarchy",
-        "Final release approval",
-        "Updated Definition of Done"
+        "Team role reassignment",
+        "Definition of Done updates",
+        "Final release approval"
       ],
       "ans": 0,
-      "explain": "The Sprint Review generates stakeholder feedback that can influence backlog priorities and product direction.",
-      "deep": "That feedback is one of Scrum's main engines for adaptation."
+      "explain": "Feedback from stakeholders helps refine backlog priorities.",
+      "deep": "Scrum gains much of its adaptability from this loop between delivered increment and stakeholder response."
     },
     {
       "cat": "fundamentals",
@@ -442,41 +526,41 @@
       "q": "What is a key advantage of Scrum?",
       "opts": [
         "Rapid adaptation to change",
-        "Elimination of uncertainty",
-        "No need for customer input",
-        "Strict upfront predictability"
+        "Elimination of all project risk",
+        "Permanent scope stability",
+        "No need for stakeholder input"
       ],
       "ans": 0,
-      "explain": "Scrum's short cycles make it easier to respond quickly when requirements or conditions change.",
-      "deep": "Rather than trying to eliminate change, Scrum is designed to absorb it."
+      "explain": "Iterative cycles allow quick response to changing requirements.",
+      "deep": "Scrum does not remove uncertainty. It makes uncertainty manageable by shortening the decision-and-feedback cycle."
     },
     {
       "cat": "fundamentals",
       "diff": "easy",
-      "q": "What most directly helps ensure product quality in Scrum?",
+      "q": "What ensures product quality in Scrum?",
       "opts": [
         "Definition of Done",
         "Daily Scrum",
-        "Sprint length",
-        "Stakeholder mapping"
+        "Burndown chart",
+        "Product Vision"
       ],
       "ans": 0,
-      "explain": "The Definition of Done establishes the quality bar for completed work.",
-      "deep": "Without a shared quality standard, teams can claim progress while delivering inconsistent outputs."
+      "explain": "The Definition of Done defines criteria for completion and supports quality.",
+      "deep": "Quality in Scrum is enforced through shared standards, not by assuming all completed work is equally complete."
     },
     {
       "cat": "fundamentals",
       "diff": "easy",
-      "q": "What is time-boxing in Scrum?",
+      "q": "What is time-boxing?",
       "opts": [
         "Limiting duration of activities",
-        "Tracking billable hours",
-        "Estimating all tasks in minutes",
-        "Assigning deadlines to individuals"
+        "Tracking time spent by each individual",
+        "Measuring backlog size in hours",
+        "Scheduling fixed release dates only"
       ],
       "ans": 0,
-      "explain": "Time-boxing means Scrum events and activities have fixed maximum durations.",
-      "deep": "It creates urgency, focus, and predictability while preventing endless meetings or analysis."
+      "explain": "Scrum events have fixed maximum durations, which is what time-boxing means.",
+      "deep": "Time-boxing constrains cost, creates urgency, and prevents analysis or discussion from expanding without limit."
     },
     {
       "cat": "fundamentals",
@@ -484,13 +568,13 @@
       "q": "What is the core Scrum philosophy?",
       "opts": [
         "Deliver value through iterative development",
-        "Control change through fixed scope",
-        "Centralize all decisions with management",
-        "Delay delivery until all requirements are complete"
+        "Lock all requirements before work begins",
+        "Control teams through centralized planning",
+        "Delay delivery until everything is finished"
       ],
       "ans": 0,
-      "explain": "Scrum centers on iterative delivery of value with continuous feedback and adaptation.",
-      "deep": "Its core assumption is that learning during delivery improves both the product and the process."
+      "explain": "Scrum focuses on incremental value delivery with continuous feedback.",
+      "deep": "Its philosophy is practical rather than predictive: build, inspect, learn, and improve continuously."
     }
   ]
 }
