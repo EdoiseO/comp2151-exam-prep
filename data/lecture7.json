@@ -1,8 +1,940 @@
 {
   "id": "lecture7",
   "title": "Lecture 7",
-  "subtitle": "Coming Soon",
-  "description": "Add Lecture 7 questions in this file when the content is ready.",
-  "categories": [],
-  "questions": []
+  "subtitle": "Design Patterns: Observer, Iterator, Facade",
+  "description": "65 deep Q&A questions on the Observer, Iterator, and Facade patterns.",
+  "categories": [
+    {
+      "key": "all",
+      "label": "All 65",
+      "cls": "c0"
+    },
+    {
+      "key": "observer",
+      "label": "Observer",
+      "cls": "c1"
+    },
+    {
+      "key": "iterator",
+      "label": "Iterator",
+      "cls": "c2"
+    },
+    {
+      "key": "facade",
+      "label": "Facade",
+      "cls": "c3"
+    }
+  ],
+  "questions": [
+    {
+      "cat": "observer",
+      "diff": "easy",
+      "q": "What is the intent of the Observer pattern?",
+      "opts": [
+        "Allow a single object to sequentially access the elements of a collection without knowing its structure",
+        "Define a one-to-many dependency so that when one object changes state, all its dependents are notified and updated automatically",
+        "Provide a simplified interface to a complex set of subsystems so clients need fewer interactions",
+        "Ensure only one instance of a class exists and provide a global access point to it"
+      ],
+      "ans": 1,
+      "explain": "Observer defines a one-to-many dependency between objects. When the Subject changes state, all registered Observers are automatically notified and updated.",
+      "deep": "The pattern is also known as Publish-Subscribe or Dependents. The Subject publishes a change notification; all Observers subscribed to it receive that notification."
+    },
+    {
+      "cat": "observer",
+      "diff": "easy",
+      "q": "In the Observer pattern, what is the role of the Subject?",
+      "opts": [
+        "It implements the update interface that all observers call when they want to push changes",
+        "It knows its observers and provides an interface for attaching, detaching, and notifying them",
+        "It stores state that corresponds to the observer and updates its own display accordingly",
+        "It holds a reference to a concrete observer and forwards notifications to higher system layers"
+      ],
+      "ans": 1,
+      "explain": "The Subject knows its observers and provides the interface for attaching, detaching, and notifying them. It does not need to know the concrete types of its observers.",
+      "deep": "The Subject only knows observers through the abstract Observer interface, not through concrete classes. This is what creates the loose coupling between Subject and Observer."
+    },
+    {
+      "cat": "observer",
+      "diff": "easy",
+      "q": "What does an Observer implement in the Observer pattern?",
+      "opts": [
+        "A creation interface that allows new Subject instances to be produced on demand",
+        "A traversal interface that allows the Subject's internal elements to be accessed sequentially",
+        "An updating interface that is called when the Subject notifies it of a state change",
+        "A delegation interface that routes Subject state changes to the correct subsystem"
+      ],
+      "ans": 2,
+      "explain": "An Observer defines an updating interface, the method the Subject calls when notifying registered observers of a state change.",
+      "deep": "All concrete observers implement this same interface. This uniformity is what allows the Subject to notify all observers with a single loop, regardless of their specific types."
+    },
+    {
+      "cat": "observer",
+      "diff": "easy",
+      "q": "What distinguishes a Concrete Observer from the abstract Observer in the pattern?",
+      "opts": [
+        "A Concrete Observer defines the interface; the abstract Observer implements the specific update logic",
+        "A Concrete Observer maintains a reference to its subject, stores corresponding state, and implements the update interface with real logic",
+        "A Concrete Observer manages the list of all registered observers on behalf of the Subject",
+        "A Concrete Observer can only be attached to one Subject at a time, unlike the abstract Observer"
+      ],
+      "ans": 1,
+      "explain": "A Concrete Observer maintains a reference to its Concrete Subject, stores state that corresponds to the Subject's state, and provides the real implementation of the Observer update interface.",
+      "deep": "The abstract Observer defines what update looks like. The Concrete Observer decides what to do with the notification, such as re-rendering a chart, updating a display, or triggering a downstream process."
+    },
+    {
+      "cat": "observer",
+      "diff": "easy",
+      "q": "The Observer pattern is also known as Publish-Subscribe (Pub-Sub). What does this name reveal about how it works?",
+      "opts": [
+        "The Subject publishes its internal state directly to a shared memory space that all Observers read",
+        "The Subject publishes a change notification; Observers that have subscribed receive and react to it",
+        "Observers publish their current state to the Subject, which re-publishes it to all other Observers",
+        "Subjects subscribe to a central event bus, and Observers publish updates to that bus"
+      ],
+      "ans": 1,
+      "explain": "The Pub-Sub name maps directly: the Subject publishes a notification when its state changes; all Observers that have subscribed receive and react to that notification.",
+      "deep": "This name is widely used in modern event-driven systems. JavaScript's EventEmitter, message queues, and reactive frameworks like RxJS all implement the Observer pattern under this name."
+    },
+    {
+      "cat": "observer",
+      "diff": "med",
+      "q": "The Observer pattern creates abstract coupling between Subject and Observer. What does this mean?",
+      "opts": [
+        "The Subject and Observer communicate through a third-party broker object that abstracts the connection",
+        "The Subject only knows observers through the abstract Observer interface; it does not depend on any concrete observer type",
+        "Abstract coupling means Subject and Observer are in different software packages that cannot directly import each other",
+        "The coupling is abstract because it is enforced by the compiler rather than by runtime checks"
+      ],
+      "ans": 1,
+      "explain": "Abstract coupling means the Subject only knows about the Observer interface, not about any concrete observer class. It can notify any object that implements Observer, regardless of its specific type.",
+      "deep": "This is what makes the pattern extensible. Adding a new Observer type, such as a new chart type, requires no changes to the Subject. The Subject just calls the update interface and does not care who answers."
+    },
+    {
+      "cat": "observer",
+      "diff": "med",
+      "q": "A dataset changes state and has three registered observers (a bar chart, a table, and a summary panel). In Observer pattern terms, how many notifications are sent and to whom?",
+      "opts": [
+        "One notification is sent to the first registered observer only; it then chains to the next",
+        "The Subject sends three separate notifications, one to each of the three registered observers",
+        "One broadcast notification is sent that all three observers receive simultaneously",
+        "The number depends on how often the dataset changes; each change triggers a fresh registration"
+      ],
+      "ans": 2,
+      "explain": "The Subject notifies all registered observers. Whether implemented as one broadcast or three individual calls, all three observers receive the notification when the Subject's state changes.",
+      "deep": "This broadcast communication is one of Observer's key features. The Subject does not choose which observers to notify; it notifies all registered ones. Adding a fourth observer requires no changes to the Subject."
+    },
+    {
+      "cat": "observer",
+      "diff": "med",
+      "q": "Observers can be added or removed at runtime without modifying the Subject. Why is this a significant design advantage?",
+      "opts": [
+        "It reduces the Subject's memory footprint because it no longer needs to maintain a fixed list of observer references",
+        "The set of observers can grow or shrink dynamically as requirements change; adding a new observer type never touches the existing Subject code",
+        "Runtime modification allows the Subject to skip notifying observers that are temporarily unresponsive",
+        "Dynamic observer management improves performance by allowing the Subject to prioritise faster observers"
+      ],
+      "ans": 1,
+      "explain": "Dynamic observer management means the Subject is open for extension. New observers can be registered at runtime without being modified. This is the open/closed principle in action.",
+      "deep": "In traditional tightly coupled code, adding a new view of data means modifying the data source code. With Observer, adding a new view means creating a new Observer class and registering it, with no Subject code changes."
+    },
+    {
+      "cat": "observer",
+      "diff": "med",
+      "q": "The lecture notes that Subject and Observer can belong to different layers, and that having them in the same class can compromise abstraction by layering. What does this mean?",
+      "opts": [
+        "Combining Subject and Observer in one class makes the system too large to compile efficiently in a single pass",
+        "A class that acts as both Subject and Observer spans multiple system layers, creating cross-layer dependencies that undermine the clean separation between layers",
+        "The Observer pattern is designed only for single-layer architectures and breaks down when applied across layers",
+        "Abstract classes cannot implement both Subject and Observer interfaces simultaneously in most languages"
+      ],
+      "ans": 1,
+      "explain": "When one class acts as both Subject and Observer, it spans multiple system layers. This creates cross-layer dependencies that undermine layered architecture, so changes in one layer cascade to another through the combined class.",
+      "deep": "Good layered architecture means each layer only depends on layers below it. A Subject-Observer hybrid that spans layers violates this because it is simultaneously a producer and a consumer across layer boundaries."
+    },
+    {
+      "cat": "observer",
+      "diff": "med",
+      "q": "An Observer registers with two different Subjects simultaneously. What does this scenario allow?",
+      "opts": [
+        "The Observer receives all notifications but can only react to the most recent one, discarding earlier ones",
+        "The Observer can update its state in response to changes from either Subject, receiving independent notification streams from multiple sources",
+        "The two Subjects are automatically synchronised through the shared Observer, keeping their states identical",
+        "This scenario is not permitted; an Observer must have a one-to-one relationship with its Subject"
+      ],
+      "ans": 1,
+      "explain": "An Observer can register with multiple Subjects and receive notification streams from each independently. This is explicitly supported and is one of the pattern's noted consequences.",
+      "deep": "For example, a summary dashboard panel might observe both a sales dataset and a user activity dataset. When either changes, the panel updates. The two Subjects remain independent while the Observer aggregates from both."
+    },
+    {
+      "cat": "observer",
+      "diff": "hard",
+      "q": "A team implements Observer but makes the Subject store a typed reference to each specific Observer class rather than using the abstract Observer interface. What problem does this create?",
+      "opts": [
+        "The Subject becomes unable to notify observers because typed references cannot call virtual methods",
+        "Adding a new Observer type requires modifying the Subject; the Subject is now coupled to specific implementations, defeating the loose coupling the pattern is designed to create",
+        "The Subject's notification loop becomes thread-safe because typed references are not thread-local",
+        "The pattern requires the abstract Observer interface for compilation; the code will not build without it"
+      ],
+      "ans": 1,
+      "explain": "Coupling the Subject to specific Observer types defeats the pattern's purpose. Adding a new Observer type now requires changing the Subject, which is the opposite of the extensibility Observer is designed to provide.",
+      "deep": "This is a common anti-pattern called observer without abstraction. The code appears to work but is tightly coupled. Every new view requires touching the data source, exactly the problem Observer exists to prevent."
+    },
+    {
+      "cat": "observer",
+      "diff": "hard",
+      "q": "In a financial trading system, multiple components (a risk calculator, a P&L tracker, and a regulatory reporter) must update whenever a trade is executed. Why is Observer the most appropriate pattern for this design?",
+      "opts": [
+        "Observer is appropriate because all three components require exclusive sequential access to the trade data",
+        "Observer fits because the trade has a one-to-many relationship with components that must react, and adding new reporting components later requires no changes to the trade system itself",
+        "Observer is correct because the pattern provides thread-safe notification across all three components simultaneously",
+        "Observer is appropriate because it prevents duplicate notifications from reaching more than one component at the same time"
+      ],
+      "ans": 1,
+      "explain": "A trade as Subject has a clear one-to-many relationship with reactive components as Observers. New regulatory or reporting components can be added by registering new Observers without touching the core trade processing system.",
+      "deep": "Financial systems are classic Observer territory. Regulations change, requiring new reporting components. Products change, requiring new risk calculators. Observer lets these be added without modifying the core trade model."
+    },
+    {
+      "cat": "observer",
+      "diff": "hard",
+      "q": "The Observer pattern can cause a cascade of updates where one notification triggers other notifications. Why is this a concern?",
+      "opts": [
+        "Cascading updates reduce performance because each notification requires a full system restart",
+        "An Observer that is also a Subject can trigger further notifications upon update, potentially causing unexpected chains of state changes that are hard to predict or debug",
+        "Cascading notifications violate the pattern's one-to-many constraint by creating many-to-many update cycles",
+        "Cascades cause the abstract Observer interface to become concrete, breaking the pattern's abstraction"
+      ],
+      "ans": 1,
+      "explain": "When an Observer is also a Subject, receiving a notification may cause it to change its own state and notify its own observers, triggering further notifications. This chain can produce unexpected, hard-to-debug update sequences.",
+      "deep": "This is the cascading update problem. In complex systems with many interconnected Subjects and Observers, one state change can propagate through the system unpredictably. Careful design or change-logging mechanisms help manage this."
+    },
+    {
+      "cat": "observer",
+      "diff": "hard",
+      "q": "In the Observer pattern, a Concrete Observer stores state that corresponds to the state of the subject. Why does it need to maintain its own copy of relevant state?",
+      "opts": [
+        "Storing state locally is required because Observers cannot call methods on the Subject after registration",
+        "Local state allows the Observer to function and respond to queries even when the Subject is temporarily unavailable, and avoids repeated calls to the Subject for data it already has",
+        "Maintaining its own state prevents the Observer from modifying the Subject's data through accidental reference sharing",
+        "The pattern requires local state storage to enable the Observer to roll back to a previous state if a notification is received in error"
+      ],
+      "ans": 1,
+      "explain": "Local state lets the Observer answer queries and render itself without always calling back to the Subject. It represents the Observer's current view of the relevant portion of the Subject's state.",
+      "deep": "This is a form of local cache. The Observer stores the parts of the Subject's state it needs for its own purpose. When notified of a change, it fetches updated values from the Subject and refreshes its local copy."
+    },
+    {
+      "cat": "observer",
+      "diff": "easy",
+      "q": "In the Observer pattern, what is the attach operation used for?",
+      "opts": [
+        "It connects two Subjects so they share the same set of observers",
+        "It registers an Observer with the Subject so the Observer will receive future notifications",
+        "It links the Subject to a data source so it can detect state changes automatically",
+        "It binds the Concrete Observer to a specific update method on the abstract Observer interface"
+      ],
+      "ans": 1,
+      "explain": "Attach, also called register or subscribe, adds an Observer to the Subject's list of dependents. After attaching, the Observer will receive a notification every time the Subject changes state.",
+      "deep": "The attach and detach interface is what makes the Observer list dynamic. Objects can join and leave the notification list at any time without the Subject needing to change."
+    },
+    {
+      "cat": "observer",
+      "diff": "med",
+      "q": "Why does the Observer pattern support broadcast communication more naturally than direct method calls from the Subject to each dependent?",
+      "opts": [
+        "Broadcast in Observer uses a network multicast protocol, which is faster than sequential direct calls",
+        "The Subject calls one notification method that reaches all observers at once, so adding a new observer does not require adding a new explicit call in the Subject",
+        "Observer uses event queues that automatically fan out messages to all registered listeners in parallel",
+        "Broadcast communication in Observer is enforced by the compiler, unlike direct method calls which are optional"
+      ],
+      "ans": 1,
+      "explain": "The Subject iterates its observer list and calls the update interface on each, a simple loop that reaches all observers. Adding a new observer means registering it, not modifying the Subject's notification logic.",
+      "deep": "In tightly coupled code, each new dependent requires a new explicit call in the Subject. Observer replaces this with a generic loop over all registered observers."
+    },
+    {
+      "cat": "observer",
+      "diff": "easy",
+      "q": "What problem does the Observer pattern solve that would otherwise require modifying the Subject every time a new dependent is added?",
+      "opts": [
+        "The Subject would need to know the memory address of each dependent to send notifications directly",
+        "Without Observer, the Subject must contain explicit code for every dependent, so adding a new one requires changing the Subject's source code",
+        "Without Observer, dependents must poll the Subject at regular intervals to check for changes",
+        "Without Observer, the Subject cannot change state without first obtaining approval from all dependents"
+      ],
+      "ans": 1,
+      "explain": "Without Observer, the Subject explicitly calls each dependent by name. Adding a new dependent means modifying the Subject. Observer removes this coupling because dependents register themselves and the Subject never needs to change.",
+      "deep": "This is the scalability argument for Observer. Systems with a few dependents can manage explicit calls. Systems with many dependents that may be added and removed over time need Observer's dynamic registration."
+    },
+    {
+      "cat": "observer",
+      "diff": "hard",
+      "q": "How does the Observer pattern relate to the MVC architectural pattern from Lecture 6?",
+      "opts": [
+        "Observer replaces MVC in event-driven systems because they address the same problem at different scales",
+        "Observer is the mechanism MVC uses to notify the View or Views when the Model changes; the Model acts as Subject and each View is an Observer",
+        "MVC eliminates the need for Observer by routing all Model-View communication through the Controller",
+        "Observer is only used within the Controller component of MVC to manage user input events"
+      ],
+      "ans": 1,
+      "explain": "Observer is the mechanism that powers Model-to-View notification in MVC. The Model as Subject notifies all registered Views as Observers when its data changes. MVC describes the architecture, while Observer describes the notification mechanism within it.",
+      "deep": "This connection shows how patterns work together. MVC describes the three roles. Observer describes how one of the key interactions works. The two patterns complement rather than replace each other."
+    },
+    {
+      "cat": "observer",
+      "diff": "med",
+      "q": "When should you use the Observer pattern rather than having the Subject directly call methods on dependent objects?",
+      "opts": [
+        "Only when the Subject and dependents are in different programming languages or runtime environments",
+        "When the set of dependent objects is not known at compile time, may change at runtime, or when you want to avoid tight coupling between the Subject and its dependents",
+        "Only when there are more than five dependent objects because smaller numbers are more efficiently handled with direct calls",
+        "When the Subject needs to control the order in which dependents are updated to ensure data consistency"
+      ],
+      "ans": 1,
+      "explain": "Use Observer when the set of dependents is not fixed at compile time, may change at runtime, or when loose coupling between Subject and dependents is required for maintainability.",
+      "deep": "Direct calls are fine for stable, small systems. Observer pays off when dependents are discovered at runtime, change frequently, or need to be independently developed and deployed."
+    },
+    {
+      "cat": "observer",
+      "diff": "hard",
+      "q": "A Concrete Observer receives a notification but the Subject's state has not actually changed. What design mechanism can prevent unnecessary re-renders in this situation?",
+      "opts": [
+        "The abstract Observer interface should include a shouldUpdate method that the Subject calls before notifying",
+        "The Concrete Observer can compare the notified state to its own stored state and skip the update if nothing has changed",
+        "The Subject should only send notifications when its state changes by more than a defined threshold",
+        "Unnecessary notifications are prevented by the pattern's architecture because the Subject only calls notify when it detects a change"
+      ],
+      "ans": 1,
+      "explain": "The Concrete Observer can compare the incoming state with its locally stored state. If nothing relevant changed, it can skip the expensive re-render. This change detection is a common optimisation in Observer implementations.",
+      "deep": "React's shouldComponentUpdate and similar mechanisms in modern frameworks are exactly this: Observer-based notifications with local change detection to skip unnecessary re-renders. The pattern is the foundation, and change detection is the optimisation."
+    },
+    {
+      "cat": "observer",
+      "diff": "med",
+      "q": "The Observer pattern is classified as Behavioural. What does this classification tell us about how it solves its problem?",
+      "opts": [
+        "It solves the problem by controlling how and when new objects are created in the system",
+        "It solves the problem by organising the structural relationship between classes into a larger composed hierarchy",
+        "It solves the problem by defining how objects communicate and distribute responsibility for responding to state changes",
+        "It solves the problem by providing a simplified interface to coordinate complex object creation sequences"
+      ],
+      "ans": 2,
+      "explain": "Behavioural patterns define how objects communicate and collaborate at runtime. Observer specifically addresses the communication pattern when one object's state change must be distributed to many others.",
+      "deep": "The Behavioural classification distinguishes Observer from Creational and Structural patterns. Observer's solution is about runtime communication: who gets notified, when, and how."
+    },
+    {
+      "cat": "observer",
+      "diff": "easy",
+      "q": "What is the detach operation in the Observer pattern used for?",
+      "opts": [
+        "It removes the Subject from a shared registry so no new Observers can register with it",
+        "It unregisters an Observer from the Subject so it no longer receives state change notifications",
+        "It disconnects the Subject from its data source to temporarily pause all notifications",
+        "It deletes both the Subject and Observer from memory when the relationship is no longer needed"
+      ],
+      "ans": 1,
+      "explain": "Detach, also called unsubscribe or unregister, removes an Observer from the Subject's notification list. After detaching, the Observer no longer receives notifications when the Subject changes state.",
+      "deep": "Proper detachment is critical for avoiding memory leaks. An Observer that is no longer needed but is still registered will continue to receive notifications and can prevent garbage collection of both the Observer and its resources."
+    },
+    {
+      "cat": "iterator",
+      "diff": "easy",
+      "q": "What is the intent of the Iterator pattern?",
+      "opts": [
+        "Ensure a container class creates only one instance of its Iterator for safe concurrent access",
+        "Access elements of a container sequentially without exposing the underlying representation of the container",
+        "Notify all dependent objects when a container's contents change so they can re-render",
+        "Provide a simplified interface to a complex container so clients need fewer method calls to interact with it"
+      ],
+      "ans": 1,
+      "explain": "The Iterator's intent is to provide sequential access to a container's elements without exposing the container's internal structure.",
+      "deep": "This is a separation of concerns: the container manages storage, and the Iterator manages traversal. Neither needs to know the internal details of the other's implementation."
+    },
+    {
+      "cat": "iterator",
+      "diff": "easy",
+      "q": "In the Iterator pattern, what is the role of the Aggregate?",
+      "opts": [
+        "The Aggregate implements the traversal logic and tracks the current position within the container",
+        "The Aggregate is the container; it can provide a method to create an instance of an Iterator for itself",
+        "The Aggregate defines the abstract interface that all Iterator implementations must follow",
+        "The Aggregate stores the current traversal state and determines the next element in the sequence"
+      ],
+      "ans": 1,
+      "explain": "The Aggregate is the container. It provides a factory method such as getIterator() that creates the appropriate Iterator for traversing its contents.",
+      "deep": "Separating the factory method in Aggregate from the traversal logic in Iterator means the container can offer different Iterators for different traversal strategies, such as forward, backward, or filtered, without changing the container itself."
+    },
+    {
+      "cat": "iterator",
+      "diff": "easy",
+      "q": "What does the Concrete Iterator do that the abstract Iterator interface does not?",
+      "opts": [
+        "The Concrete Iterator defines which methods are required for traversal; the abstract Iterator implements them",
+        "The Concrete Iterator implements the traversal interface and keeps track of the current position in the specific container",
+        "The Concrete Iterator provides the container's storage; the abstract Iterator provides the traversal logic",
+        "The Concrete Iterator notifies the container when traversal is complete; the abstract Iterator does not"
+      ],
+      "ans": 1,
+      "explain": "The Concrete Iterator implements the traversal interface with real logic and maintains the current traversal position for a specific container type.",
+      "deep": "Different container types, such as lists, trees, and hash maps, need different traversal algorithms. Each has its own Concrete Iterator. The shared abstract Iterator interface means all can be used interchangeably by client code."
+    },
+    {
+      "cat": "iterator",
+      "diff": "easy",
+      "q": "The Iterator pattern specifies that the container's internal representation should not be exposed to the client. Why is this important?",
+      "opts": [
+        "Hiding internals improves performance because the client does not need to allocate memory for the container structure",
+        "If the container changes its internal structure, such as from array to tree, client code that accesses through Iterator continues to work unchanged",
+        "Hiding internals prevents concurrent modification of the container by multiple clients accessing it simultaneously",
+        "Internal representation must be hidden to comply with data protection regulations in enterprise systems"
+      ],
+      "ans": 1,
+      "explain": "When clients access elements through an Iterator interface rather than the internal structure, the container's implementation can change completely without any client code needing to change.",
+      "deep": "This is the open/closed principle applied to data access. A switch from ArrayList to LinkedList to BinaryTree changes the internal representation entirely, but client iteration code using Iterator remains identical."
+    },
+    {
+      "cat": "iterator",
+      "diff": "easy",
+      "q": "The lecture lists polymorphic iteration as a key applicability for Iterator. What does this mean?",
+      "opts": [
+        "A single Iterator instance can traverse multiple different container types simultaneously in one pass",
+        "Different container types such as lists, trees, and sets can all be traversed using the same Iterator interface, so the client does not need to know which type it is iterating",
+        "Polymorphic iteration means the traversal order adapts dynamically based on the container's current state",
+        "Multiple clients can share one Iterator and each receives a separate polymorphic copy of the element sequence"
+      ],
+      "ans": 1,
+      "explain": "Polymorphic iteration means the same client code can traverse a list, a tree, and a set all through the same Iterator interface without knowing the specific collection type.",
+      "deep": "This is powerful for algorithms that process collections. A sorting algorithm, a search function, or a display method can operate on any collection type without modification because they just use the Iterator interface."
+    },
+    {
+      "cat": "iterator",
+      "diff": "med",
+      "q": "Why does the Iterator pattern specify we don't want to extend the container interface as part of its motivation?",
+      "opts": [
+        "Extending the container interface would require all clients to recompile even if they do not use the new traversal methods",
+        "Adding traversal methods to the container mixes storage concerns with traversal concerns, so the container would need to change whenever a new traversal strategy is needed",
+        "Container interfaces in most frameworks are sealed and cannot be extended by third-party developers",
+        "Extending the container interface with traversal methods creates circular dependencies between the container and its elements"
+      ],
+      "ans": 1,
+      "explain": "Adding traversal methods to the container mixes storage with traversal concerns and bloats the container's interface. A separate Iterator object encapsulates traversal without polluting the container.",
+      "deep": "The Single Responsibility Principle applies here: the container's job is storage and management, while traversal is a separate concern that varies independently. Keeping them separate means either can change without affecting the other."
+    },
+    {
+      "cat": "iterator",
+      "diff": "med",
+      "q": "A tree container wants to support both pre-order and in-order traversal. How does Iterator pattern handle this elegantly?",
+      "opts": [
+        "The container exposes two different methods, preOrder() and inOrder(), each returning a different array of elements",
+        "Two separate Concrete Iterator classes are created for the same tree Aggregate, one for each traversal strategy, and client code selects which Iterator to use",
+        "The single Iterator class uses a configuration flag to switch between traversal strategies at runtime",
+        "The tree container must be restructured so that one physical structure supports pre-order and the other supports in-order traversal"
+      ],
+      "ans": 1,
+      "explain": "Two Concrete Iterator classes are created, such as PreOrderTreeIterator and InOrderTreeIterator, both implementing the same abstract Iterator interface. The client chooses which to use by requesting the appropriate Iterator from the Aggregate.",
+      "deep": "This is Iterator's extensibility benefit. Adding a post-order traversal means adding a third Concrete Iterator class while the tree container and all existing client code remain unchanged."
+    },
+    {
+      "cat": "iterator",
+      "diff": "med",
+      "q": "Every modern programming language has built-in support for the Iterator pattern. How is this visible in everyday code?",
+      "opts": [
+        "Modern languages enforce Iterator pattern usage by preventing direct array index access in production code",
+        "The foreach loop in languages such as Java and C# and the for...of loop in JavaScript use the Iterator pattern internally, so the language hides the Concrete Iterator behind syntactic sugar",
+        "Most languages provide an Iterator base class that all collection classes must extend to compile correctly",
+        "Modern IDEs automatically apply the Iterator pattern when developers write loops over collection variables"
+      ],
+      "ans": 1,
+      "explain": "When you write foreach over a collection, the language creates a Concrete Iterator for the collection type and advances it on each iteration. This is the Iterator pattern in action, hidden by syntax.",
+      "deep": "Java's Iterable and Iterator interfaces, C#'s IEnumerable and IEnumerator, Python's __iter__ and __next__ protocol, and JavaScript's Symbol.iterator are all direct implementations of the Iterator pattern baked into the language."
+    },
+    {
+      "cat": "iterator",
+      "diff": "med",
+      "q": "What is the key advantage of the Concrete Aggregate's responsibility to create the appropriate Concrete Iterator?",
+      "opts": [
+        "It prevents clients from creating multiple Iterator instances simultaneously on the same container",
+        "The Aggregate knows its own internal structure, so it creates the correct Iterator that can navigate that structure, keeping this knowledge encapsulated within the Aggregate",
+        "Creating the Iterator through the Aggregate ensures thread-safe access to the container's elements",
+        "The Aggregate's factory method allows clients to request Iterators by name without knowing any class hierarchy"
+      ],
+      "ans": 1,
+      "explain": "The Concrete Aggregate knows its own internals and creates the correct Iterator for its specific structure. This knowledge stays encapsulated within the Aggregate, so clients never need to know which Iterator type to instantiate.",
+      "deep": "This is the Factory Method pattern embedded within Iterator. The Aggregate knows its own structure, so it creates the right Iterator for it. Clients just call getIterator and do not care which Concrete Iterator is returned."
+    },
+    {
+      "cat": "iterator",
+      "diff": "hard",
+      "q": "A large collection is being traversed. Halfway through, an element is added to the collection. What problem might this cause in a naive Iterator implementation?",
+      "opts": [
+        "The Iterator would become too slow because it must re-index the entire collection after each modification",
+        "The Iterator's tracked position may become invalid, so it could skip elements, revisit elements, or throw an exception because the collection's structure changed during traversal",
+        "The new element would be ignored automatically by the Iterator because it was added after traversal began",
+        "The Iterator would restart from the beginning to ensure the new element is included in the traversal"
+      ],
+      "ans": 1,
+      "explain": "Modifying a collection during iteration can invalidate the Iterator's internal position tracking, which leads to skipped elements, repeated elements, or errors. This is why many languages throw concurrent modification exceptions for such cases.",
+      "deep": "Fail-fast iterators detect concurrent modification and throw immediately. Snapshot iterators iterate over a copy made at iterator creation time. Both are common solutions to this problem."
+    },
+    {
+      "cat": "iterator",
+      "diff": "hard",
+      "q": "How does the Iterator pattern enable multiple simultaneous traversals of the same collection?",
+      "opts": [
+        "The collection detects multiple traversals and automatically creates thread-local copies of its elements",
+        "Each traversal uses its own separate Iterator instance with its own independent position, so two traversals never interfere with each other",
+        "Multiple simultaneous traversals are not supported because the Iterator pattern requires exclusive access to the container",
+        "Simultaneous traversals share one Iterator instance and use locks to coordinate whose turn it is to advance"
+      ],
+      "ans": 1,
+      "explain": "Each active traversal uses its own Iterator instance, maintaining its own independent current position. Two loops can traverse the same collection simultaneously without either affecting the other.",
+      "deep": "This is one of Iterator's most useful features. An algorithm that needs to compare elements at different positions, or a search that spawns sub-searches, can maintain multiple independent traversals without extra complexity."
+    },
+    {
+      "cat": "iterator",
+      "diff": "hard",
+      "q": "A developer decides to add a size() method to the Iterator interface so clients can check how many elements remain. Why does this violate Iterator's design principles?",
+      "opts": [
+        "Adding size() to the Iterator would duplicate functionality already provided by the abstract Observer interface",
+        "The Iterator interface should only define traversal operations, so adding size() mixes traversal concerns with collection inspection concerns and requires the Iterator to know more about the container than it should",
+        "The size() method violates the pattern because it returns an integer rather than an element, breaking the sequential access contract",
+        "Adding methods to the Iterator interface would require all Concrete Iterators to be rewritten, making the change too expensive"
+      ],
+      "ans": 1,
+      "explain": "The Iterator's responsibility is traversal, not collection inspection. size() is a collection concern that belongs on the Aggregate. Adding it to Iterator blurs responsibilities and couples Iterator more tightly to the container's internal knowledge.",
+      "deep": "This is the Single Responsibility Principle in action. The Iterator does one thing: traverse. Inspection, such as size, count, and contains, belongs on the container. Mixing them creates a fat iterator that is harder to test and maintain independently."
+    },
+    {
+      "cat": "iterator",
+      "diff": "easy",
+      "q": "The Iterator pattern allows access in various orders. What does this mean?",
+      "opts": [
+        "Elements can be accessed in any order because the Iterator randomly shuffles them before returning them",
+        "Different Concrete Iterators can implement different traversal strategies, such as forward, backward, breadth-first, and depth-first, for the same container",
+        "The client specifies the exact order of elements they want to receive when creating the Iterator",
+        "Various orders refers to the ability to sort elements alphabetically, numerically, or by date through the same interface"
+      ],
+      "ans": 1,
+      "explain": "Different Concrete Iterator implementations can traverse the same container in different orders, such as forward, reverse, breadth-first, and depth-first, while exposing the same Iterator interface to clients.",
+      "deep": "A tree can have a forward Iterator, a reverse Iterator, a level-order Iterator, and a pre-order Iterator, all created by the same Aggregate and all implementing the same interface. The client picks its traversal strategy at creation time."
+    },
+    {
+      "cat": "iterator",
+      "diff": "med",
+      "q": "How does Iterator's uniform traversal interface benefit a developer writing a search algorithm?",
+      "opts": [
+        "The uniform interface ensures search results are always returned in the same sorted order regardless of container type",
+        "The search algorithm can be written once using the Iterator interface and applied to any container type without modification",
+        "A uniform interface guarantees that the search completes in the same number of steps regardless of container size",
+        "Uniform interface means the Iterator automatically optimises traversal order for faster searching"
+      ],
+      "ans": 1,
+      "explain": "A search written against the abstract Iterator interface works on any collection type. Write it once for Iterator and it automatically works with lists, trees, sets, and any future container type.",
+      "deep": "This is algorithm reuse. Without Iterator, you write separate search algorithms for arrays, linked lists, trees, and other structures. With Iterator, one algorithm works for all."
+    },
+    {
+      "cat": "iterator",
+      "diff": "hard",
+      "q": "A team debates whether to put traversal logic inside the container class or in a separate Iterator class. What is the decisive argument for the separate Iterator approach?",
+      "opts": [
+        "Separate Iterators are faster because they operate in isolated memory regions away from the container's data",
+        "A separate Iterator allows multiple simultaneous traversals, each with their own position state, and allows new traversal strategies to be added without modifying the container",
+        "The Iterator must be separate to satisfy the language's interface requirements for type-safe generics",
+        "Keeping traversal in the container creates circular references that cause memory leaks in garbage-collected languages"
+      ],
+      "ans": 1,
+      "explain": "A separate Iterator object enables independent position state per traversal, allowing simultaneous traversals, and it allows new traversal strategies to be added as new Iterator classes without touching the container.",
+      "deep": "If traversal is in the container, it can only support one active traversal at a time because it would share a single internal position. Adding a new traversal strategy would also require modifying the container. Both problems disappear with a separate Iterator."
+    },
+    {
+      "cat": "iterator",
+      "diff": "med",
+      "q": "The Iterator pattern is classified as Behavioural. What type of behaviour does it specifically address?",
+      "opts": [
+        "The creation behaviour of new container objects and their initial state when they are first instantiated",
+        "The structural composition of how container elements are organised and stored in memory",
+        "The traversal behaviour, meaning how client code accesses and moves through a container's elements at runtime",
+        "The notification behaviour of how containers communicate changes in their contents to dependent objects"
+      ],
+      "ans": 2,
+      "explain": "Iterator is Behavioural because it addresses runtime traversal behaviour, meaning how clients access and move through elements. It defines the communication protocol between client and container during traversal.",
+      "deep": "Behavioural patterns are about runtime interaction protocols. Iterator's protocol is to check if more elements exist and then get the next one. This protocol works regardless of what lies behind it."
+    },
+    {
+      "cat": "iterator",
+      "diff": "easy",
+      "q": "Why is it desirable that the Iterator pattern does not extend the container's interface with traversal methods?",
+      "opts": [
+        "Container interfaces in most languages have a maximum number of methods that cannot be exceeded",
+        "Adding traversal to the container interface gives the container too many responsibilities and makes it harder to change storage or traversal strategies independently",
+        "Extending the interface would require all clients to update their code even if they do not use the new traversal methods",
+        "Traversal methods added to containers cannot be properly unit-tested because they depend on the container's state"
+      ],
+      "ans": 1,
+      "explain": "Adding traversal to the container gives it too many responsibilities and couples storage and traversal. Changing the traversal strategy would then require modifying the container, which violates the Single Responsibility Principle.",
+      "deep": "The Iterator keeps the container's interface clean. The container focuses on managing elements, while traversal, which can vary independently, is delegated to its own abstraction."
+    },
+    {
+      "cat": "iterator",
+      "diff": "hard",
+      "q": "A developer writes a reporting system that generates the same report from three different data sources, a database result set, an in-memory list, and a CSV file reader. How does Iterator minimise code duplication here?",
+      "opts": [
+        "The Iterator automatically converts all three sources into the same internal format before the report is generated",
+        "Each source implements the same Iterator interface, so the report generation code is written once against that interface and reused for all three sources without modification",
+        "Iterator creates a merged view of all three sources, presenting them as a single unified collection to the report generator",
+        "The pattern caches the first result and returns it for all three sources, avoiding redundant data access"
+      ],
+      "ans": 1,
+      "explain": "Each source creates a Concrete Iterator implementing the same abstract interface. The report generation code is written once using that interface and works with all three sources without duplication.",
+      "deep": "This is one of Iterator's highest-value real-world applications: providing a uniform access layer across heterogeneous data sources. The report engine does not know or care whether it is reading a database or a file; it just gets elements via Iterator."
+    },
+    {
+      "cat": "iterator",
+      "diff": "med",
+      "q": "What does the Concrete Iterator need to maintain internally to support sequential access?",
+      "opts": [
+        "A copy of all the container's elements so it can re-traverse them without accessing the original container",
+        "A current position indicator that tracks where in the container the traversal is and what the next element will be",
+        "A reference to the abstract Iterator interface so it can delegate complex operations to the base class",
+        "A count of how many elements have been returned so it can limit traversal to prevent infinite loops"
+      ],
+      "ans": 1,
+      "explain": "The Concrete Iterator maintains a current position, such as an index or pointer, that tracks where in the traversal it is. Calling next advances this position and returns the element at that position.",
+      "deep": "This internal position is the key state the Concrete Iterator encapsulates. Having it in a separate object rather than in the container is what allows multiple simultaneous independent traversals with different positions."
+    },
+    {
+      "cat": "iterator",
+      "diff": "easy",
+      "q": "What is the first use case the lecture lists for the Iterator pattern's applicability?",
+      "opts": [
+        "Ensure only one traversal can be active at a time to maintain data consistency",
+        "Access a container's contents without knowing about or using its internal representation",
+        "Provide a way to undo traversal steps by returning to previous positions in the sequence",
+        "Allow the container to change its internal structure while a traversal is in progress"
+      ],
+      "ans": 1,
+      "explain": "The primary use case is accessing container contents without knowing or using the internal representation. The Iterator is the abstraction layer between client and container internals.",
+      "deep": "This is information hiding at the access level. Clients should interact with collections through abstractions, not through index calculations, pointer arithmetic, or tree traversal logic, all of which belong in Concrete Iterator implementations."
+    },
+    {
+      "cat": "iterator",
+      "diff": "hard",
+      "q": "How is the relationship between Iterator and Aggregate similar to the relationship between Adapter and ITarget from Lecture 6?",
+      "opts": [
+        "Both patterns use a private constructor to control how their key abstraction is instantiated",
+        "In both, an interface decouples the client from a specific implementation, allowing implementations to change without affecting the client",
+        "Both patterns require a Facade to coordinate the interaction between the interface and its implementations",
+        "Iterator and Adapter are identical patterns applied at different levels of the system hierarchy"
+      ],
+      "ans": 1,
+      "explain": "In both patterns, an abstract interface decouples the client from specific implementations. The client uses the interface, while the concrete implementation can change without the client knowing.",
+      "deep": "This is the program to an interface principle appearing across multiple patterns. It is one of the most powerful ideas in object-oriented design, and it shows up in Adapter, Iterator, Observer, and many other patterns."
+    },
+    {
+      "cat": "facade",
+      "diff": "easy",
+      "q": "What is the design goal of the Facade pattern?",
+      "opts": [
+        "Ensure a complex subsystem has only one active instance to prevent resource conflicts",
+        "Minimise communication between client and subsystems by providing a simplified interface to the system's general facilities",
+        "Notify all dependent subsystems when the client changes its input data or configuration",
+        "Allow the client to traverse all subsystem objects sequentially without knowing their internal organisation"
+      ],
+      "ans": 1,
+      "explain": "Facade's design goal is to minimise communication between client and subsystems by providing a simplified, unified interface to the complex system behind it.",
+      "deep": "Facade does not eliminate the subsystems; it provides a convenient entry point for common operations. Expert clients who need more control can still access subsystems directly."
+    },
+    {
+      "cat": "facade",
+      "diff": "easy",
+      "q": "In the Facade pattern, what is the key responsibility of the Facade class?",
+      "opts": [
+        "It implements all subsystem functionality internally so subsystems are never called directly",
+        "It knows which subsystem classes are responsible for a request and delegates client requests to the appropriate ones",
+        "It stores the state of all subsystems so the client can query them through a single object",
+        "It prevents clients from accessing subsystems directly by enforcing access control on all subsystem classes"
+      ],
+      "ans": 1,
+      "explain": "The Facade knows which subsystem handles each type of request and delegates accordingly. It is an intelligent router, not a reimplementation of subsystem logic.",
+      "deep": "The Facade does the coordination work that the client would otherwise need to do. Instead of the client calling A, then B, then C in the right order, the Facade encapsulates that orchestration in one method."
+    },
+    {
+      "cat": "facade",
+      "diff": "easy",
+      "q": "In the Facade pattern, does the Subsystem know about the Facade?",
+      "opts": [
+        "Yes, the Subsystem imports and registers with the Facade at startup to receive delegated requests",
+        "No, the Subsystem implements its functionality independently and has no knowledge that a Facade wraps it",
+        "Yes, the Subsystem calls the Facade's interface to report completion of tasks back to the client",
+        "Partially, the Subsystem knows the Facade exists but does not depend on it for its core functionality"
+      ],
+      "ans": 1,
+      "explain": "The Subsystem has no knowledge of the Facade. It simply implements its functionality. The Facade depends on the Subsystem, not the other way around.",
+      "deep": "This one-directional dependency is important. It means the Subsystem can be tested independently, used without the Facade by expert clients, and changed without the Facade needing to know."
+    },
+    {
+      "cat": "facade",
+      "diff": "easy",
+      "q": "What does the Facade pattern's layered system application mean in architecture?",
+      "opts": [
+        "The Facade splits the system into three layers: presentation, logic, and data, matching MVC exactly",
+        "Each layer has a single entry point as its Facade, and layers communicate only through these Facade interfaces rather than directly with each other's internal classes",
+        "The Facade creates separate threads for each system layer, allowing them to process requests in parallel",
+        "Layered Facade means each subsystem has its own Facade that the main Facade delegates to"
+      ],
+      "ans": 1,
+      "explain": "In a layered architecture, each layer exposes a Facade as its only public interface. Layers communicate through Facades, not by reaching into each other's internal classes.",
+      "deep": "This is how enterprise systems achieve layer independence. The UI layer calls the business logic Facade. The business logic Facade calls the data access Facade. Each layer's internals can change completely as long as its Facade interface stays stable."
+    },
+    {
+      "cat": "facade",
+      "diff": "med",
+      "q": "The car assembly example uses a Facade to coordinate CarModel, CarEngine, CarBody, and CarAccessories. What is the benefit for the client?",
+      "opts": [
+        "The client gains direct access to all four subsystem objects through the Facade's public properties",
+        "The client calls one method on the Facade to complete car assembly without needing to know about or coordinate the four subsystems directly",
+        "The Facade caches the car's assembly state so the client can resume interrupted assemblies at any time",
+        "Using the Facade reduces the number of subsystem objects in memory by combining their logic into one class"
+      ],
+      "ans": 1,
+      "explain": "The client calls one CreateCompleteCar method. The Facade internally calls SetModel, SetEngine, SetBody, and SetAccessories in the correct order. The client never needs to know the four subsystems exist.",
+      "deep": "Before the Facade, the client must know about four subsystems, their correct call order, and their individual method signatures. After the Facade, the client needs to know exactly one thing: CreateCompleteCar. Complexity is hidden and simplicity is exposed."
+    },
+    {
+      "cat": "facade",
+      "diff": "med",
+      "q": "How does the Facade pattern decouple subsystems from clients?",
+      "opts": [
+        "The Facade uses Singleton to ensure each subsystem is only instantiated once, reducing client-subsystem dependencies",
+        "Clients depend only on the Facade interface, so if subsystem implementations change, only the Facade needs updating and not the clients",
+        "The Facade creates new instances of subsystems for each client request, preventing shared state between client interactions",
+        "Decoupling is achieved by having all subsystems implement a shared interface that the client uses directly"
+      ],
+      "ans": 1,
+      "explain": "Clients depend on the Facade interface rather than on individual subsystem classes. When subsystem implementations change, only the Facade needs updating, and all client code continues to work without modification.",
+      "deep": "This is the same principle as Adapter's target interface: program to an interface. The Facade is the interface for the entire subsystem cluster. Clients are isolated from the complexity and change behind it."
+    },
+    {
+      "cat": "facade",
+      "diff": "med",
+      "q": "The Facade pattern's liability states that it doesn't prevent expert clients from direct access to subsystems. Why is this intentional rather than a flaw?",
+      "opts": [
+        "It is a flaw that should be addressed by making all subsystem classes private or package-private",
+        "The Facade provides convenient access for most use cases but does not restrict advanced use, so expert clients who need fine-grained control can still access subsystems directly",
+        "The pattern's liability exists because it is impossible to enforce access restrictions in object-oriented languages",
+        "Expert access is permitted to allow subsystems to communicate with each other without going through the Facade"
+      ],
+      "ans": 1,
+      "explain": "The Facade is a convenience layer, not a security barrier. Most clients use it for simplicity. Experts who need fine-grained control can bypass it. Both modes of access are valid.",
+      "deep": "Forcing all access through the Facade would be restrictive and counterproductive. Power users, such as debugging tools, migration scripts, and performance-critical code, may legitimately need direct subsystem access that the Facade's simple interface cannot provide."
+    },
+    {
+      "cat": "facade",
+      "diff": "med",
+      "q": "The lecture mentions that Facade may have to translate its interface to subsystem interface using Adapter. What does this reveal about how patterns work together?",
+      "opts": [
+        "Adapter and Facade are mutually exclusive, so if you use one you cannot use the other in the same system",
+        "Patterns can be combined; the Facade delegates to subsystems, and if a subsystem has an incompatible interface, an Adapter translates between the Facade and that subsystem",
+        "The Adapter pattern replaces Facade when subsystem interfaces are incompatible, making Facade redundant in those cases",
+        "Using Adapter inside Facade is an anti-pattern that should be avoided by redesigning the subsystem interface directly"
+      ],
+      "ans": 1,
+      "explain": "Patterns can and often should be combined. A Facade delegates to subsystems, and if a subsystem has an incompatible interface, an Adapter can translate between them, so Facade and Adapter work together in the same design.",
+      "deep": "This combination is common in real systems. A Facade might wrap five subsystems. Some are modern and compatible. Others are legacy or third-party systems with different interfaces, so they are accessed through Adapters."
+    },
+    {
+      "cat": "facade",
+      "diff": "hard",
+      "q": "A client currently makes 12 separate calls to different subsystem objects to complete a complex operation. After applying the Facade pattern, what changes for the client?",
+      "opts": [
+        "The client makes the same 12 calls but through the Facade object rather than directly to subsystem objects",
+        "The client makes one or a small number of high-level calls to the Facade, and the 12 subsystem calls are now encapsulated inside the Facade's methods",
+        "The client is replaced entirely by the Facade, which takes over all responsibility for initiating operations",
+        "The 12 subsystem calls are eliminated and replaced with direct database queries that bypass all subsystem logic"
+      ],
+      "ans": 1,
+      "explain": "After applying Facade, the client makes one high-level call such as processOrder. The Facade internally makes the 12 subsystem calls in the correct sequence. The client's complexity drops from 12 calls to 1.",
+      "deep": "This cognitive simplification is the Facade's primary value. Developers using the system need only understand one concept rather than many subsystem interactions, their order, and their error handling."
+    },
+    {
+      "cat": "facade",
+      "diff": "hard",
+      "q": "Why does Facade reduce implementation dependencies between subsystems and clients?",
+      "opts": [
+        "Facade reduces dependencies by ensuring all subsystems share the same base class, reducing the number of import statements clients need",
+        "When the client depends only on the Facade interface, adding, replacing, or modifying subsystems never requires changing the client because the Facade absorbs all dependency on the subsystem implementations",
+        "Facade reduces dependencies by implementing lazy loading, so subsystems are only instantiated when the client actually calls the relevant Facade method",
+        "Dependencies are reduced because the Facade uses reflection to discover subsystem methods at runtime rather than importing them at compile time"
+      ],
+      "ans": 1,
+      "explain": "Client code depends on the Facade's interface rather than on specific subsystem implementations. Adding a new subsystem, replacing one, or changing its internals only requires updating the Facade. The client has no implementation dependencies on the subsystems.",
+      "deep": "In a system without Facade, each client potentially imports and depends on every subsystem it uses. With Facade, each client imports one thing. This simplifies dependency graphs and makes the system easier to test and maintain."
+    },
+    {
+      "cat": "facade",
+      "diff": "hard",
+      "q": "How does the Facade pattern differ from the Adapter pattern, even though both provide a simplified interface to existing code?",
+      "opts": [
+        "Facade is used for new code and Adapter is only for legacy code, so the two patterns do not overlap in application",
+        "Adapter translates one interface to another to resolve incompatibility, whereas Facade simplifies access to a cluster of subsystems without necessarily changing any interface",
+        "Adapter wraps a single class and Facade always wraps exactly two classes, so the patterns differ only in the number of wrapped classes",
+        "Facade is a Creational pattern while Adapter is Structural, so they solve problems at different levels of object creation"
+      ],
+      "ans": 1,
+      "explain": "Adapter solves an interface incompatibility problem between two components. Facade solves a complexity problem by providing a simplified entry point to a cluster of subsystems, not necessarily by changing any interface.",
+      "deep": "The key difference is motivation. Adapter is about interface translation, making two components work together. Facade is about complexity hiding, making a complex subsystem cluster easy to use."
+    },
+    {
+      "cat": "facade",
+      "diff": "easy",
+      "q": "What is the real-world analogy for the Facade pattern given in the lecture notes?",
+      "opts": [
+        "A television remote control that manages all channels without exposing the cable box internals",
+        "A car ignition key that starts a complex set of subsystems such as fuel, ignition, and battery through one simple action",
+        "A travel power adapter that lets a device plug into a foreign socket without modification",
+        "A newspaper subscription that delivers daily updates without the reader contacting the printing press"
+      ],
+      "ans": 1,
+      "explain": "The car ignition key is the Facade analogy. Turning it triggers the fuel system, ignition system, battery, alternator, and more. The driver as client needs to know only the key as Facade, not the subsystems.",
+      "deep": "The car analogy is effective because it illustrates complexity hiding without eliminating the underlying complexity. The engine, fuel, and electrical systems are all still present; they are just accessed through one simple interface."
+    },
+    {
+      "cat": "facade",
+      "diff": "med",
+      "q": "A Facade promotes weak coupling between subsystems and clients. How does this benefit system maintenance?",
+      "opts": [
+        "Weak coupling means changes to the Facade automatically propagate to all clients, keeping them synchronised",
+        "When subsystems change internally, client code is unaffected, so only the Facade may need updating and the change is contained to one place",
+        "Weak coupling prevents subsystems from calling each other, forcing all inter-subsystem communication through the client",
+        "Promoting weak coupling reduces the number of test cases needed because clients and subsystems are independently testable"
+      ],
+      "ans": 1,
+      "explain": "Weak coupling means subsystem changes do not ripple out to clients. The Facade absorbs the change. At most, the Facade needs updating, and client code is unaffected, so changes are contained to one place.",
+      "deep": "Strong coupling creates change amplification, where one subsystem change requires updates in every client that uses it. Weak coupling via Facade creates change containment, where one subsystem change requires updating one Facade."
+    },
+    {
+      "cat": "facade",
+      "diff": "hard",
+      "q": "A team is building a compiler with lexer, parser, semantic analyser, code generator, and optimiser components. They want a simple Compile(sourceCode) entry point. This is a classic Facade application. Why?",
+      "opts": [
+        "The Facade hides the complexity of compilation so clients can trigger compilation with one method call without needing to know or coordinate the five subsystem steps",
+        "The Facade ensures each compiler component creates only one instance, preventing duplicate processing of the same source file",
+        "A Facade is needed because lexer, parser, and code generator have incompatible interfaces that cannot call each other directly",
+        "The Facade stores the compilation state so developers can resume interrupted compilations from any step"
+      ],
+      "ans": 0,
+      "explain": "The Facade hides the complexity of five sequential subsystems behind one Compile method. Clients call Compile and never need to know about or coordinate lexing, parsing, semantic analysis, code generation, and optimisation.",
+      "deep": "This is a textbook Facade. The compiler subsystems are complex, numerous, and ordered, which is exactly the kind of complexity Facade is designed to hide. Users just want to compile code rather than manage a pipeline of specialised systems."
+    },
+    {
+      "cat": "facade",
+      "diff": "med",
+      "q": "The lecture states that clients that use Facade don't have direct access to subsystems. How does this benefit a junior developer joining the team?",
+      "opts": [
+        "Junior developers cannot accidentally break the system because the Facade's methods have parameter validation built in",
+        "The junior developer needs to learn one interface, the Facade, to be productive rather than master the entire subsystem complexity before writing useful code",
+        "The Facade prevents junior developers from deploying code because it routes all deployment requests through a senior review step",
+        "Junior developers benefit because the Facade automatically generates documentation from the subsystem code"
+      ],
+      "ans": 1,
+      "explain": "A junior developer can use the Facade immediately by calling high-level, well-named methods without needing to understand the complex subsystem internals first. They become productive faster.",
+      "deep": "Good Facade design is domain driven. Methods such as CreateOrder, CancelOrder, and ProcessPayment match how developers think about the domain, while hiding the database calls, validation rules, and event publishing that happen underneath."
+    },
+    {
+      "cat": "facade",
+      "diff": "hard",
+      "q": "In a layered system where each layer communicates only through its Facade, what happens when one layer's internal implementation is completely rewritten?",
+      "opts": [
+        "All layers must be rewritten simultaneously because internal changes invalidate the shared state the layers maintain",
+        "Only the Facade of the rewritten layer needs to maintain its interface, so all other layers and clients continue to work unchanged and remain unaware of the internal rewrite",
+        "The Facade must be deleted and rewritten from scratch to reflect the new internal architecture of the layer",
+        "The client layer must be updated to use the new internal API before the internal rewrite can be deployed"
+      ],
+      "ans": 1,
+      "explain": "As long as the Facade's interface remains stable, all dependent layers are unaffected by an internal rewrite. This is what makes large-scale refactoring safe in Facade-layered systems.",
+      "deep": "This is the greatest architectural benefit of Facade in layered systems. Teams can completely rewrite a layer's internals, switch databases, change algorithms, or replace libraries without touching any other layer or client code."
+    },
+    {
+      "cat": "facade",
+      "diff": "easy",
+      "q": "The Facade shields clients from subsystem components, reducing the number of objects clients deal with. Why is reducing the number of objects important?",
+      "opts": [
+        "Fewer objects means less memory usage, which directly improves application performance and response time",
+        "When clients deal with fewer objects, the mental model is simpler, onboarding is faster, and there are fewer places where bugs can be introduced by incorrect client-subsystem interaction",
+        "Fewer objects reduces the number of import statements in client code, making files shorter and easier to format",
+        "Reducing objects is required to stay within the maximum component count allowed by most enterprise architecture standards"
+      ],
+      "ans": 1,
+      "explain": "Fewer objects for the client to manage means a simpler mental model, faster onboarding, fewer ways to use the system incorrectly, and fewer tests needed on the client side.",
+      "deep": "API design research consistently shows that smaller and simpler APIs have higher adoption rates and lower bug rates. Facade implements this insight at the architecture level by exposing the minimum necessary interface for common tasks."
+    },
+    {
+      "cat": "facade",
+      "diff": "med",
+      "q": "The Facade pattern is classified as Structural. What does this tell us about how it solves its problem?",
+      "opts": [
+        "It solves the problem by controlling when and how new subsystem objects are created and initialised",
+        "It solves the problem by defining the communication protocol that subsystems use to notify clients of state changes",
+        "It solves the problem by organising the structural relationship between client and subsystems, adding a new intermediary class that simplifies the interface",
+        "It solves the problem by applying traversal logic across all subsystem objects in a defined sequential order"
+      ],
+      "ans": 2,
+      "explain": "Structural patterns solve problems through class and object composition. Facade adds a new structural layer, the Facade class, that organises the relationship between client and subsystem cluster.",
+      "deep": "The Facade is a structural solution: a new class that composes subsystem objects and presents a simplified surface to clients. It is not about creation or runtime notification; it is about structural organisation."
+    },
+    {
+      "cat": "facade",
+      "diff": "hard",
+      "q": "A system has 6 subsystems. Currently clients directly import and use all 6. The team introduces a Facade. What happens to the dependency graph?",
+      "opts": [
+        "Each client now has 7 dependencies, the 6 subsystems plus 1 Facade, so total complexity increases slightly",
+        "Each client's dependencies collapse from 6 subsystem dependencies to 1 Facade dependency, and the subsystem dependencies are moved into the Facade",
+        "The dependency graph is unchanged because the Facade is a transparent wrapper that does not alter import relationships",
+        "Dependencies are eliminated entirely because the Facade uses reflection to access subsystems without declaring imports"
+      ],
+      "ans": 1,
+      "explain": "After introducing the Facade, each client has one dependency, the Facade, instead of six subsystem dependencies. The subsystem dependencies move into the Facade.",
+      "deep": "In a system with many clients and six subsystems, this collapses a dense dependency web into a much simpler star topology. The Facade centralises knowledge of the subsystem cluster."
+    },
+    {
+      "cat": "facade",
+      "diff": "easy",
+      "q": "What does varying components of subsystem without affecting clients as a Facade benefit mean practically?",
+      "opts": [
+        "The Facade can swap subsystems for different versions while the application runs without any downtime",
+        "Subsystem implementations can be upgraded, optimised, or replaced as long as the Facade's interface remains stable, and client code never needs to change",
+        "Clients can choose which version of a subsystem to use by passing configuration parameters to the Facade",
+        "The Facade monitors subsystem performance and automatically switches to faster implementations when needed"
+      ],
+      "ans": 1,
+      "explain": "Subsystem implementations can evolve, be optimised, or be completely replaced. As long as the Facade's interface stays stable, no client code changes because the Facade isolates clients from subsystem variation.",
+      "deep": "This is the practical value of loose coupling. A team can upgrade a subsystem library, switch databases, or improve an algorithm and deploy the change with zero impact on client code."
+    },
+    {
+      "cat": "facade",
+      "diff": "hard",
+      "q": "How does the Facade pattern relate to the principle of information hiding that also appears in the MVC pattern?",
+      "opts": [
+        "Facade and MVC are unrelated because information hiding in MVC refers to data encryption while Facade hides class interfaces",
+        "Both patterns apply information hiding at their respective scopes, so MVC hides the Model's implementation from the View while Facade hides subsystem implementations from the client",
+        "Information hiding in Facade is enforced by access modifiers while in MVC it is enforced by the framework's routing rules",
+        "Facade applies information hiding at the class level while MVC applies it at the method level, representing different granularities of the same principle"
+      ],
+      "ans": 1,
+      "explain": "Both apply information hiding at different scopes. MVC hides the Model's internal data management from the View. Facade hides multiple subsystems' implementations from the client. The principle is the same even though the scale differs.",
+      "deep": "Information hiding is one of the most fundamental principles in software design. It appears across patterns such as Singleton, Adapter, Iterator, Facade, and MVC, each applying it at a different level."
+    },
+    {
+      "cat": "facade",
+      "diff": "med",
+      "q": "A new junior developer needs to add error handling to the car assembly Facade. Where should this logic be added?",
+      "opts": [
+        "In each subsystem class such as CarModel and CarEngine so error handling is close to where errors occur",
+        "In the Facade's CreateCompleteCar method so error handling is centralised and the client receives a consistent error response regardless of which subsystem failed",
+        "In the client code, which should wrap the Facade call in a try-catch to handle any subsystem failures",
+        "In a new Error Handling Facade that wraps the original CarFacade and intercepts all subsystem exceptions"
+      ],
+      "ans": 1,
+      "explain": "Centralising error handling in the Facade means all clients benefit from consistent error responses without each needing their own error handling logic. The Facade abstracts not just the happy path but also error management.",
+      "deep": "This extends the Facade's value beyond simplification. It can also standardise cross-cutting concerns such as logging, validation, error handling, and transaction management, providing consistent behaviour across client interactions with subsystems."
+    }
+  ]
 }
