@@ -2,11 +2,11 @@
   "id": "sfc-question-bank",
   "title": "SFC QuestionBank",
   "subtitle": "Scrum Fundamentals Certified",
-  "description": "Imported Scrum Fundamentals Certified question bank items from the provided PDF source.",
+  "description": "Imported 109 Scrum Fundamentals Certified practice questions from the provided JSON source.",
   "categories": [
     {
       "key": "all",
-      "label": "All 10",
+      "label": "All 109",
       "cls": "c0"
     },
     {
@@ -18,31 +18,1417 @@
   "questions": [
     {
       "cat": "fundamentals",
+      "diff": "hard",
+      "q": "How many categories of roles are defined in Scrum?",
+      "opts": [
+        "5",
+        "6",
+        "3",
+        "2"
+      ],
+      "ans": 2,
+      "explain": "Product Owner, Scrum Master, and Scrum Team",
+      "deep": "Product Owner, Scrum Master, and Scrum Team"
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Who approves User Stories for a Sprint?",
+      "opts": [
+        "Product Owner",
+        "Scrum Master",
+        "Stakeholder",
+        "Scrum Team"
+      ],
+      "ans": 3,
+      "explain": "Correct answer: Scrum Team.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Scrum Team."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which process ensures early delivery of high value?",
+      "opts": [
+        "Conduct Daily Standup",
+        "Create Prioritized Product Backlog",
+        "Ship Deliverables",
+        "Retrospect Sprint"
+      ],
+      "ans": 1,
+      "explain": "Correct answer: Create Prioritized Product Backlog.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Create Prioritized Product Backlog."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Flexibility on Scrum projects is achieved through which of the following?",
+      "opts": [
+        "Specialized teams.",
+        "Detailed upfront planning.",
+        "Value-based Prioritization.",
+        "Non-iterative delivery."
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Value-based Prioritization..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Value-based Prioritization.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Terson Technologies is working on a month-long software development project for an airline company. Time-boxing is an important Scrum principle. Which of the following pairs has been incorrectly Time-boxed according to general Scrum practice?",
+      "opts": [
+        "Daily Standup: 15 minutes",
+        "Retrospect Sprint Meeting: 8 hours",
+        "Sprint Planning Meeting: 8 hours",
+        "Sprint Review Meeting: 4 hours"
+      ],
+      "ans": 1,
+      "explain": "Per SBOK p.63-64, Retrospect Sprint is time-boxed to one hour for each week of the Sprint duration",
+      "deep": "Per SBOK p.63-64, Retrospect Sprint is time-boxed to one hour for each week of the Sprint duration"
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which of the following statements best describes Time-boxing?",
+      "opts": [
+        "This principle describes how time is considered a limiting constraint in Scrum, and used to help effectively manage project planning and execution. The elements in Scrum subject to this principle include Sprints, Daily Standup Meetings, Sprint Planning Meetings, and Sprint Review Meetings",
+        "This principle highlights the focus of Scrum to deliver maximum business value, beginning early in the project and continuing throughout.",
+        "This principle focuses on today's workers, who deliver significantly greater value when encouraged to self-organize rather than be subject to the command and control style of traditional project management.",
+        "This principle focuses on the three core dimensions related to collaborative work: awareness, articulation, and appropriation. It also advocates project management as a shared value-creation process with teams working and interacting together to deliver the greatest value"
+      ],
+      "ans": 1,
+      "explain": "Note: The source document marks (b) as the answer, though option (a) more accurately describes Time-boxing per SBOK.",
+      "deep": "Note: The source document marks (b) as the answer, though option (a) more accurately describes Time-boxing per SBOK."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "In a job interview, you are asked to define a distinguishing characteristic of Scrum as compared to various traditional project management methods. Which of the following will be the best answer?",
+      "opts": [
+        "Product development is a shared value-creation process.",
+        "Iterative development helps manage changes effectively.",
+        "Emphasis is on delivering maximum business value in a minimum time span.",
+        "Time is a limiting constraint."
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Emphasis is on delivering maximum business value in a minimum time span..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Emphasis is on delivering maximum business value in a minimum time span.."
+    },
+    {
+      "cat": "fundamentals",
       "diff": "med",
-      "q": "Which process best supports the progressive improvement of requirements during a Scrum project?",
+      "q": "All of the following are the benefits of collaboration in Scrum projects, EXCEPT:",
+      "opts": [
+        "Continuous improvement, which leads to better processes.",
+        "Increased competition, which increases team motivation.",
+        "Minimized Change Requests, which reduces rework.",
+        "Mitigated risks, which increases efficiency."
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Minimized Change Requests, which reduces rework..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Minimized Change Requests, which reduces rework.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which principle is used to help effectively manage project planning and execution?",
+      "opts": [
+        "Time-Boxing",
+        "Collaboration",
+        "Value-based Prioritization",
+        "Self-organization"
+      ],
+      "ans": 2,
+      "explain": "Note: Q105 asks the same question with answer (a) Time-Boxing. Source document is inconsistent.",
+      "deep": "Note: Q105 asks the same question with answer (a) Time-Boxing. Source document is inconsistent."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "________ is created during the Stakeholder meeting",
+      "opts": [
+        "Product Backlog",
+        "Acceptance criteria",
+        "Project Vision",
+        "Roles and Responsibilities"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Project Vision.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Project Vision."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "What is the primary purpose of the Demonstrate and Validate Sprint process?",
+      "opts": [
+        "To secure approval and acceptance of the product or service by the Product Owner.",
+        "To discuss dependencies across teams.",
+        "To retrospect the project and identify, document, and internalize the lessons learned.",
+        "To develop the functionality described in each User Story"
+      ],
+      "ans": 2,
+      "explain": "Source references SBOK p.57. Note: Option (a) is closer to actual SBOK definition of this process.",
+      "deep": "Source references SBOK p.57. Note: Option (a) is closer to actual SBOK definition of this process."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Collaboration is one of the Scrum principles. Which of the following are the three dimensions of this principle?",
+      "opts": [
+        "Awareness, Articulation, and Appropriation.",
+        "Transparency, Precision, and Coordination.",
+        "Perfection, Cooperation, and Comprehension.",
+        "Honesty, Responsiveness, and Adaptability."
+      ],
+      "ans": 0,
+      "explain": "Correct answer: Awareness, Articulation, and Appropriation..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Awareness, Articulation, and Appropriation.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which of the following is NOT a Scrum principle?",
+      "opts": [
+        "Collaboration.",
+        "Iterative Development.",
+        "Refined Reporting.",
+        "Value-based Prioritization."
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Refined Reporting..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Refined Reporting.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Which of the following processes helps ensure high value deliverables are provided to the customer?",
+      "opts": [
+        "Ship Deliverables",
+        "Retrospect Sprint",
+        "Conduct Daily Standup",
+        "Create Prioritized Product Backlog"
+      ],
+      "ans": 0,
+      "explain": "Correct answer: Ship Deliverables.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Ship Deliverables."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which three ideas emphasizes the core philosophy of Scrum?",
+      "opts": [
+        "Transparency, correction, and initialization",
+        "Transparency, inspection, and adaptation",
+        "Initiation, correction, and adaptation",
+        "Transparency, initiation, and adaptation"
+      ],
+      "ans": 1,
+      "explain": "Correct answer: Transparency, inspection, and adaptation.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Transparency, inspection, and adaptation."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "In which process is Done Criteria established?",
+      "opts": [
+        "Develop Epic(s)",
+        "Form Scrum Team",
+        "Create Prioritized Product Backlog",
+        "Create Project Vision"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Create Prioritized Product Backlog.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Create Prioritized Product Backlog."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Scrum projects welcome change by using short, iterative ________ that incorporate customer feedback into the deliverables.",
+      "opts": [
+        "Sprints",
+        "Stages",
+        "Change requests",
+        "Daily Standup meetings"
+      ],
+      "ans": 0,
+      "explain": "Correct answer: Sprints.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Sprints."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which role in Scrum plays the role of a facilitator and ensures that the Scrum Team is provided with an environment conducive to completing the project successfully?",
+      "opts": [
+        "Team Leader",
+        "Scrum Team",
+        "Scrum Master",
+        "Product Owner"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Scrum Master.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Scrum Master."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which of the following best describes the role of a Stakeholder?",
+      "opts": [
+        "It is an optional role, which generally consists of a set of documents and/or a group of experts who are typically involved with defining objectives related to quality, government regulations, security, and other key organizational parameters.",
+        "It is a collective term that includes customers, users, and sponsors, who frequently interface with the Scrum Core Team, and influence the project throughout development.",
+        "It is a role in bigger projects with multiple Scrum Teams. This role is responsible for coordinating the work of multiple Product Owners.",
+        "It is responsible to coordinate Scrum-related activities in large projects which may require multiple Scrum Teams to work in parallel."
+      ],
+      "ans": 0,
+      "explain": "Note: The source marks (a), but option (b) is the actual SBOK definition of a Stakeholder. Option (a) describes the Scrum Guidance Body.",
+      "deep": "Note: The source marks (a), but option (b) is the actual SBOK definition of a Stakeholder. Option (a) describes the Scrum Guidance Body."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "What is/are developed during User Group meetings?",
+      "opts": [
+        "Product Backlog",
+        "Project Vision statement",
+        "Epic(s)",
+        "Acceptance criteria"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Epic(s).",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Epic(s)."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which of the following statements best describes Collaboration?",
+      "opts": [
+        "This principle describes how time is considered a limiting constraint in Scrum, and used to help effectively manage project planning and execution. Time-boxed elements in Scrum include Sprints, Daily Standup Meetings, Sprint Planning Meetings, and Sprint Review Meetings",
+        "This principle focuses on today's workers, who deliver significantly greater value when encouraged to self-organize rather than be subject to the command and control style of traditional project management.",
+        "This principle focuses on the three core dimensions related to collaborative work: awareness, articulation, and appropriation. It also advocates project management as a shared value-creation process with teams working and interacting together to deliver the greatest value",
+        "This principle highlights the focus of Scrum to deliver maximum business value, beginning early in the project and continuing throughout."
+      ],
+      "ans": 2,
+      "explain": "Correct answer: This principle focuses on the three core dimensions related to collaborative work: awareness, articulation, and appropriation. It also advocates project management as a shared value-creation process with teams working and interacting together to deliver the greatest value.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is This principle focuses on the three core dimensions related to collaborative work: awareness, articulation, and appropriation. It also advocates project management as a shared value-creation process with teams working and interacting together to deliver the greatest value."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "________ is defined as the ability of completed products or deliverables to meet Acceptance Criteria.",
+      "opts": [
+        "Scope",
+        "Risk",
+        "Quality",
+        "Project closure"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Quality.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Quality."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "______________ is responsible for providing guidelines about quality which may be relevant to all Scrum projects in the organization?",
+      "opts": [
+        "Scrum Master",
+        "Chief Scrum Master",
+        "Scrum Guidance Body",
+        "Program Product Owner"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Scrum Guidance Body.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Scrum Guidance Body."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which of the following statements is the best description of the Product Owner role?",
+      "opts": [
+        "He/she is the person responsible for achieving maximum business value for the project. He or she is also responsible for articulating customer requirements and maintaining business justification for the project. They represent the Voice of the customer.",
+        "He/she is a facilitator who ensures that the Scrum Team is provided with an environment conducive to completing the project successfully. They guide, facilitate, and teach Scrum practices to everyone involved in the project; clear impediments for the team and ensure that Scrum processes are being followed",
+        "She/he is responsible for creating the Deliverables of the project.",
+        "He/she is responsible for coordinating Scrum-related activities in large projects which may require multiple Scrum Teams to work in parallel."
+      ],
+      "ans": 0,
+      "explain": "Correct answer: He/she is the person responsible for achieving maximum business value for the project. He or she is also responsible for articulating customer requirements and maintaining business justification for the project. They represent the Voice of the customer..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is He/she is the person responsible for achieving maximum business value for the project. He or she is also responsible for articulating customer requirements and maintaining business justification for the project. They represent the Voice of the customer.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "How many phases are there in Scrum?",
+      "opts": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "ans": 1,
+      "explain": "Correct answer: 5.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is 5."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Every Scrum cycle begins with a _____________ meeting.",
+      "opts": [
+        "Release Planning",
+        "Sprint Planning",
+        "Retrospective Sprint",
+        "Project Vision"
+      ],
+      "ans": 3,
+      "explain": "Correct answer: Project Vision.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Project Vision."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which of the following statements best describes Empirical Process Control?",
+      "opts": [
+        "This principle emphasizes the core philosophy of Scrum based on the three main ideas of transparency, inspection, and adaptation.",
+        "This principle focuses on today's workers, who deliver significantly greater value when encouraged to self-organize rather than be subject to the command and control style of traditional project management.",
+        "This principle focuses on the three core dimensions related to collaborative work: awareness, articulation, and appropriation. It also advocates project management as a shared value-creation process with teams working and interacting together to deliver the greatest value",
+        "This principle highlights the focus of Scrum to deliver maximum business value, beginning early in the project and continuing throughout."
+      ],
+      "ans": 2,
+      "explain": "Note: The source marks (c), but option (a) is the correct description of Empirical Process Control per SBOK. Likely a source error.",
+      "deep": "Note: The source marks (c), but option (a) is the correct description of Empirical Process Control per SBOK. Likely a source error."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Organization in Scrum is __________",
+      "opts": [
+        "Flat-hierarchical",
+        "Multi Directional",
+        "Controlled",
+        "Self-organized"
+      ],
+      "ans": 3,
+      "explain": "Correct answer: Self-organized.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Self-organized."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "How many categories of risks are defined in Scrum?",
+      "opts": [
+        "2",
+        "5",
+        "1",
+        "7"
+      ],
+      "ans": 1,
+      "explain": "Correct answer: 5.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is 5."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which principle highlights the focus of Scrum to deliver maximum business value, beginning early in the project and continuing throughout?",
+      "opts": [
+        "Empirical Process Control",
+        "Collaboration",
+        "Value-based Prioritization",
+        "Self-organization"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Value-based Prioritization.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Value-based Prioritization."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which of the following meetings is not usually Time-boxed?",
+      "opts": [
+        "Daily Standup",
+        "Scrum of Scrums",
+        "Sprint Planning Meeting",
+        "Sprint Review"
+      ],
+      "ans": 1,
+      "explain": "Correct answer: Scrum of Scrums.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Scrum of Scrums."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Scrum promotes an easy and transparent flow of information throughout the organization. Transparency is depicted through which of the following Scrum practices?",
+      "opts": [
+        "Planning Poker.",
+        "Release Planning Schedule.",
+        "Estimate Tasks.",
+        "Sprint Retrospect Meeting."
+      ],
+      "ans": 1,
+      "explain": "Source answer key lists multiple answers (b,d). This app uses the first listed answer: B = Release Planning Schedule and Sprint Retrospect Meeting.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Release Planning Schedule and Sprint Retrospect Meeting."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which of the following statements best describes Self-organization?",
+      "opts": [
+        "This principle describes how time is considered a limiting constraint in Scrum, and used to help effectively manage project planning and execution. Time-boxed elements in Scrum include Sprints, Daily Standup Meetings, Sprint Planning Meetings, and Sprint Review Meetings",
+        "This principle focuses on today's workers, who deliver significantly greater value when encouraged to self-organize rather than be subject to the command and control style of traditional project management",
+        "This principle focuses on the three core dimensions related to collaborative work: awareness, articulation, and appropriation. It also advocates project management as a shared value-creation process with teams working and interacting together to deliver the greatest value",
+        "This principle highlights the focus of Scrum to deliver maximum business value, beginning early in the project and continuing throughout."
+      ],
+      "ans": 1,
+      "explain": "Correct answer: This principle focuses on today's workers, who deliver significantly greater value when encouraged to self-organize rather than be subject to the command and control style of traditional project management.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is This principle focuses on today's workers, who deliver significantly greater value when encouraged to self-organize rather than be subject to the command and control style of traditional project management."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Flexibility in Scrum is NOT achieved through which of the following?",
+      "opts": [
+        "Iterative product development",
+        "Customer value-based prioritization",
+        "Time-boxing",
+        "High velocity"
+      ],
+      "ans": 3,
+      "explain": "Correct answer: High velocity.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is High velocity."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which of the following roles is described as a Core role in Scrum?",
+      "opts": [
+        "Stakeholder",
+        "Chief Product Owner",
+        "Chief Scrum Master",
+        "Scrum Master"
+      ],
+      "ans": 3,
+      "explain": "Correct answer: Scrum Master.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Scrum Master."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Scrum follows the ________ style of management and is very different from the traditional management of projects",
+      "opts": [
+        "Autocratic",
+        "Decentralized",
+        "Persuasive",
+        "Paternalistic"
+      ],
+      "ans": 1,
+      "explain": "Correct answer: Decentralized.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Decentralized."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which document is created in the Create Project Vision process?",
+      "opts": [
+        "Product Backlog",
+        "Project Vision statement",
+        "Business case",
+        "Acceptance criteria"
+      ],
+      "ans": 1,
+      "explain": "Correct answer: Project Vision statement.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Project Vision statement."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "What type of leadership is used in Scrum?",
+      "opts": [
+        "Collaborative",
+        "Command and control",
+        "Transactional",
+        "Transformational"
+      ],
+      "ans": 0,
+      "explain": "Correct answer: Collaborative.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Collaborative."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Which of the following statements on Scrum team is INCORRECT?",
+      "opts": [
+        "A Scrum team generally has 6-10 members.",
+        "A Scrum Team should be in place before the project is initiated.",
+        "A Scrum Team will create the deliverables of the project.",
+        "Length of the Sprint will be agreed between the Product Owner and the Scrum Team."
+      ],
+      "ans": 1,
+      "explain": "Correct answer: A Scrum Team should be in place before the project is initiated..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is A Scrum Team should be in place before the project is initiated.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "As defined in the SBOK, which of the following is a Scrum Aspect?",
+      "opts": [
+        "Initiate",
+        "Organization",
+        "Scope",
+        "Plan"
+      ],
+      "ans": 1,
+      "explain": "Correct answer: Organization.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Organization."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "As defined in the SBOK, which of the following is a Scrum Process?",
+      "opts": [
+        "Release",
+        "Business Justification",
+        "Create Deliverables",
+        "Delegate Responsibilities"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Create Deliverables.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Create Deliverables."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "As defined in the SBOK, which of the following a Scrum Principle?",
+      "opts": [
+        "Create Sprint Backlog",
+        "Business Justification",
+        "Review and Retrospect",
+        "Value-based Prioritization"
+      ],
+      "ans": 3,
+      "explain": "Correct answer: Value-based Prioritization.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Value-based Prioritization."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which of the following best defines a project?",
+      "opts": [
+        "A collaborative enterprise to either create new products or services or to deliver results as defined in the Project Vision Statement.",
+        "A group of related projects, with the objective to deliver business outcomes as defined in the Program Vision Statement.",
+        "A collaborative enterprise to sustain the improvements introduced in the operations of an organization.",
+        "A group of related programs, with the objective to deliver business outcomes as defined in the Portfolio Vision Statement."
+      ],
+      "ans": 0,
+      "explain": "Correct answer: A collaborative enterprise to either create new products or services or to deliver results as defined in the Project Vision Statement..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is A collaborative enterprise to either create new products or services or to deliver results as defined in the Project Vision Statement.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "As defined in the SBOK, which of the following is a phase in Scrum projects?",
+      "opts": [
+        "Release",
+        "Starting up",
+        "Delivering",
+        "Monitoring"
+      ],
+      "ans": 0,
+      "explain": "Correct answer: Release.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Release."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Which of the following is NOT an advantage of using Scrum to deliver projects?",
+      "opts": [
+        "It makes projects adaptable and open to incorporating change.",
+        "It minimizes non-essential work and leads to higher efficiency levels.",
+        "It leads to greater levels of motivation among employees.",
+        "It ensures that all the benefits are delivered at the end of the project."
+      ],
+      "ans": 3,
+      "explain": "Correct answer: It ensures that all the benefits are delivered at the end of the project..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is It ensures that all the benefits are delivered at the end of the project.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Which of the following meetings, is conducted at the beginning of a Project?",
+      "opts": [
+        "Retrospect Sprint Meeting",
+        "Daily Standup Meeting",
+        "Project Vision Meeting",
+        "Sprint Review Meeting"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Project Vision Meeting.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Project Vision Meeting."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which of the following is an output of the Project Vision Meeting?",
+      "opts": [
+        "Product Backlog",
+        "Acceptance criteria",
+        "Project Vision Statement",
+        "Roles and Responsibilities"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Project Vision Statement.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Project Vision Statement."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Who among the following creates the Prioritized Product Backlog?",
+      "opts": [
+        "Product Owner",
+        "Customer",
+        "Scrum Team",
+        "Scrum Master"
+      ],
+      "ans": 0,
+      "explain": "Correct answer: Product Owner.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Product Owner."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Which of the following statements on Scrum framework is TRUE?",
+      "opts": [
+        "Focuses on detailed upfront project planning.",
+        "Allows Scrum Teams to take ownership of tasks.",
+        "Enables delegation of authority from one level to another.",
+        "Emphasizes individual accountability rather than group accountability."
+      ],
+      "ans": 1,
+      "explain": "Correct answer: Allows Scrum Teams to take ownership of tasks..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Allows Scrum Teams to take ownership of tasks.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Which of the following meetings is conducted at the end of a Sprint to analyze improvement opportunities for the future Sprints?",
+      "opts": [
+        "Sprint Review Meeting",
+        "Retrospect Sprint Meeting",
+        "Sprint Planning Meeting",
+        "Daily Standup Meeting"
+      ],
+      "ans": 1,
+      "explain": "Correct answer: Retrospect Sprint Meeting.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Retrospect Sprint Meeting."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "What is sustainable pace?",
+      "opts": [
+        "The pace at which the Scrum Team can work and sustain comfortably for an indefinite period of time.",
+        "The pace at which the Scrum Team converts User Stories into deliverables in a Sprint.",
+        "The pace at which the Scrum Team releases project deliverables.",
+        "The pace at which the Scrum Team can work and sustain comfortably in a set of Sprints leading to a product release."
+      ],
+      "ans": 0,
+      "explain": "Correct answer: The pace at which the Scrum Team can work and sustain comfortably for an indefinite period of time..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is The pace at which the Scrum Team can work and sustain comfortably for an indefinite period of time.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which of the following is NOT a benefit of using Scrum?",
+      "opts": [
+        "Ensures that the highest value requirements of the customer are satisfied first as it works on the principle of value-based prioritization.",
+        "Leads to a high trust work environment ensuring low friction among employees as it promotes transparency and collaboration.",
+        "Leads to an innovative and creative work environment as it creates an environment of introspection, learning and adaptation.",
+        "Ensures that products are developed over an agreed period of time as it emphasizes detailed planning at the beginning of the project."
+      ],
+      "ans": 3,
+      "explain": "Correct answer: Ensures that products are developed over an agreed period of time as it emphasizes detailed planning at the beginning of the project..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Ensures that products are developed over an agreed period of time as it emphasizes detailed planning at the beginning of the project.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which of the following is a benefit of using Scrum?",
+      "opts": [
+        "It enables detailed planning at the beginning of the project hence ensures that all the risks are identified and mitigated.",
+        "It provides complete control over the project to the Product Owner as he is responsible for all the product development activities in a Sprint.",
+        "It is based on the principle value-based prioritization thus ensures that highest value is provided in the shortest period possible.",
+        "It is based on the principle of managing by stages thus ensures that all the expected benefits are realized at the end of the project."
+      ],
+      "ans": 2,
+      "explain": "Correct answer: It is based on the principle value-based prioritization thus ensures that highest value is provided in the shortest period possible..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is It is based on the principle value-based prioritization thus ensures that highest value is provided in the shortest period possible.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Which of the following processes facilitates coordination among Scrum Teams in a Scrum project?",
+      "opts": [
+        "Create Project Vision process",
+        "Develop Epics process",
+        "Retrospect Sprint process",
+        "Conduct and Coordinate Sprints"
+      ],
+      "ans": 3,
+      "explain": "Correct answer: Conduct and Coordinate Sprints.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Conduct and Coordinate Sprints."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Scrum framework is best suited for which of the following projects?",
+      "opts": [
+        "Projects with fixed scope and timelines.",
+        "Projects with changing requirements.",
+        "Projects with stable requirements.",
+        "Projects with defined roles and responsibilities."
+      ],
+      "ans": 1,
+      "explain": "Correct answer: Projects with changing requirements..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Projects with changing requirements.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which of the following is NOT an advantage of delivering projects using Scrum?",
+      "opts": [
+        "Scrum ensures an open work environment through information radiators such as Scrumboard.",
+        "Scrum ensures faster resolution to issues through collaboration and colocation of development teams.",
+        "Scrum ensures a customer-oriented framework through collaborative approach and emphasis on business value.",
+        "Scrum ensures better coordination among teams through an hierarchical organization structure which delegates authority for all the project aspects from higher level to the lower."
+      ],
+      "ans": 3,
+      "explain": "Correct answer: Scrum ensures better coordination among teams through an hierarchical organization structure which delegates authority for all the project aspects from higher level to the lower..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Scrum ensures better coordination among teams through an hierarchical organization structure which delegates authority for all the project aspects from higher level to the lower.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Which of the following Scrum principles guides planning in a Scrum project?",
+      "opts": [
+        "Empirical Process Control",
+        "Value-based prioritization",
+        "Self-organization",
+        "Collaboration"
+      ],
+      "ans": 1,
+      "explain": "Correct answer: Value-based prioritization.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Value-based prioritization."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "What is self-organization?",
+      "opts": [
+        "It refers to emphasizing achieving results by focusing on the needs of the Scrum Team.",
+        "It refers to delivering maximum business value in a minimum time span.",
+        "It refers to prioritizing creation of high value deliverables over lower value deliverables",
+        "It refers to allowing all facets of Scrum process to be observed by everyone."
+      ],
+      "ans": 0,
+      "explain": "Correct answer: It refers to emphasizing achieving results by focusing on the needs of the Scrum Team..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is It refers to emphasizing achieving results by focusing on the needs of the Scrum Team.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "What is value-based prioritization?",
+      "opts": [
+        "It refers to emphasizing achieving results by focusing on the needs of the Scrum Team.",
+        "It refers to making improvements through adaptation.",
+        "It refers to prioritizing creation of high value deliverables over lower value deliverables",
+        "It refers to allowing all facets of Scrum process to be observed by everyone."
+      ],
+      "ans": 2,
+      "explain": "Correct answer: It refers to prioritizing creation of high value deliverables over lower value deliverables.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is It refers to prioritizing creation of high value deliverables over lower value deliverables."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "What is time-boxing?",
+      "opts": [
+        "It refers to emphasizing achieving results by focusing on the needs of the Scrum Team.",
+        "It refers to delivering maximum business value in a minimum time span.",
+        "It refers to prioritizing creation of high value deliverables over lower value deliverables",
+        "It refers to fixing a certain amount of time for each process and activity in a Scrum project."
+      ],
+      "ans": 3,
+      "explain": "Correct answer: It refers to fixing a certain amount of time for each process and activity in a Scrum project..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is It refers to fixing a certain amount of time for each process and activity in a Scrum project.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "What is iterative development?",
+      "opts": [
+        "It refers to using more than one product development cycle to develop the final project deliverables through the learning from the previous development cycles.",
+        "It refers to developing the final project deliverables in one product development cycle.",
+        "It refers to developing project deliverables using automated processes.",
+        "It refers to developing project outputs through detailed upfront planning with emphasis on fixing scope, quality and other project aspects."
+      ],
+      "ans": 0,
+      "explain": "Correct answer: It refers to using more than one product development cycle to develop the final project deliverables through the learning from the previous development cycles..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is It refers to using more than one product development cycle to develop the final project deliverables through the learning from the previous development cycles.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "What of the following best defines collaboration?",
+      "opts": [
+        "It refers to individual Scrum Team members being aware of each other's work.",
+        "It refers to the Scrum Core Team working together and interfacing with the stakeholders to create and validate the deliverables of the project to meet the stated goals.",
+        "It refers to achieving results by focusing on the needs of the Scrum Team.",
+        "It refers to proposes fixing a certain amount of time for each process and activity in a Scrum project."
+      ],
+      "ans": 1,
+      "explain": "Correct answer: It refers to the Scrum Core Team working together and interfacing with the stakeholders to create and validate the deliverables of the project to meet the stated goals..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is It refers to the Scrum Core Team working together and interfacing with the stakeholders to create and validate the deliverables of the project to meet the stated goals.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Which of the following, is emphasized in Scrum framework?",
+      "opts": [
+        "Self-motivation and team responsibility.",
+        "Delegation of authority through proper planning.",
+        "Individual responsibilities and accountability.",
+        "Extensive upfront planning and adherence to the approved plans."
+      ],
+      "ans": 0,
+      "explain": "Correct answer: Self-motivation and team responsibility..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Self-motivation and team responsibility.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Time-boxing is not done in which of the following meetings?",
+      "opts": [
+        "Daily Standup Meeting",
+        "Sprint Planning Meeting",
+        "Retrospect Project Meeting",
+        "Retrospect Sprint Meeting"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Retrospect Project Meeting.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Retrospect Project Meeting."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Which of the following statements on Time-boxing is INCORRECT?",
+      "opts": [
+        "It proposes fixing certain timeframe for each activity.",
+        "It ensures that Scrum Team members do not take up too much or too little work for a particular period.",
+        "It is a principle through which Scrum framework addresses the project constraint of 'time'.",
+        "It ensures that there is detailed upfront planning before every Sprint begins."
+      ],
+      "ans": 3,
+      "explain": "Correct answer: It ensures that there is detailed upfront planning before every Sprint begins..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is It ensures that there is detailed upfront planning before every Sprint begins.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which of the following does NOT aid in ensuring transparency in a Scrum project?",
+      "opts": [
+        "Scrum ensures that the project has an open Prioritized Product Backlog with prioritized User Stories that can be viewed by everyone, both within and outside the Scrum Team.",
+        "Scrum ensures that there is clear visibility into the team's progress through the use of a Scrumboard, Burndown Chart, and other information radiators.",
+        "Scrum ensures transparency through detailed upfront planning in which all the key stakeholders participate.",
+        "Scrum ensures transparency through a Project Vision Statement that is visible to all the internal and external stakeholders."
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Scrum ensures transparency through detailed upfront planning in which all the key stakeholders participate..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Scrum ensures transparency through detailed upfront planning in which all the key stakeholders participate.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Which of the following pairs, related to Tuckman's Model of Group Dynamics, is INCORRECTLY matched?",
+      "opts": [
+        "Storming: Team tries to accomplish work",
+        "Forming: Team is mature with experience",
+        "Norming: Team begins to sort out internal differences",
+        "Performing: Team's efficiency is at its optimal level"
+      ],
+      "ans": 1,
+      "explain": "Correct answer: Forming: Team is mature with experience.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Forming: Team is mature with experience."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "According to SBOK, which of the following is NOT a core dimension of Collaboration?",
+      "opts": [
+        "Adaptation",
+        "Appropriation",
+        "Articulation",
+        "Awareness"
+      ],
+      "ans": 0,
+      "explain": "Correct answer: Adaptation.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Adaptation."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Which of the following is NOT an example of the Scrum principle 'Empirical Process Control'?",
+      "opts": [
+        "Use of Scrumboard to ensure clear visibility into the Scrum Team's progress.",
+        "Use of Release Planning Schedule to ensure coordination across multiple Scrum Teams.",
+        "Use of Prioritized Product Backlog to be viewed by internal and external stakeholders.",
+        "Use of fixed amount of time for each process and activity in a Scrum project."
+      ],
+      "ans": 3,
+      "explain": "Correct answer: Use of fixed amount of time for each process and activity in a Scrum project..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Use of fixed amount of time for each process and activity in a Scrum project.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which of the following statements on colocation is INCORRECT?",
+      "opts": [
+        "It results in low number of frictions among the Scrum Team members.",
+        "It facilitates formal and informal interaction among the team members.",
+        "It enables the team members to coordinate, resolve issues and learn from experience.",
+        "It enables determination of the order and separation of what must be done now, from what needs to be done later in a Sprint."
+      ],
+      "ans": 3,
+      "explain": "Correct answer: It enables determination of the order and separation of what must be done now, from what needs to be done later in a Sprint..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is It enables determination of the order and separation of what must be done now, from what needs to be done later in a Sprint.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which of the following is NOT a principle of Scrum?",
+      "opts": [
+        "Value-based Prioritization",
+        "Time-boxing",
+        "Stage-by-stage project delivery",
+        "Self-organization"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Stage-by-stage project delivery.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Stage-by-stage project delivery."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "In Scrum, a short concentrated work cycle is called a/an _______",
+      "opts": [
+        "Phase",
+        "Process",
+        "Stage",
+        "Sprint"
+      ],
+      "ans": 3,
+      "explain": "Correct answer: Sprint.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Sprint."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "What are the 6 Scrum principles?",
+      "opts": [
+        "Empirical Process Control, Self-organization, Collaboration, Value-based Prioritization, Time-boxing, Iterative Development",
+        "Empirical Process Control, Self-organization, Collaboration, Value-based Prioritization, Time-mapping, Iterative Development",
+        "Empirical Process Control, Self-organization, Collaboration, Cost-based Prioritization, Time-mapping, Iterative Development",
+        "Empirical Process Control, Self-organization, Collaboration, Cost-based Prioritization, Time-mapping, Cyclic Development"
+      ],
+      "ans": 0,
+      "explain": "Correct answer: Empirical Process Control, Self-organization, Collaboration, Value-based Prioritization, Time-boxing, Iterative Development.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Empirical Process Control, Self-organization, Collaboration, Value-based Prioritization, Time-boxing, Iterative Development."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Scrum follows the ________ style of management and is very different from the traditional management of projects",
+      "opts": [
+        "Autocratic",
+        "Decentralized",
+        "Persuasive",
+        "Paternalistic"
+      ],
+      "ans": 1,
+      "explain": "Correct answer: Decentralized.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Decentralized."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "While discussing the concept of Transparency in Empirical Process Control, which of the following is NOT an Artifact?",
+      "opts": [
+        "Project Vision Statement.",
+        "Epic(s).",
+        "Prioritized Product Backlog.",
+        "Release Planning Schedule."
+      ],
+      "ans": 1,
+      "explain": "Correct answer: Epic(s)..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Epic(s).."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "If it were true, which of the following would NOT foster transparency in Scrum projects?",
+      "opts": [
+        "The Project Vision Statement can be accessed by all stakeholders and the Scrum Team.",
+        "The Prioritized Product Backlog with prioritized User Stories that can be viewed within and outside the Scrum Team.",
+        "The Release Planning Schedule can be coordinated with multiple Scrum Teams.",
+        "Burndown charts can be viewed only by the Scrum Team and the Scrum Master."
+      ],
+      "ans": 3,
+      "explain": "Correct answer: Burndown charts can be viewed only by the Scrum Team and the Scrum Master..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Burndown charts can be viewed only by the Scrum Team and the Scrum Master.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which of the following is not a key role in Scrum?",
+      "opts": [
+        "Product Owner",
+        "Scrum Master",
+        "Team manager",
+        "Scrum Team Member"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Team manager.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Team manager."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which of the following is NOT a main idea in Empirical Process Control?",
+      "opts": [
+        "Transparency",
+        "Inspection",
+        "Association",
+        "Adaptation"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Association.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Association."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Every Scrum cycle begins with a _____________ meeting.",
+      "opts": [
+        "Release Planning",
+        "Sprint Planning",
+        "Retrospective Sprint",
+        "Project Vision"
+      ],
+      "ans": 3,
+      "explain": "Correct answer: Project Vision.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Project Vision."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which of the following is NOT a Scrum principle?",
+      "opts": [
+        "Empirical Process Control",
+        "Self-organization",
+        "Risk-based Prioritization",
+        "Collaboration"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Risk-based Prioritization.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Risk-based Prioritization."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "The Product Owner selects team members in collaboration with the __________.",
+      "opts": [
+        "Program Product Owner",
+        "Chief Scrum Master",
+        "Scrum Master",
+        "Program Scrum Master"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Scrum Master.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Scrum Master."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "What is the ideal size of a Scrum team as recommended in the SBOK Guide?",
+      "opts": [
+        "1 \u2013 4 members",
+        "6 \u2013 10 members",
+        "15 \u2013 20 members",
+        "Size of team depends on size and complexity of project"
+      ],
+      "ans": 1,
+      "explain": "Correct answer: 6 \u2013 10 members.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is 6 \u2013 10 members."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Quality Assurance in Scrum is _________ centric",
+      "opts": [
+        "Process",
+        "Customer",
+        "Product",
+        "Project"
+      ],
+      "ans": 1,
+      "explain": "Correct answer: Customer.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Customer."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which of the following is NOT an objective of the Retrospect Sprint Meeting?",
+      "opts": [
+        "Identify things that the team needs to keep doing that can serve as best practices.",
+        "Identify things the team needs to stop doing to process problems and bottlenecks.",
+        "Identify team members who were vital to the success of the Sprint.",
+        "Identify things that the team needs to begin doing."
+      ],
+      "ans": 3,
+      "explain": "Note: The source marks (d), but option (c) is typically the objective that is NOT part of Retrospect Sprint per standard SBOK content.",
+      "deep": "Note: The source marks (d), but option (c) is typically the objective that is NOT part of Retrospect Sprint per standard SBOK content."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which of the following roles is described as a Core role in Scrum?",
+      "opts": [
+        "Stakeholder",
+        "Chief Product Owner",
+        "Chief Scrum Master",
+        "Scrum Master"
+      ],
+      "ans": 3,
+      "explain": "Correct answer: Scrum Master.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Scrum Master."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which concept is the basis of the Business Justification aspect in Scrum?",
+      "opts": [
+        "Risk-driven delivery",
+        "Value-driven delivery",
+        "Time-driven delivery",
+        "Change-drive delivery"
+      ],
+      "ans": 1,
+      "explain": "Correct answer: Value-driven delivery.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Value-driven delivery."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which of the following Scrum aspects translate(s) the Scrum principle Value-based Prioritization into practice? A. Business Justification B. Risk C. Change D. Organization",
+      "opts": [
+        "A",
+        "A, C and D",
+        "A, B and C",
+        "A, B, C and D"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: A, B and C.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is A, B and C."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Who can use the SBOK as a reference and knowledge guide?",
+      "opts": [
+        "Only experienced Scrum practitioners",
+        "Best suited for people with no prior experience or knowledge of Scrum or other project management methodology.",
+        "Neither experienced Scrum practitioners nor inexperienced people can use it.",
+        "Both experienced Scrum practitioners as well as people with no prior experience or knowledge of Scrum or other project management methods."
+      ],
+      "ans": 3,
+      "explain": "Correct answer: Both experienced Scrum practitioners as well as people with no prior experience or knowledge of Scrum or other project management methods..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Both experienced Scrum practitioners as well as people with no prior experience or knowledge of Scrum or other project management methods.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "What is the basis of performance measurement in Scrum?",
+      "opts": [
+        "Plan conformity",
+        "Business value",
+        "Team performance",
+        "Attrition Level"
+      ],
+      "ans": 2,
+      "explain": "Note: The source marks (c), but (b) Business value is the standard SBOK answer.",
+      "deep": "Note: The source marks (c), but (b) Business value is the standard SBOK answer."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which meeting ends a Sprint?",
+      "opts": [
+        "Stakeholder Meeting",
+        "Daily Standup Meeting",
+        "Sprint Review Meeting",
+        "Retrospect Sprint Meeting"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Sprint Review Meeting.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Sprint Review Meeting."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which of the following is the final step in a Sprint?",
+      "opts": [
+        "Prioritized Product Backlog Grooming",
+        "Sprint Review Meeting",
+        "Scrum of Scrums Meeting",
+        "Retrospect Sprint Meeting"
+      ],
+      "ans": 0,
+      "explain": "Correct answer: Prioritized Product Backlog Grooming.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Prioritized Product Backlog Grooming."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Collaboration is one of the Scrum principles. Which of the following are the three dimensions of this principle?",
+      "opts": [
+        "Awareness, Articulation, and Appropriation.",
+        "Transparency, Precision, and Coordination.",
+        "Perfection, Cooperation, and Comprehension.",
+        "Honesty, Responsiveness, and Adaptability."
+      ],
+      "ans": 0,
+      "explain": "Correct answer: Awareness, Articulation, and Appropriation..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Awareness, Articulation, and Appropriation.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which of the following are the core dimensions of collaborative work?",
+      "opts": [
+        "Awareness, Articulation, and Appropriation.",
+        "Aspects, Articulation, and Assurance.",
+        "Awareness, Adaptation, and Appropriation.",
+        "Aspects, Adaptation, and Artifacts."
+      ],
+      "ans": 0,
+      "explain": "Correct answer: Awareness, Articulation, and Appropriation..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Awareness, Articulation, and Appropriation.."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Who is responsible for coordinating the work of multiple Product Owners?",
+      "opts": [
+        "Scrum Master",
+        "Product Owner",
+        "Chief Product Owner",
+        "Vendor"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Chief Product Owner.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Chief Product Owner."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "How many aspects in Scrum are to be considered for all projects?",
+      "opts": [
+        "8",
+        "4",
+        "5",
+        "7"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: 5.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is 5."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "The Conduct Daily Standup process is a part of which phase?",
+      "opts": [
+        "Initiate",
+        "Plan and Estimate",
+        "Implement",
+        "Review and Retrospect"
+      ],
+      "ans": 2,
+      "explain": "Correct answer: Implement.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Implement."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "easy",
+      "q": "Which role in Scrum represents the Voice of the Customer?",
+      "opts": [
+        "Scrum Master",
+        "Scrum Team",
+        "Team Leader",
+        "Product Owner"
+      ],
+      "ans": 3,
+      "explain": "Correct answer: Product Owner.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Product Owner."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "med",
+      "q": "Risks should be identified, assessed, and responded to based on which two factors?",
+      "opts": [
+        "Possibility and Impact",
+        "Probability and Impact",
+        "Change and Impact",
+        "Probability and Severity"
+      ],
+      "ans": 1,
+      "explain": "Correct answer: Probability and Impact.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Probability and Impact."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which principle is used to help effectively manage project planning and execution?",
+      "opts": [
+        "Time-Boxing",
+        "Collaboration",
+        "Value-based Prioritization",
+        "Self-organization"
+      ],
+      "ans": 0,
+      "explain": "Note: Q10 asks the same question with answer (c) Value-based Prioritization. Source document is inconsistent.",
+      "deep": "Note: Q10 asks the same question with answer (c) Value-based Prioritization. Source document is inconsistent."
+    },
+    {
+      "cat": "fundamentals",
+      "diff": "hard",
+      "q": "Which process helps in progressive improvement of requirements?",
       "opts": [
         "Conduct Daily Standup",
         "Ship Deliverables",
         "Groom Prioritized Product Backlog",
         "Retrospect Sprint"
       ],
-      "ans": 2,
-      "explain": "Backlog grooming or refinement is the Scrum activity used to clarify, revise, split, and reprioritize requirements as the team learns more.",
-      "deep": "Progressive elaboration of requirements happens through repeated backlog refinement, not through shipping or a status event. Retrospectives improve the process, while refinement improves the work itself."
+      "ans": 3,
+      "explain": "Note: The source marks (d), but (c) Groom Prioritized Product Backlog is typically the SBOK answer for progressive requirements improvement.",
+      "deep": "Note: The source marks (d), but (c) Groom Prioritized Product Backlog is typically the SBOK answer for progressive requirements improvement."
     },
     {
       "cat": "fundamentals",
-      "diff": "easy",
-      "q": "During which Scrum event does the Scrum Team discuss day-to-day progress updates?",
+      "diff": "hard",
+      "q": "When does the Scrum Team discuss progress updates.",
       "opts": [
         "Conduct Daily Standup",
         "Create Project Vision",
         "Create Deliverables",
         "Groom Prioritized Product Backlog"
       ],
-      "ans": 0,
-      "explain": "The Daily Standup exists specifically for quick progress updates, coordination, and identification of blockers.",
-      "deep": "Daily coordination is time-boxed into the standup so the team can inspect progress and adapt its plan for the next 24 hours."
+      "ans": 3,
+      "explain": "Note: The source marks (d), but (a) Conduct Daily Standup is typically the SBOK answer for progress updates discussion.",
+      "deep": "Note: The source marks (d), but (a) Conduct Daily Standup is typically the SBOK answer for progress updates discussion."
     },
     {
       "cat": "fundamentals",
@@ -55,12 +1441,12 @@
         "Scrum Team"
       ],
       "ans": 0,
-      "explain": "The Product Owner is the role most directly responsible for articulating and owning the product vision.",
-      "deep": "Scrum depends on clear product direction. The Product Owner connects business goals, stakeholder expectations, and backlog priorities through that vision."
+      "explain": "Correct answer: Product Owner.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Product Owner."
     },
     {
       "cat": "fundamentals",
-      "diff": "easy",
+      "diff": "med",
       "q": "Which role is primarily responsible for the Business Justification aspect in a Scrum project?",
       "opts": [
         "Scrum Team",
@@ -69,13 +1455,13 @@
         "Chief Scrum Master"
       ],
       "ans": 2,
-      "explain": "The Product Owner is accountable for maximizing value and maintaining the business case behind the product work.",
-      "deep": "Business justification belongs with the role that prioritizes value and represents stakeholder needs, which is why it sits with the Product Owner rather than the delivery team."
+      "explain": "Correct answer: Product Owner.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Product Owner."
     },
     {
       "cat": "fundamentals",
       "diff": "med",
-      "q": "Which Scrum principle best helps teams manage change while building products that satisfy customer needs?",
+      "q": "Which principle in Scrum helps to manage changes and build products that satisfy customer needs?",
       "opts": [
         "Time-Boxing",
         "Iterative Development",
@@ -83,13 +1469,13 @@
         "Self-organization"
       ],
       "ans": 1,
-      "explain": "Iterative development allows teams to inspect outcomes frequently and adjust the product as requirements or feedback evolve.",
-      "deep": "Short iterations reduce the cost of being wrong. Instead of locking in one large plan, the team learns and adapts as the product takes shape."
+      "explain": "Correct answer: Iterative Development.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Iterative Development."
     },
     {
       "cat": "fundamentals",
-      "diff": "easy",
-      "q": "Which role group includes customers, users, and sponsors who frequently interact with the Scrum Core Team?",
+      "diff": "med",
+      "q": "Which role in Scrum includes the customers, users, and sponsors, who frequently interact with the Scrum Core Team?",
       "opts": [
         "Vendor",
         "Chief Product Owner",
@@ -97,41 +1483,41 @@
         "Stakeholders"
       ],
       "ans": 3,
-      "explain": "Stakeholders are the broader group with an interest in the product outcome, including customers, users, and sponsors.",
-      "deep": "Scrum depends on regular stakeholder feedback so the team can validate whether it is building the right thing, not just building it correctly."
+      "explain": "Correct answer: Stakeholders.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Stakeholders."
     },
     {
       "cat": "fundamentals",
       "diff": "hard",
-      "q": "Which statement best describes the Scrum principle of Collaboration?",
+      "q": "Which of the following statements best describes Collaboration?",
       "opts": [
-        "This principle treats time as the main planning constraint and manages work through fixed time-boxes",
-        "This principle emphasizes self-management by letting workers organize themselves instead of relying on command-and-control structures",
-        "This principle focuses on awareness, articulation, and appropriation, and treats project work as a shared value-creation process",
-        "This principle emphasizes maximizing business value by ordering work so the highest-value items are delivered first"
+        "This principle describes how time is considered a limiting constraint in Scrum, and used to help effectively manage project planning and execution. Time-boxed elements in Scrum include Sprints, Daily Standup Meetings, Sprint Planning Meetings, and Sprint Review Meetings",
+        "This principle focuses on today's workers, who deliver significantly greater value when encouraged to self-organize rather than be subject to the command and control style of traditional project management.",
+        "This principle focuses on the three core dimensions related to collaborative work: awareness, articulation, and appropriation. It also advocates project management as a shared value-creation process with teams working and interacting together to deliver the greatest value",
+        "This principle highlights the focus of Scrum to deliver maximum business value, beginning early in the project and continuing throughout."
       ],
       "ans": 2,
-      "explain": "Collaboration in Scrum is about people working together with shared awareness, coordinated action, and adaptation of tools and practices to create value.",
-      "deep": "Scrum is not just a flow of tasks. It depends on continuous interaction among team members and stakeholders so decisions, feedback, and delivery remain aligned."
+      "explain": "Correct answer: This principle focuses on the three core dimensions related to collaborative work: awareness, articulation, and appropriation. It also advocates project management as a shared value-creation process with teams working and interacting together to deliver the greatest value.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is This principle focuses on the three core dimensions related to collaborative work: awareness, articulation, and appropriation. It also advocates project management as a shared value-creation process with teams working and interacting together to deliver the greatest value."
     },
     {
       "cat": "fundamentals",
-      "diff": "hard",
+      "diff": "med",
       "q": "Which of the following pairs is incorrectly matched?",
       "opts": [
-        "Prioritized delivery: Focus only on business value",
-        "Appropriation: Adapting technology to one's own situation",
-        "Adaptation: Risk identification is performed and iterated throughout the project",
-        "Collaboration: Stakeholders and development team interact continually"
+        "Prioritized delivery: Focus only on business value.",
+        "Appropriation: Adapting technology to one's own situation.",
+        "Adaptation: Risk identification is performed and iterated throughout the project.",
+        "Collaboration: Stakeholders and development team interact continually."
       ],
       "ans": 0,
-      "explain": "Prioritized delivery is about maximizing business value, but not about focusing only on business value while ignoring other constraints such as risk, feasibility, and dependencies.",
-      "deep": "Good Scrum prioritization balances value with timing, effort, uncertainty, and learning. Reducing it to one dimension oversimplifies the decision process."
+      "explain": "Correct answer: Prioritized delivery: Focus only on business value..",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Prioritized delivery: Focus only on business value.."
     },
     {
       "cat": "fundamentals",
-      "diff": "easy",
-      "q": "What artifact is often used to track the status of work and activities being carried out by the Scrum Team?",
+      "diff": "med",
+      "q": "A ________ is often used to track the status of the work and activities being carried out by the Scrum Team.",
       "opts": [
         "Sprint Burndown chart",
         "Project Vision statement",
@@ -139,22 +1525,22 @@
         "Scrumboard"
       ],
       "ans": 3,
-      "explain": "A Scrumboard provides visible, current status of tasks and work in progress for the team.",
-      "deep": "Its value is transparency. By making work visible, the team can coordinate more easily and spot blocked or unfinished work quickly."
+      "explain": "Correct answer: Scrumboard.",
+      "deep": "This item comes from the SFC practice bank and tests a core Scrum concept. The correct answer is Scrumboard."
     },
     {
       "cat": "fundamentals",
-      "diff": "med",
-      "q": "Which set of Scrum practices most directly supports transparency?",
+      "diff": "hard",
+      "q": "Which of the following ensure transparency in Scrum? A. Scrumboard B. Impediment Log C. Daily Standup D. Video Conferencing",
       "opts": [
-        "Scrumboard, Impediment Log, and Daily Standup",
-        "Scrumboard, Daily Standup, and Video Conferencing",
-        "Scrumboard, Impediment Log, Daily Standup, and Video Conferencing",
-        "Only Scrumboard"
+        "A, B and C",
+        "A, C and D",
+        "A, B, C and D",
+        "Only A"
       ],
-      "ans": 0,
-      "explain": "Transparency in Scrum is strengthened by visible work tracking, visible impediments, and regular progress communication.",
-      "deep": "Video conferencing can support communication, but it is not itself a core Scrum transparency mechanism. The key idea is making work, blockers, and status easy to inspect."
+      "ans": 3,
+      "explain": "Note: The source marks (d), but (c) A, B, C and D is typically considered correct per SBOK as all these aid transparency.",
+      "deep": "Note: The source marks (d), but (c) A, B, C and D is typically considered correct per SBOK as all these aid transparency."
     }
   ]
 }
